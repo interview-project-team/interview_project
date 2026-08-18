@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview Feedback</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            background: #1e293b;
+            border-radius: 20px;
+        }
+
+        .score {
+            font-size: 50px;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+
+        .loading {
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>Interview Feedback</h1>
+
+        <p class="loading" id="loading">
+            Loading your result...
+        </p>
+
+        <div id="result" style="display:none;">
+
+            <div class="score" id="score">--</div>
+
+            <p>Overall Score</p>
+
+            <hr>
+
+            <p>
+                Communication:
+                <strong id="communication">--</strong>
+            </p>
+
+            <p>
+                Technical:
+                <strong id="technical">--</strong>
+            </p>
+
+            <p>
+                Problem Solving:
+                <strong id="problemSolving">--</strong>
+            </p>
+
+            <p>
+                Confidence:
+                <strong id="confidence">--</strong>
+            </p>
+
+            <h3>Feedback</h3>
+
+            <p id="feedback">--</p>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const API_URL = "http://localhost:5000";
+
+        async function loadFeedback() {
+
+            try {
+
+                const response =
+                    await fetch(`${API_URL}/api/interviews`);
+
+                const interviews =
+                    await response.json();
+
+                if (interviews.length === 0) {
+                    document.getElementById("loading").textContent =
+                        "No interview results found.";
+                    return;
+                }
+
+                const latest = interviews[0];
+
+                document.getElementById("score").textContent =
+                    latest.score + "/100";
+
+                document.getElementById("communication").textContent =
+                    latest.communication + "%";
+
+                document.getElementById("technical").textContent =
+                    latest.technical + "%";
+
+                document.getElementById("problemSolving").textContent =
+                    latest.problemSolving + "%";
+
+                document.getElementById("confidence").textContent =
+                    latest.confidence + "%";
+
+                document.getElementById("feedback").textContent =
+                    latest.feedback;
+
+                document.getElementById("loading").style.display =
+                    "none";
+
+                document.getElementById("result").style.display =
+                    "block";
+
+            } catch (error) {
+
+                document.getElementById("loading").textContent =
+                    "Unable to connect to backend.";
+
+                console.error(error);
+            }
+        }
+
+        loadFeedback();
+
+    </script>
+
+</body>
+</html>
