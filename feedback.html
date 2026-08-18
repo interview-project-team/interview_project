@@ -6,6 +6,7 @@
 
     <title>Interview Feedback | InterviewIQ AI</title>
 
+    <!-- Browser tab icon -->
     <link rel="icon" type="image/png" href="Robot.png">
 
     <style>
@@ -94,6 +95,10 @@
                 const response =
                     await fetch(`${API_URL}/api/interviews`);
 
+                if (!response.ok) {
+                    throw new Error("Failed to fetch interview data");
+                }
+
                 const interviews =
                     await response.json();
 
@@ -103,6 +108,7 @@
                     return;
                 }
 
+                // Get the latest interview
                 const latest = interviews[0];
 
                 document.getElementById("score").textContent =
@@ -134,7 +140,7 @@
                 document.getElementById("loading").textContent =
                     "Unable to connect to backend.";
 
-                console.error(error);
+                console.error("API Error:", error);
             }
         }
 
