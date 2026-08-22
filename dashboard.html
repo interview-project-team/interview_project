@@ -815,11 +815,7 @@ th {
     </button>
 
 
-    <button class="nav-item" data-page="coding">
-        <span class="nav-icon">▣</span>
-        Coding Practice
-    </button>
-
+  
 
     <button class="nav-item" data-page="skills">
         <span class="nav-icon">▥</span>
@@ -991,26 +987,6 @@ th {
 
             </div>
 
-
-            <div class="card quick-card">
-
-                <div class="icon-box icon-blue">
-                    ▷_
-                </div>
-
-                <h3>
-                    Coding Practice
-                </h3>
-
-                <p>
-                    Solve coding problems online.
-                </p>
-
-                <button class="start-btn" onclick="showPage('coding')">
-                    Start
-                </button>
-
-            </div>
 
 
             <div class="card quick-card">
@@ -1628,78 +1604,6 @@ th {
     </section>
 
 
-    <!-- =====================================================
-         CODING
-    ====================================================== -->
-
-    <section class="page" id="coding">
-
-        <button class="back-btn" onclick="showPage('dashboard')">
-            ← Back to Dashboard
-        </button>
-
-        <div class="page-heading">
-
-            <h1>
-                Coding Practice
-            </h1>
-
-            <p>
-                Improve your problem solving skills.
-            </p>
-
-        </div>
-
-
-        <div class="large-card">
-
-            <h2 style="font-size:18px;">
-                Two Sum
-            </h2>
-
-            <p style="color:#777;margin:12px 0;">
-                Given an array of integers and a target,
-                return indices of the two numbers that add up
-                to the target.
-            </p>
-
-
-            <div style="
-                background:#111827;
-                color:#eee;
-                padding:20px;
-                border-radius:10px;
-                font-family:monospace;
-                margin:20px 0;
-            ">
-
-                <div style="color:#999;">
-                    # Python 3
-                </div>
-
-                <br>
-
-                def twoSum(nums, target):<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;n = {}<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;for i, num in enumerate(nums):<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if target - num in n:<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [n[target-num], i]<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n[num] = i<br>
-                <br>
-                return []
-
-            </div>
-
-
-            <button class="primary-btn"
-                    onclick="alert('Code submitted successfully!')">
-                Submit Code
-            </button>
-
-        </div>
-
-    </section>
-
 
     <!-- =====================================================
          SKILLS
@@ -2123,7 +2027,7 @@ th {
                 </h3>
 
                 <p>
-                    Aptitude → Technical → Coding → HR
+                    Aptitude → Technical → HR
                 </p>
 
                 <button class="primary-btn">
