@@ -65,8 +65,9 @@
                     </span>
 
                     <input type="email"
-                           class="form-control"
-                           placeholder="Enter your email address">
+       id="email"
+       class="form-control"
+       placeholder="Enter your email address">
 
                 </div>
 
@@ -114,9 +115,11 @@
             <!-- Login Button -->
             <div class="d-grid mt-4">
 
-                <button type="button" class="btn btn-primary py-2">
-                    Login
-                </button>
+               <button type="button"
+        class="btn btn-primary py-2"
+        onclick="loginUser()">
+    Login
+</button>
 
             </div>
 
@@ -151,6 +154,60 @@
         }
 
     </script>
+<script>
 
+async function loginUser() {
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if (!email || !password) {
+        alert("Please enter your email and password.");
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/login",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+
+            alert("Login successful!");
+
+            window.location.href = "dashboard.html";
+
+        } else {
+
+            alert(data.message);
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Unable to connect to backend.");
+
+    }
+
+}
+
+</script>
 </body>
 </html>
