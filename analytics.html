@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics | InterviewIQ AI</title>
+
+    <link rel="icon" type="image/png" href="./Robot.png?v=2">
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 30px;
+            width: 250px;
+        }
+
+        .number {
+            font-size: 45px;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+
+        .label {
+            color: #cbd5e1;
+            font-size: 18px;
+        }
+
+        .loading {
+            color: #94a3b8;
+        }
+
+        .error {
+            color: #f87171;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 25px;
+            background: #4f46e5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <h1>Interview Analytics</h1>
+
+        <p id="loading" class="loading">
+            Loading analytics...
+        </p>
+
+
+        <div id="analytics" class="cards" style="display:none;">
+
+            <!-- Total Interviews -->
+
+            <div class="card">
+
+                <div class="number" id="totalInterviews">
+                    --
+                </div>
+
+                <div class="label">
+                    Total Interviews
+                </div>
+
+            </div>
+
+
+            <!-- Average Score -->
+
+            <div class="card">
+
+                <div class="number" id="averageScore">
+                    --
+                </div>
+
+                <div class="label">
+                    Average Score
+                </div>
+
+            </div>
+
+
+            <!-- Best Score -->
+
+            <div class="card">
+
+                <div class="number" id="bestScore">
+                    --
+                </div>
+
+                <div class="label">
+                    Best Score
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <p id="error" class="error"></p>
+
+
+        <a href="dashboard.html" class="back">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+
+    <script>
+
+        const API_URL = "http://localhost:5000";
+
+
+        async function loadAnalytics() {
+
+            try {
+
+                const response =
+                    await fetch(`${API_URL}/api/analytics`);
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Failed to load analytics"
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                document.getElementById(
+                    "totalInterviews"
+                ).textContent =
+                    data.totalInterviews;
+
+
+                document.getElementById(
+                    "averageScore"
+                ).textContent =
+                    data.averageScore + "/100";
+
+
+                document.getElementById(
+                    "bestScore"
+                ).textContent =
+                    data.bestScore + "/100";
+
+
+                document.getElementById(
+                    "loading"
+                ).style.display = "none";
+
+
+                document.getElementById(
+                    "analytics"
+                ).style.display = "flex";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Analytics Error:",
+                    error
+                );
+
+
+                document.getElementById(
+                    "loading"
+                ).style.display = "none";
+
+
+                document.getElementById(
+                    "error"
+                ).textContent =
+                    "Unable to connect to backend.";
+
+            }
+
+        }
+
+
+        loadAnalytics();
+
+    </script>
+
+</body>
+
+</html>
