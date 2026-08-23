@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)file:///C:/Users/HP/Desktop/HTML/has.HTML -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Interview</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 50px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header h2 {
+            color: #333;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background: #ddd;
+        }
+
+        .progress {
+            width: 10%;
+            height: 5px;
+            background: #1976d2;
+        }
+
+        .question-number {
+            text-align: right;
+            padding: 20px 60px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .container {
+            width: 82%;
+            margin: 10px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .container h1 {
+            font-size: 27px;
+            margin-bottom: 15px;
+        }
+
+        .instruction {
+            color: #555;
+            margin-bottom: 35px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 210px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            padding: 18px;
+            font-size: 16px;
+            resize: none;
+            outline: none;
+            background: white;
+            color: #222;
+        }
+
+        textarea:focus {
+            border-color: #1976d2;
+        }
+
+        .bottom-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 35px;
+        }
+
+        .timer {
+            font-size: 23px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .buttons {
+            text-align: right;
+        }
+
+        button {
+            background: #1976d2;
+            color: white;
+            border: none;
+            padding: 13px 28px;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #125ca5;
+        }
+
+        .next {
+            margin-top: 20px;
+            color: #555;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .next:hover {
+            color: #1976d2;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .saved-message {
+            margin-top: 15px;
+            color: green;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h2>HR Interview</h2>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress" id="progress" style="width: 20%;"></div>
+    </div>
+
+    <!-- Question starts from 1 -->
+    <div class="question-number">
+        Question <span id="questionNumber">2</span> of 10
+    </div>
+
+    <div class="container">
+
+        <h1 id="question">What are your strengths?</h1>
+
+        <p class="instruction" id="instruction">Tell us about your main strengths and how they help you.</p>
+
+        <label>Your Answer</label>
+
+        <!-- ANSWER BOX IS NOW ENABLED -->
+        <textarea id="answer" placeholder="Type your answer here..."></textarea>
+
+        <div class="saved-message" id="savedMessage" style="display: none;">
+            Answer saved successfully.
+        </div>
+
+        <div class="bottom-section">
+
+            <!-- Timer stays at 03:00 initially -->
+            <div class="timer" id="timer">00:00</div>
+
+            <div class="buttons">
+
+                <!-- This button only starts the timer -->
+                <button id="startButton" onclick="startInterview()" class="hidden">
+                    Start &amp; Answer
+                </button>
+
+                <!-- Hidden until Start is clicked -->
+                <button id="submitButton" class="" onclick="submitAnswer()">
+                    Submit Answer
+                </button>
+
+                <!-- Hidden until answer is submitted -->
+                <div class="next hidden" id="nextButton" onclick="nextQuestion()">
+                    Next Question →
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+<script>
+
+    let currentQuestion = 1;
+
+    let timeLeft = 180;
+
+    let timerInterval = null;
+
+    let interviewStarted = false;
+
+    // Store all answers
+    let answers = {};
+
+
+    function startInterview() {
+
+        if (interviewStarted) {
+            return;
+        }
+
+        interviewStarted = true;
+
+        // Start timer
+        timerInterval = setInterval(updateTimer, 1000);
+
+        // Change button
+        document.getElementById("startButton").classList.add("hidden");
+
+        document.getElementById("submitButton").classList.remove("hidden");
+    }
+
+
+    function updateTimer() {
+
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+
+        minutes = String(minutes).padStart(2, "0");
+        seconds = String(seconds).padStart(2, "0");
+
+        document.getElementById("timer").innerText =
+            minutes + ":" + seconds;
+
+        if (timeLeft <= 0) {
+
+            clearInterval(timerInterval);
+
+            document.getElementById("timer").innerText = "00:00";
+
+            submitAnswer();
+
+            return;
+        }
+
+        timeLeft--;
+    }
+
+
+    function submitAnswer() {
+
+        clearInterval(timerInterval);
+
+        // Get answer from textarea
+        let userAnswer =
+            document.getElementById("answer").value.trim();
+
+        // Check whether answer is empty
+        if (userAnswer === "") {
+
+            alert("Please enter your answer before submitting.");
+
+            // Timer can continue if user hasn't answered
+            if (timeLeft > 0) {
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+
+            return;
+        }
+
+        // Save answer
+        answers[currentQuestion] = userAnswer;
+
+        console.log("Question " + currentQuestion + ":");
+        console.log(userAnswer);
+
+        // Show saved message
+        document.getElementById("savedMessage").style.display = "block";
+
+        // Hide submit
+        document.getElementById("submitButton").classList.add("hidden");
+
+        // Show next question
+        document.getElementById("nextButton").classList.remove("hidden");
+
+        // Make answer box read-only after submission
+        document.getElementById("answer").readOnly = true;
+    }
+
+
+    function nextQuestion() {
+
+        currentQuestion++;
+
+        if (currentQuestion > 10) {
+
+            alert("Interview completed!");
+
+            console.log("All Answers:", answers);
+
+            return;
+        }
+
+        const questions = [
+
+            "Tell me about yourself.",
+
+            "What are your strengths?",
+
+            "What are your weaknesses?",
+
+            "Why should we hire you?",
+
+            "Where do you see yourself in five years?",
+
+            "Why do you want to join our company?",
+
+            "Tell me about a challenge you faced.",
+
+            "How do you handle pressure?",
+
+            "What are your career goals?",
+
+            "Do you have any questions for us?"
+        ];
+
+
+        const instructions = [
+
+            "Please introduce yourself and highlight your key strengths and achievements.",
+
+            "Tell us about your main strengths and how they help you.",
+
+            "Describe one area you are working to improve.",
+
+            "Explain why you would be a good fit for this role.",
+
+            "Describe your career goals and future plans.",
+
+            "Explain why you are interested in this company.",
+
+            "Describe a challenge you faced and how you handled it.",
+
+            "Explain how you manage stressful situations.",
+
+            "Tell us about your short-term and long-term career goals.",
+
+            "Ask any relevant questions you have about the company or role."
+        ];
+
+
+        // Update question number
+        document.getElementById("questionNumber").innerText =
+            currentQuestion;
+
+
+        // Update progress bar
+        document.getElementById("progress").style.width =
+            (currentQuestion * 10) + "%";
+
+
+        // Update question
+        document.getElementById("question").innerText =
+            questions[currentQuestion - 1];
+
+
+        // Update instruction
+        document.getElementById("instruction").innerText =
+            instructions[currentQuestion - 1];
+
+
+        // Clear answer box
+        document.getElementById("answer").value = "";
+
+        // Enable answer box
+        document.getElementById("answer").readOnly = false;
+
+
+        // Hide saved message
+        document.getElementById("savedMessage").style.display = "none";
+
+
+        // Reset timer
+        timeLeft = 180;
+
+        document.getElementById("timer").innerText = "03:00";
+
+
+        // Reset interview state
+        interviewStarted = false;
+
+
+        // Show Start button
+        document.getElementById("startButton").classList.remove("hidden");
+
+
+        // Hide Submit button
+        document.getElementById("submitButton").classList.add("hidden");
+
+
+        // Hide Next button
+        document.getElementById("nextButton").classList.add("hidden");
+    }
+
+</script>
+
+
+</body></html>
