@@ -352,7 +352,7 @@ app.get("/api/analytics", async (req, res) => {
 // 13. START SERVER
 // ==========================================
 
-const PORT = process.env.PORT || 5000;
+/*const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
 
@@ -360,4 +360,9 @@ app.listen(PORT, () => {
         `Server running on https://interview-project-uimv.onrender.com:${PORT}`
     );
 
+});*/
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
