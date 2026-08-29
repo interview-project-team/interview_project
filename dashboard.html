@@ -1,11 +1,16 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>PlacementAI</title>
+
 <link rel="icon" type="image/png" href="./Robot.png?v=2">
+
 <style>
 
 /* =========================================================
@@ -22,7 +27,6 @@
     --primary: #5b45e8;
     --primary-light: #eeebff;
     --dark: #0c1229;
-    --dark-2: #111936;
     --text: #15182b;
     --muted: #73778a;
     --border: #e7e7ef;
@@ -228,7 +232,7 @@ body {
 
 .quick-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
 
@@ -397,7 +401,7 @@ body {
 }
 
 /* =========================================================
-   DASHBOARD LOWER SECTION
+   LOWER DASHBOARD
 ========================================================= */
 
 .dashboard-lower {
@@ -500,10 +504,6 @@ body {
 
 .chart-area {
     fill: url(#gradient);
-}
-
-.chart-point {
-    fill: var(--primary);
 }
 
 .chart-labels {
@@ -612,7 +612,7 @@ body {
 .progress-bar {
     height: 100%;
     background: var(--primary);
-    width: 20%;
+    width: 10%;
 }
 
 .question {
@@ -761,11 +761,10 @@ th {
 }
 
 </style>
+
 </head>
 
-
 <body>
-
 
 <!-- =========================================================
      SIDEBAR
@@ -780,6 +779,7 @@ th {
         </div>
 
         <div>
+
             <div class="logo-text">
                 Placement<span>AI</span>
             </div>
@@ -787,6 +787,7 @@ th {
             <div class="logo-subtitle">
                 Your AI Placement Assistant
             </div>
+
         </div>
 
     </div>
@@ -815,8 +816,6 @@ th {
     </button>
 
 
-  
-
     <button class="nav-item" data-page="skills">
         <span class="nav-icon">▥</span>
         Skill Gap Analyzer
@@ -829,9 +828,14 @@ th {
     </button>
 
 
-    <button class="nav-item" data-page="analytics" onclick="window.location.href='analytics.html'">
+    <!-- FIXED: Analytics opens analytics.html -->
+
+    <button class="nav-item"
+            onclick="window.location.href='analytics.html'">
+
         <span class="nav-icon">⌁</span>
         Analytics
+
     </button>
 
 
@@ -876,16 +880,20 @@ th {
 
 
     <button class="nav-item logout-btn" id="logout">
+
         <span class="nav-icon">↪</span>
         Logout
+
     </button>
 
 
     <div class="collapse-btn">
 
         <button class="nav-item" id="collapseSidebar">
+
             <span class="nav-icon">‹</span>
             Collapse
+
         </button>
 
     </div>
@@ -900,111 +908,453 @@ th {
 <main class="main">
 
 
-    <header class="topbar">
+<header class="topbar">
 
-        <button class="menu-toggle" id="mobileMenu">
-            ☰
-        </button>
+    <button class="menu-toggle" id="mobileMenu">
+        ☰
+    </button>
 
-        <div></div>
+    <div></div>
 
-        <div class="notification">
+    <div class="notification">
 
-            🔔
+        🔔
 
-            <span class="notification-dot">
-                3
-            </span>
+        <span class="notification-dot">
+            3
+        </span>
 
-        </div>
+    </div>
 
-    </header>
-
-
-    <!-- =====================================================
-         DASHBOARD
-    ====================================================== -->
-
-    <section class="page active-page" id="dashboard">
+</header>
 
 
-        <div class="page-heading">
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
 
-            <h1>
-                Welcome back!
-            </h1>
+<section class="page active-page" id="dashboard">
+
+
+    <div class="page-heading">
+
+        <h1>
+            Welcome back!
+        </h1>
+
+        <p>
+            Let's crack your dream role today.
+        </p>
+
+    </div>
+
+
+    <!-- QUICK ACTIONS -->
+
+    <div class="quick-grid">
+
+
+        <div class="card quick-card">
+
+            <div class="icon-box">
+                ♟
+            </div>
+
+            <h3>
+                HR Interview
+            </h3>
 
             <p>
-                Let's crack your dream role today.
+                Practice HR questions with AI.
             </p>
+
+            <button class="start-btn"
+                    onclick="showPage('hr')">
+
+                Start
+
+            </button>
 
         </div>
 
 
-        <!-- QUICK ACTIONS -->
+        <div class="card quick-card">
 
-        <div class="quick-grid">
+            <div class="icon-box">
+                &lt;/&gt;
+            </div>
+
+            <h3>
+                Technical Interview
+            </h3>
+
+            <p>
+                Practice technical questions.
+            </p>
+
+            <button class="start-btn"
+                    onclick="showPage('technical')">
+
+                Start
+
+            </button>
+
+        </div>
 
 
-            <div class="card quick-card">
+        <div class="card quick-card">
 
-                <div class="icon-box">
+            <div class="icon-box icon-green">
+                ▥
+            </div>
+
+            <h3>
+                Skill Gap Analyzer
+            </h3>
+
+            <p>
+                Find your weak areas and improve.
+            </p>
+
+            <button class="start-btn"
+                    onclick="showPage('skills')">
+
+                Start
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- HISTORY -->
+
+    <div class="history-banner"
+         onclick="showPage('history')">
+
+        <div class="history-left">
+
+            <div class="history-icon">
+                ▣
+            </div>
+
+            <div>
+
+                <h3>
+                    Interview History
+                </h3>
+
+                <p>
+                    View your past interviews and performance
+                </p>
+
+            </div>
+
+        </div>
+
+        <strong>
+            →
+        </strong>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <h2 class="section-title">
+        Your Performance
+    </h2>
+
+
+    <div class="stats-grid">
+
+
+        <div class="stat">
+
+            <div class="stat-label">
+                Total Interviews
+            </div>
+
+            <div class="stat-value purple"
+                 id="dashboardTotalInterviews">
+
+                --
+
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-label">
+                Average Score
+            </div>
+
+            <div class="stat-value">
+
+                <span id="dashboardAverageScore">
+                    --
+                </span>
+
+                <span>
+                    /100
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-label">
+                Best Score
+            </div>
+
+            <div class="stat-value">
+
+                <span id="dashboardBestScore">
+                    --
+                </span>
+
+                <span>
+                    /100
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-label">
+                Improvement
+            </div>
+
+            <div class="stat-value green">
+
+                <span id="dashboardImprovement">
+                    --
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- LOWER DASHBOARD -->
+
+    <div class="dashboard-lower">
+
+
+        <!-- ACTIVITY -->
+
+        <div class="card">
+
+            <h3 class="panel-title">
+                Recent Activity
+            </h3>
+
+
+            <div class="activity-item">
+
+                <div class="activity-icon">
                     ♟
                 </div>
 
-                <h3>
-                    HR Interview
-                </h3>
+                <div class="activity-info">
 
-                <p>
-                    Practice HR questions with AI.
-                </p>
+                    <strong>
+                        Completed HR Mock Interview
+                    </strong>
 
-                <button class="start-btn" onclick="showPage('hr')">
-                    Start
-                </button>
+                    <small>
+                        Score: 76/100
+                    </small>
+
+                </div>
+
+                <span class="time">
+                    2h ago
+                </span>
 
             </div>
 
 
-            <div class="card quick-card">
+            <div class="activity-item">
 
-                <div class="icon-box">
+                <div class="activity-icon">
                     &lt;/&gt;
                 </div>
 
-                <h3>
-                    Technical Interview
-                </h3>
+                <div class="activity-info">
 
-                <p>
-                    Practice technical questions.
-                </p>
+                    <strong>
+                        Solved 5 Coding Problems
+                    </strong>
 
-                <button class="start-btn" onclick="showPage('technical')">
+                    <small>
+                        Python · Easy
+                    </small>
+
+                </div>
+
+                <span class="time">
+                    5h ago
+                </span>
+
+            </div>
+
+
+            <div class="activity-item">
+
+                <div class="activity-icon">
+                    &lt;/&gt;
+                </div>
+
+                <div class="activity-info">
+
+                    <strong>
+                        Technical Interview Completed
+                    </strong>
+
+                    <small>
+                        Score: 82/100
+                    </small>
+
+                </div>
+
+                <span class="time">
+                    1d ago
+                </span>
+
+            </div>
+
+
+            <div class="activity-item">
+
+                <div class="activity-icon">
+                    ▦
+                </div>
+
+                <div class="activity-info">
+
+                    <strong>
+                        Aptitude Test Completed
+                    </strong>
+
+                    <small>
+                        Score: 68/100
+                    </small>
+
+                </div>
+
+                <span class="time">
+                    2d ago
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NEXT UP -->
+
+        <div class="card">
+
+            <h3 class="panel-title">
+                Next Up
+            </h3>
+
+
+            <div class="next-item">
+
+                <div class="activity-icon">
+                    ♟
+                </div>
+
+                <div class="next-info">
+
+                    <strong>
+                        HR Interview Practice
+                    </strong>
+
+                    <small>
+                        10 Questions
+                    </small>
+
+                </div>
+
+                <button class="start-btn"
+                        onclick="showPage('hr')">
+
                     Start
+
                 </button>
 
             </div>
 
 
+            <div class="next-item">
 
-            <div class="card quick-card">
-
-                <div class="icon-box icon-green">
-                    ▥
+                <div class="activity-icon icon-green">
+                    &lt;/&gt;
                 </div>
 
-                <h3>
-                    Skill Gap Analyzer
-                </h3>
+                <div class="next-info">
 
-                <p>
-                    Find your weak areas and improve.
-                </p>
+                    <strong>
+                        Data Structures - Arrays
+                    </strong>
 
-                <button class="start-btn" onclick="showPage('skills')">
+                    <small>
+                        Practice Problems
+                    </small>
+
+                </div>
+
+                <!-- FIXED: coding -> technical -->
+
+                <button class="start-btn"
+                        onclick="showPage('technical')">
+
                     Start
+
+                </button>
+
+            </div>
+
+
+            <div class="next-item">
+
+                <div class="activity-icon icon-orange">
+                    ▦
+                </div>
+
+                <div class="next-info">
+
+                    <strong>
+                        Aptitude Practice
+                    </strong>
+
+                    <small>
+                        20 Questions
+                    </small>
+
+                </div>
+
+                <button class="start-btn"
+                        onclick="showPage('aptitude')">
+
+                    Start
+
                 </button>
 
             </div>
@@ -1012,1200 +1362,895 @@ th {
         </div>
 
 
-        <!-- HISTORY -->
+        <!-- CHART -->
 
-        <div class="history-banner" onclick="showPage('history')">
+        <div class="card chart-panel">
 
-            <div class="history-left">
+            <h3 class="panel-title">
+                Performance Overview
+            </h3>
 
-                <div class="history-icon">
-                    ▣
+
+            <div class="chart-container">
+
+                <svg class="chart"
+                     viewBox="0 0 500 190"
+                     preserveAspectRatio="none">
+
+                    <defs>
+
+                        <linearGradient id="gradient"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1">
+
+                            <stop offset="0%"
+                                  stop-color="#6552e8"
+                                  stop-opacity=".18"/>
+
+                            <stop offset="100%"
+                                  stop-color="#6552e8"
+                                  stop-opacity="0"/>
+
+                        </linearGradient>
+
+                    </defs>
+
+
+                    <path
+                        class="chart-area"
+                        d="M0,130
+                           L55,120
+                           L110,85
+                           L165,105
+                           L220,120
+                           L275,70
+                           L330,60
+                           L385,90
+                           L440,45
+                           L500,30
+                           L500,190
+                           L0,190 Z">
+                    </path>
+
+
+                    <path
+                        class="chart-line"
+                        d="M0,130
+                           L55,120
+                           L110,85
+                           L165,105
+                           L220,120
+                           L275,70
+                           L330,60
+                           L385,90
+                           L440,45
+                           L500,30">
+                    </path>
+
+                </svg>
+
+
+                <div class="chart-labels">
+
+                    <span>May 1</span>
+                    <span>May 8</span>
+                    <span>May 15</span>
+                    <span>May 22</span>
+                    <span>May 29</span>
+                    <span>Jun 5</span>
+
                 </div>
 
-                <div>
 
-                    <h3>
-                        Interview History
-                    </h3>
+                <div class="improving">
+
+                    <strong>
+                        🏆 You are improving!
+                    </strong>
 
                     <p>
-                        View your past interviews and performance
+                        Keep practicing to achieve your dream role.
                     </p>
 
                 </div>
 
             </div>
 
-            <strong>
-                →
-            </strong>
-
         </div>
 
+    </div>
 
-        <!-- STATS -->
+</section>
 
-        <h2 class="section-title">
-            Your Performance
-        </h2>
 
+<!-- =========================================================
+     HR INTERVIEW
+========================================================= -->
 
-        <div class="stats-grid">
+<section class="page" id="hr">
 
+<button class="back-btn"
+        onclick="showPage('dashboard')">
 
-            <div class="stat">
+    ← Back to Dashboard
 
-                <div class="stat-label">
-                    Total Interviews
-                </div>
+</button>
 
-                <div class="stat-value purple">
-                    12
-                </div>
+<div class="page-heading">
 
-            </div>
+<h1>
+    HR Interview
+</h1>
 
+<p>
+    Practice real HR questions with your AI interviewer.
+</p>
 
-            <div class="stat">
+</div>
 
-                <div class="stat-label">
-                    Average Score
-                </div>
 
-                <div class="stat-value">
-                    78
-                    <span>/100</span>
-                </div>
+<div class="question-box">
 
-            </div>
+<div class="progress">
 
+<div class="progress-bar"
+     id="hrProgress">
+</div>
 
-            <div class="stat">
+</div>
 
-                <div class="stat-label">
-                    Best Score
-                </div>
+<small>
+Question <span id="hrNumber">1</span> of 10
+</small>
 
-                <div class="stat-value">
-                    92
-                    <span>/100</span>
-                </div>
+<h2 class="question"
+    id="hrQuestion">
 
-            </div>
+    Tell me about yourself.
 
+</h2>
 
-            <div class="stat">
+<p style="color:#777;font-size:13px;">
 
-                <div class="stat-label">
-                    Improvement
-                </div>
+    Introduce yourself and highlight your key strengths,
+    skills and achievements.
 
-                <div class="stat-value green">
-                    +15%
-                </div>
+</p>
 
-            </div>
+<textarea class="answer"
+          id="hrAnswer"
+          placeholder="Type your answer here..."></textarea>
 
-        </div>
+<div class="interview-actions">
 
+<span id="hrTimer">
+    ⏱ 02:45
+</span>
 
-        <!-- LOWER DASHBOARD -->
+<button class="primary-btn"
+        onclick="nextHRQuestion()">
 
-        <div class="dashboard-lower">
+    Next Question →
 
+</button>
 
-            <!-- ACTIVITY -->
+</div>
 
-            <div class="card">
+</div>
 
-                <h3 class="panel-title">
-                    Recent Activity
-                </h3>
+</section>
 
 
-                <div class="activity-item">
+<!-- =========================================================
+     TECHNICAL
+========================================================= -->
 
-                    <div class="activity-icon">
-                        ♟
-                    </div>
+<section class="page" id="technical">
 
-                    <div class="activity-info">
+<button class="back-btn"
+        onclick="showPage('dashboard')">
 
-                        <strong>
-                            Completed HR Mock Interview
-                        </strong>
+    ← Back to Dashboard
 
-                        <small>
-                            Score: 76/100
-                        </small>
+</button>
 
-                    </div>
+<div class="page-heading">
 
-                    <span class="time">
-                        2h ago
-                    </span>
+<h1>
+    Technical Interview
+</h1>
 
-                </div>
+<p>
+    Test your technical knowledge.
+</p>
 
+</div>
 
-                <div class="activity-item">
 
-                    <div class="activity-icon">
-                        &lt;/&gt;
-                    </div>
+<div class="option-grid">
 
-                    <div class="activity-info">
 
-                        <strong>
-                            Solved 5 Coding Problems
-                        </strong>
+<div class="option-card">
 
-                        <small>
-                            Python · Easy
-                        </small>
+<div class="icon-box">
+    🐍
+</div>
 
-                    </div>
+<h3>
+    Python
+</h3>
 
-                    <span class="time">
-                        5h ago
-                    </span>
+<p>
+    Variables, functions, OOP, exceptions,
+    libraries and problem solving.
+</p>
 
-                </div>
+<button class="primary-btn"
+        onclick="alert('Python interview started!')">
 
+    Start Interview
 
-                <div class="activity-item">
+</button>
 
-                    <div class="activity-icon">
-                        &lt;/&gt;
-                    </div>
+</div>
 
-                    <div class="activity-info">
 
-                        <strong>
-                            Technical Interview Completed
-                        </strong>
+<div class="option-card">
 
-                        <small>
-                            Score: 82/100
-                        </small>
+<div class="icon-box icon-blue">
+    🗄
+</div>
 
-                    </div>
+<h3>
+    SQL & DBMS
+</h3>
 
-                    <span class="time">
-                        1d ago
-                    </span>
+<p>
+    SQL queries, normalization, joins,
+    transactions and database concepts.
+</p>
 
-                </div>
+<button class="primary-btn"
+        onclick="alert('SQL interview started!')">
 
+    Start Interview
 
-                <div class="activity-item">
+</button>
 
-                    <div class="activity-icon">
-                        ▦
-                    </div>
+</div>
 
-                    <div class="activity-info">
 
-                        <strong>
-                            Aptitude Test Completed
-                        </strong>
+<div class="option-card">
 
-                        <small>
-                            Score: 68/100
-                        </small>
+<div class="icon-box icon-green">
+    🤖
+</div>
 
-                    </div>
+<h3>
+    AI & Machine Learning
+</h3>
 
-                    <span class="time">
-                        2d ago
-                    </span>
+<p>
+    ML algorithms, preprocessing,
+    evaluation and AI fundamentals.
+</p>
 
-                </div>
+<button class="primary-btn"
+        onclick="alert('AI interview started!')">
 
-            </div>
+    Start Interview
 
+</button>
 
-            <!-- NEXT UP -->
+</div>
 
-            <div class="card">
 
-                <h3 class="panel-title">
-                    Next Up
-                </h3>
+<div class="option-card">
 
+<div class="icon-box icon-orange">
+    💻
+</div>
 
-                <div class="next-item">
+<h3>
+    Data Structures
+</h3>
 
-                    <div class="activity-icon">
-                        ♟
-                    </div>
+<p>
+    Arrays, strings, stacks, queues,
+    trees and algorithms.
+</p>
 
-                    <div class="next-info">
+<button class="primary-btn"
+        onclick="alert('DSA interview started!')">
 
-                        <strong>
-                            HR Interview Practice
-                        </strong>
+    Start Interview
 
-                        <small>
-                            10 Questions
-                        </small>
+</button>
 
-                    </div>
+</div>
 
-                    <button class="start-btn" onclick="showPage('hr')">
-                        Start
-                    </button>
+</div>
 
-                </div>
+</section>
 
 
-                <div class="next-item">
+<!-- =========================================================
+     SKILLS
+========================================================= -->
 
-                    <div class="activity-icon icon-green">
-                        &lt;/&gt;
-                    </div>
+<section class="page" id="skills">
 
-                    <div class="next-info">
+<button class="back-btn"
+        onclick="showPage('dashboard')">
 
-                        <strong>
-                            Data Structures - Arrays
-                        </strong>
+    ← Back to Dashboard
 
-                        <small>
-                            Practice Problems
-                        </small>
+</button>
 
-                    </div>
+<div class="page-heading">
 
-                    <button class="start-btn" onclick="showPage('coding')">
-                        Start
-                    </button>
+<h1>
+    Skill Gap Analyzer
+</h1>
 
-                </div>
+<p>
+    Identify your strengths and areas that need improvement.
+</p>
 
+</div>
 
-                <div class="next-item">
 
-                    <div class="activity-icon icon-orange">
-                        ▦
-                    </div>
+<div class="stats-grid">
 
-                    <div class="next-info">
+<div class="stat">
+<div class="stat-label">Python</div>
+<div class="stat-value purple">85%</div>
+</div>
 
-                        <strong>
-                            Aptitude Practice
-                        </strong>
+<div class="stat">
+<div class="stat-label">SQL</div>
+<div class="stat-value">72%</div>
+</div>
 
-                        <small>
-                            20 Questions
-                        </small>
+<div class="stat">
+<div class="stat-label">Machine Learning</div>
+<div class="stat-value">65%</div>
+</div>
 
-                    </div>
+<div class="stat">
+<div class="stat-label">Communication</div>
+<div class="stat-value green">58%</div>
+</div>
 
-                    <button class="start-btn" onclick="showPage('aptitude')">
-                        Start
-                    </button>
+</div>
 
-                </div>
 
-            </div>
+<div class="large-card"
+     style="margin-top:20px;">
 
+<h3 style="font-size:17px;margin-bottom:15px;">
+    AI Recommendation
+</h3>
 
-            <!-- CHART -->
+<p style="color:#666;font-size:13px;line-height:1.7;">
 
-            <div class="card chart-panel">
+Your strongest skill is Python. Your current
+priority should be improving communication,
+SQL and machine learning fundamentals.
 
-                <h3 class="panel-title">
-                    Performance Overview
-                </h3>
+</p>
 
+<button class="primary-btn"
+        onclick="showPage('study')">
 
-                <div class="chart-container">
+    Generate Learning Plan
 
-                    <svg class="chart"
-                         viewBox="0 0 500 190"
-                         preserveAspectRatio="none">
+</button>
 
-                        <defs>
+</div>
 
-                            <linearGradient id="gradient"
-                                            x1="0"
-                                            y1="0"
-                                            x2="0"
-                                            y2="1">
+</section>
 
-                                <stop offset="0%"
-                                      stop-color="#6552e8"
-                                      stop-opacity=".18"/>
 
-                                <stop offset="100%"
-                                      stop-color="#6552e8"
-                                      stop-opacity="0"/>
+<!-- =========================================================
+     HISTORY
+========================================================= -->
 
-                            </linearGradient>
+<section class="page" id="history">
 
-                        </defs>
+<button class="back-btn"
+        onclick="showPage('dashboard')">
 
+    ← Back to Dashboard
 
-                        <path
-                            class="chart-area"
-                            d="M0,130
-                               L55,120
-                               L110,85
-                               L165,105
-                               L220,120
-                               L275,70
-                               L330,60
-                               L385,90
-                               L440,45
-                               L500,30
-                               L500,190
-                               L0,190 Z">
-                        </path>
+</button>
 
+<div class="page-heading">
 
-                        <path
-                            class="chart-line"
-                            d="M0,130
-                               L55,120
-                               L110,85
-                               L165,105
-                               L220,120
-                               L275,70
-                               L330,60
-                               L385,90
-                               L440,45
-                               L500,30">
-                        </path>
+<h1>
+    Interview History
+</h1>
 
-                    </svg>
+<p>
+    Track all your previous interview performances.
+</p>
 
+</div>
 
-                    <div class="chart-labels">
 
-                        <span>May 1</span>
-                        <span>May 8</span>
-                        <span>May 15</span>
-                        <span>May 22</span>
-                        <span>May 29</span>
-                        <span>Jun 5</span>
+<div class="table-wrapper">
 
-                    </div>
+<table>
 
+<thead>
 
-                    <div class="improving">
+<tr>
 
-                        <strong>
-                            🏆 You are improving!
-                        </strong>
+<th>Interview</th>
+<th>Type</th>
+<th>Score</th>
+<th>Date</th>
+<th>Status</th>
 
-                        <p>
-                            Keep practicing to achieve your dream role.
-                        </p>
+</tr>
 
-                    </div>
+</thead>
 
-                </div>
 
-            </div>
+<tbody>
 
-        </div>
+<tr>
 
-    </section>
+<td>HR Mock Interview</td>
+<td>HR</td>
+<td>76/100</td>
+<td>Today</td>
+<td>Completed</td>
 
+</tr>
 
-    <!-- =====================================================
-         HR INTERVIEW
-    ====================================================== -->
 
-    <section class="page" id="hr">
+<tr>
 
-        <button class="back-btn" onclick="showPage('dashboard')">
-            ← Back to Dashboard
-        </button>
+<td>Python Interview</td>
+<td>Technical</td>
+<td>82/100</td>
+<td>Yesterday</td>
+<td>Completed</td>
 
-        <div class="page-heading">
+</tr>
 
-            <h1>
-                HR Interview
-            </h1>
 
-            <p>
-                Practice real HR questions with your AI interviewer.
-            </p>
+<tr>
 
-        </div>
+<td>SQL Interview</td>
+<td>Technical</td>
+<td>74/100</td>
+<td>May 28</td>
+<td>Completed</td>
 
+</tr>
 
-        <div class="question-box">
 
-            <div class="progress">
+<tr>
 
-                <div class="progress-bar"
-                     id="hrProgress">
-                </div>
+<td>HR Practice</td>
+<td>HR</td>
+<td>68/100</td>
+<td>May 25</td>
+<td>Completed</td>
 
-            </div>
+</tr>
 
-            <small>
-                Question <span id="hrNumber">1</span> of 10
-            </small>
+</tbody>
 
-            <h2 class="question" id="hrQuestion">
-                Tell me about yourself.
-            </h2>
+</table>
 
-            <p style="color:#777;font-size:13px;">
-                Introduce yourself and highlight your key strengths,
-                skills and achievements.
-            </p>
+</div>
 
-            <textarea class="answer"
-                      id="hrAnswer"
-                      placeholder="Type your answer here...">
-            </textarea>
+</section>
 
-            <div class="interview-actions">
 
-                <span id="hrTimer">
-                    ⏱ 02:45
-                </span>
+<!-- =========================================================
+     APTITUDE
+========================================================= -->
 
-                <button class="primary-btn"
-                        onclick="nextHRQuestion()">
-                    Next Question →
-                </button>
+<section class="page" id="aptitude">
 
-            </div>
+<button class="back-btn"
+        onclick="showPage('dashboard')">
 
-        </div>
+    ← Back to Dashboard
 
-    </section>
+</button>
 
+<div class="page-heading">
 
-    <!-- =====================================================
-         TECHNICAL
-    ====================================================== -->
+<h1>
+    Aptitude Practice
+</h1>
 
-    <section class="page" id="technical">
+<p>
+    Practice placement aptitude questions.
+</p>
 
-        <button class="back-btn" onclick="showPage('dashboard')">
-            ← Back to Dashboard
-        </button>
+</div>
 
-        <div class="page-heading">
 
-            <h1>
-                Technical Interview
-            </h1>
+<div class="option-grid">
 
-            <p>
-                Test your technical knowledge.
-            </p>
 
-        </div>
+<div class="option-card">
 
+<h3>
+    Quantitative Aptitude
+</h3>
 
-        <div class="option-grid">
+<p>
+    Percentages, profit and loss, time and work,
+    probability and number systems.
+</p>
 
-            <div class="option-card">
+<button class="primary-btn"
+        onclick="alert('Quantitative Aptitude started!')">
 
-                <div class="icon-box">
-                    🐍
-                </div>
+    Start Practice
 
-                <h3>
-                    Python
-                </h3>
+</button>
 
-                <p>
-                    Variables, functions, OOP, exceptions,
-                    libraries and problem solving.
-                </p>
+</div>
 
-                <button class="primary-btn"
-                        onclick="alert('Python interview started!')">
-                    Start Interview
-                </button>
 
-            </div>
+<div class="option-card">
 
+<h3>
+    Logical Reasoning
+</h3>
 
-            <div class="option-card">
+<p>
+    Puzzles, coding-decoding, sequences,
+    directions and logical reasoning.
+</p>
 
-                <div class="icon-box icon-blue">
-                    🗄
-                </div>
+<button class="primary-btn"
+        onclick="alert('Logical Reasoning started!')">
 
-                <h3>
-                    SQL & DBMS
-                </h3>
+    Start Practice
 
-                <p>
-                    SQL queries, normalization, joins,
-                    transactions and database concepts.
-                </p>
+</button>
 
-                <button class="primary-btn"
-                        onclick="alert('SQL interview started!')">
-                    Start Interview
-                </button>
+</div>
 
-            </div>
+</div>
 
+</section>
 
-            <div class="option-card">
 
-                <div class="icon-box icon-green">
-                    🤖
-                </div>
+<!-- =========================================================
+     STUDY
+========================================================= -->
 
-                <h3>
-                    AI & Machine Learning
-                </h3>
+<section class="page" id="study">
 
-                <p>
-                    ML algorithms, preprocessing,
-                    evaluation and AI fundamentals.
-                </p>
+<button class="back-btn"
+        onclick="showPage('dashboard')">
 
-                <button class="primary-btn"
-                        onclick="alert('AI interview started!')">
-                    Start Interview
-                </button>
+    ← Back to Dashboard
 
-            </div>
+</button>
 
+<div class="page-heading">
 
-            <div class="option-card">
+<h1>
+    Study Materials
+</h1>
 
-                <div class="icon-box icon-orange">
-                    💻
-                </div>
+<p>
+    Improve your placement skills.
+</p>
 
-                <h3>
-                    Data Structures
-                </h3>
+</div>
 
-                <p>
-                    Arrays, strings, stacks, queues,
-                    trees and algorithms.
-                </p>
 
-                <button class="primary-btn"
-                        onclick="alert('DSA interview started!')">
-                    Start Interview
-                </button>
+<div class="option-grid">
 
-            </div>
 
-        </div>
+<div class="option-card">
 
-    </section>
+<h3>
+    Python
+</h3>
 
+<p>
+    Python fundamentals, OOP, functions,
+    libraries and interview questions.
+</p>
 
+<button class="primary-btn">
+    Learn
+</button>
 
-    <!-- =====================================================
-         SKILLS
-    ====================================================== -->
+</div>
 
-    <section class="page" id="skills">
 
-        <button class="back-btn" onclick="showPage('dashboard')">
-            ← Back to Dashboard
-        </button>
+<div class="option-card">
 
-        <div class="page-heading">
+<h3>
+    SQL & DBMS
+</h3>
 
-            <h1>
-                Skill Gap Analyzer
-            </h1>
+<p>
+    SQL queries, DBMS concepts, joins,
+    normalization and interview preparation.
+</p>
 
-            <p>
-                Identify your strengths and areas that need improvement.
-            </p>
+<button class="primary-btn">
+    Learn
+</button>
 
-        </div>
+</div>
 
 
-        <div class="stats-grid">
+<div class="option-card">
 
-            <div class="stat">
-                <div class="stat-label">Python</div>
-                <div class="stat-value purple">85%</div>
-            </div>
+<h3>
+    Machine Learning
+</h3>
 
-            <div class="stat">
-                <div class="stat-label">SQL</div>
-                <div class="stat-value">72%</div>
-            </div>
+<p>
+    Supervised learning, unsupervised learning,
+    preprocessing and model evaluation.
+</p>
 
-            <div class="stat">
-                <div class="stat-label">Machine Learning</div>
-                <div class="stat-value">65%</div>
-            </div>
+<button class="primary-btn">
+    Learn
+</button>
 
-            <div class="stat">
-                <div class="stat-label">Communication</div>
-                <div class="stat-value green">58%</div>
-            </div>
+</div>
 
-        </div>
 
+<div class="option-card">
 
-        <div class="large-card" style="margin-top:20px;">
+<h3>
+    Communication
+</h3>
 
-            <h3 style="font-size:17px;margin-bottom:15px;">
-                AI Recommendation
-            </h3>
+<p>
+    Improve speaking, confidence and interview
+    communication.
+</p>
 
-            <p style="color:#666;font-size:13px;line-height:1.7;">
-                Your strongest skill is Python. Your current
-                priority should be improving communication,
-                SQL and machine learning fundamentals.
-            </p>
+<button class="primary-btn">
+    Learn
+</button>
 
-            <button class="primary-btn"
-                    onclick="showPage('study')">
-                Generate Learning Plan
-            </button>
+</div>
 
-        </div>
+</div>
 
-    </section>
+</section>
 
 
-    <!-- =====================================================
-         HISTORY
-    ====================================================== -->
+<!-- =========================================================
+     COMPANY
+========================================================= -->
 
-    <section class="page" id="history">
+<section class="page" id="company">
 
-        <button class="back-btn" onclick="showPage('dashboard')">
-            ← Back to Dashboard
-        </button>
+<button class="back-btn"
+        onclick="showPage('dashboard')">
 
-        <div class="page-heading">
+    ← Back to Dashboard
 
-            <h1>
-                Interview History
-            </h1>
+</button>
 
-            <p>
-                Track all your previous interview performances.
-            </p>
+<div class="page-heading">
 
-        </div>
+<h1>
+    Company Preparation
+</h1>
 
+<p>
+    Prepare specifically for your target companies.
+</p>
 
-        <div class="table-wrapper">
+</div>
 
-            <table>
 
-                <thead>
+<div class="option-grid">
 
-                    <tr>
-                        <th>Interview</th>
-                        <th>Type</th>
-                        <th>Score</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                    </tr>
 
-                </thead>
+<div class="option-card">
 
-                <tbody>
+<h3>
+    TCS
+</h3>
 
-                    <tr>
-                        <td>HR Mock Interview</td>
-                        <td>HR</td>
-                        <td>76/100</td>
-                        <td>Today</td>
-                        <td>Completed</td>
-                    </tr>
+<p>
+    Aptitude → Technical → HR
+</p>
 
-                    <tr>
-                        <td>Python Interview</td>
-                        <td>Technical</td>
-                        <td>82/100</td>
-                        <td>Yesterday</td>
-                        <td>Completed</td>
-                    </tr>
+<button class="primary-btn">
+    Prepare
+</button>
 
-                    <tr>
-                        <td>SQL Interview</td>
-                        <td>Technical</td>
-                        <td>74/100</td>
-                        <td>May 28</td>
-                        <td>Completed</td>
-                    </tr>
+</div>
 
-                    <tr>
-                        <td>HR Practice</td>
-                        <td>HR</td>
-                        <td>68/100</td>
-                        <td>May 25</td>
-                        <td>Completed</td>
-                    </tr>
 
-                </tbody>
+<div class="option-card">
 
-            </table>
+<h3>
+    Infosys
+</h3>
 
-        </div>
+<p>
+    Aptitude → Technical → Interview
+</p>
 
-    </section>
+<button class="primary-btn">
+    Prepare
+</button>
 
+</div>
 
-    <!-- =====================================================
-         ANALYTICS
-    ====================================================== -->
 
-    <section class="page" id="analytics">
+<div class="option-card">
 
-        <button class="back-btn" onclick="showPage('dashboard')">
-            ← Back to Dashboard
-        </button>
+<h3>
+    Accenture
+</h3>
 
-        <div class="page-heading">
+<p>
+    Cognitive → Technical → Coding → Communication
+</p>
 
-            <h1>
-                Analytics
-            </h1>
+<button class="primary-btn">
+    Prepare
+</button>
 
-            <p>
-                Understand your placement preparation performance.
-            </p>
+</div>
 
-        </div>
 
+<div class="option-card">
 
-        <div class="stats-grid">
+<h3>
+    Product Companies
+</h3>
 
-            <div class="stat">
-                <div class="stat-label">Total Attempts</div>
-                <div class="stat-value purple">42</div>
-            </div>
+<p>
+    DSA → System Design → Technical → HR
+</p>
 
-            <div class="stat">
-                <div class="stat-label">Average Score</div>
-                <div class="stat-value">78%</div>
-            </div>
+<button class="primary-btn">
+    Prepare
+</button>
 
-            <div class="stat">
-                <div class="stat-label">Best Score</div>
-                <div class="stat-value green">92%</div>
-            </div>
+</div>
 
-            <div class="stat">
-                <div class="stat-label">Growth</div>
-                <div class="stat-value green">+15%</div>
-            </div>
+</div>
 
-        </div>
+</section>
 
 
-        <div class="large-card" style="margin-top:20px;">
+<!-- =========================================================
+     SETTINGS
+========================================================= -->
 
-            <h3 style="font-size:17px;">
-                AI Performance Summary
-            </h3>
+<section class="page" id="settings">
 
-            <p style="
-                color:#777;
-                font-size:13px;
-                line-height:1.7;
-                margin-top:12px;
-            ">
-                Your interview performance has improved consistently.
-                Continue practicing HR communication and technical
-                problem solving to increase your placement readiness.
-            </p>
+<div class="page-heading">
 
-        </div>
+<h1>
+    Settings
+</h1>
 
-    </section>
+<p>
+    Manage your PlacementAI preferences.
+</p>
 
+</div>
 
-    <!-- =====================================================
-         APTITUDE
-    ====================================================== -->
 
-    <section class="page" id="aptitude">
+<div class="large-card">
 
-        <button class="back-btn" onclick="showPage('dashboard')">
-            ← Back to Dashboard
-        </button>
 
-        <div class="page-heading">
+<div class="form-group">
 
-            <h1>
-                Aptitude Practice
-            </h1>
+<label>
+    Target Role
+</label>
 
-            <p>
-                Practice placement aptitude questions.
-            </p>
+<input type="text"
+       placeholder="Example: Data Scientist">
 
-        </div>
+</div>
 
 
-        <div class="option-grid">
+<div class="form-group">
 
-            <div class="option-card">
+<label>
+    Preferred Skill
+</label>
 
-                <h3>
-                    Quantitative Aptitude
-                </h3>
+<select>
 
-                <p>
-                    Percentages, profit and loss, time and work,
-                    probability and number systems.
-                </p>
+<option>Artificial Intelligence</option>
+<option>Data Science</option>
+<option>Machine Learning</option>
+<option>Software Development</option>
 
-                <button class="primary-btn"
-                        onclick="alert('Quantitative Aptitude started!')">
-                    Start Practice
-                </button>
+</select>
 
-            </div>
+</div>
 
 
-            <div class="option-card">
+<button class="primary-btn"
+        onclick="alert('Settings saved!')">
 
-                <h3>
-                    Logical Reasoning
-                </h3>
+    Save Changes
 
-                <p>
-                    Puzzles, coding-decoding, sequences,
-                    directions and logical reasoning.
-                </p>
+</button>
 
-                <button class="primary-btn"
-                        onclick="alert('Logical Reasoning started!')">
-                    Start Practice
-                </button>
+</div>
 
-            </div>
+</section>
 
-        </div>
 
-    </section>
+<!-- =========================================================
+     HELP
+========================================================= -->
 
+<section class="page" id="help">
 
-    <!-- =====================================================
-         STUDY
-    ====================================================== -->
+<div class="page-heading">
 
-    <section class="page" id="study">
+<h1>
+    Help & Support
+</h1>
 
-        <button class="back-btn" onclick="showPage('dashboard')">
-            ← Back to Dashboard
-        </button>
+<p>
+    Need help using PlacementAI?
+</p>
 
-        <div class="page-heading">
+</div>
 
-            <h1>
-                Study Materials
-            </h1>
 
-            <p>
-                Improve your placement skills.
-            </p>
+<div class="option-grid">
 
-        </div>
 
+<div class="option-card">
 
-        <div class="option-grid">
+<h3>
+    How does AI Interview work?
+</h3>
 
-            <div class="option-card">
+<p>
+    Practice realistic interview questions
+    and receive AI-powered feedback.
+</p>
 
-                <h3>
-                    Python
-                </h3>
+</div>
 
-                <p>
-                    Python fundamentals, OOP, functions,
-                    libraries and interview questions.
-                </p>
 
-                <button class="primary-btn">
-                    Learn
-                </button>
+<div class="option-card">
 
-            </div>
+<h3>
+    How is my score calculated?
+</h3>
 
+<p>
+    Your score is based on communication,
+    technical knowledge, problem solving
+    and confidence.
+</p>
 
-            <div class="option-card">
+</div>
 
-                <h3>
-                    SQL & DBMS
-                </h3>
+</div>
 
-                <p>
-                    SQL queries, DBMS concepts, joins,
-                    normalization and interview preparation.
-                </p>
-
-                <button class="primary-btn">
-                    Learn
-                </button>
-
-            </div>
-
-
-            <div class="option-card">
-
-                <h3>
-                    Machine Learning
-                </h3>
-
-                <p>
-                    Supervised learning, unsupervised learning,
-                    preprocessing and model evaluation.
-                </p>
-
-                <button class="primary-btn">
-                    Learn
-                </button>
-
-            </div>
-
-
-            <div class="option-card">
-
-                <h3>
-                    Communication
-                </h3>
-
-                <p>
-                    Improve speaking, confidence and interview
-                    communication.
-                </p>
-
-                <button class="primary-btn">
-                    Learn
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         COMPANY
-    ====================================================== -->
-
-    <section class="page" id="company">
-
-        <button class="back-btn" onclick="showPage('dashboard')">
-            ← Back to Dashboard
-        </button>
-
-        <div class="page-heading">
-
-            <h1>
-                Company Preparation
-            </h1>
-
-            <p>
-                Prepare specifically for your target companies.
-            </p>
-
-        </div>
-
-
-        <div class="option-grid">
-
-            <div class="option-card">
-
-                <h3>
-                    TCS
-                </h3>
-
-                <p>
-                    Aptitude → Technical → HR
-                </p>
-
-                <button class="primary-btn">
-                    Prepare
-                </button>
-
-            </div>
-
-
-            <div class="option-card">
-
-                <h3>
-                    Infosys
-                </h3>
-
-                <p>
-                    Aptitude → Technical → Interview
-                </p>
-
-                <button class="primary-btn">
-                    Prepare
-                </button>
-
-            </div>
-
-
-            <div class="option-card">
-
-                <h3>
-                    Accenture
-                </h3>
-
-                <p>
-                    Cognitive → Technical → Coding → Communication
-                </p>
-
-                <button class="primary-btn">
-                    Prepare
-                </button>
-
-            </div>
-
-
-            <div class="option-card">
-
-                <h3>
-                    Product Companies
-                </h3>
-
-                <p>
-                    DSA → System Design → Technical → HR
-                </p>
-
-                <button class="primary-btn">
-                    Prepare
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         SETTINGS
-    ====================================================== -->
-
-    <section class="page" id="settings">
-
-        <div class="page-heading">
-
-            <h1>
-                Settings
-            </h1>
-
-            <p>
-                Manage your PlacementAI preferences.
-            </p>
-
-        </div>
-
-
-        <div class="large-card">
-
-            <div class="form-group">
-
-                <label>
-                    Target Role
-                </label>
-
-                <input
-                    type="text"
-                    placeholder="Example: Data Scientist">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Preferred Skill
-                </label>
-
-                <select>
-
-                    <option>Artificial Intelligence</option>
-                    <option>Data Science</option>
-                    <option>Machine Learning</option>
-                    <option>Software Development</option>
-
-                </select>
-
-            </div>
-
-
-            <button class="primary-btn"
-                    onclick="alert('Settings saved!')">
-                Save Changes
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         HELP
-    ====================================================== -->
-
-    <section class="page" id="help">
-
-        <div class="page-heading">
-
-            <h1>
-                Help & Support
-            </h1>
-
-            <p>
-                Need help using PlacementAI?
-            </p>
-
-        </div>
-
-
-        <div class="option-grid">
-
-            <div class="option-card">
-
-                <h3>
-                    How does AI Interview work?
-                </h3>
-
-                <p>
-                    Practice realistic interview questions
-                    and receive AI-powered feedback.
-                </p>
-
-            </div>
-
-
-            <div class="option-card">
-
-                <h3>
-                    How is my score calculated?
-                </h3>
-
-                <p>
-                    Your score is based on communication,
-                    technical knowledge, problem solving
-                    and confidence.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
+</section>
 
 
 </main>
@@ -2214,11 +2259,21 @@ th {
 <script>
 
 /* =========================================================
+   API
+========================================================= */
+
+const API_URL =
+    "https://interview-project-uimv.onrender.com";
+
+
+/* =========================================================
    PAGE NAVIGATION
 ========================================================= */
 
 const navItems =
-    document.querySelectorAll(".nav-item[data-page]");
+    document.querySelectorAll(
+        ".nav-item[data-page]"
+    );
 
 const pages =
     document.querySelectorAll(".page");
@@ -2236,6 +2291,7 @@ function showPage(pageId) {
     const selected =
         document.getElementById(pageId);
 
+
     if (selected) {
 
         selected.classList.add("active-page");
@@ -2246,6 +2302,7 @@ function showPage(pageId) {
     navItems.forEach(item => {
 
         item.classList.remove("active");
+
 
         if (item.dataset.page === pageId) {
 
@@ -2262,8 +2319,6 @@ function showPage(pageId) {
     });
 
 
-    /* Close mobile sidebar */
-
     document
         .getElementById("sidebar")
         .classList.remove("open");
@@ -2277,11 +2332,16 @@ function showPage(pageId) {
 
 navItems.forEach(item => {
 
-    item.addEventListener("click", function() {
+    item.addEventListener(
+        "click",
+        function() {
 
-        showPage(this.dataset.page);
+            showPage(
+                this.dataset.page
+            );
 
-    });
+        }
+    );
 
 });
 
@@ -2292,13 +2352,16 @@ navItems.forEach(item => {
 
 document
     .getElementById("mobileMenu")
-    .addEventListener("click", function() {
+    .addEventListener(
+        "click",
+        function() {
 
-        document
-            .getElementById("sidebar")
-            .classList.toggle("open");
+            document
+                .getElementById("sidebar")
+                .classList.toggle("open");
 
-    });
+        }
+    );
 
 
 /* =========================================================
@@ -2307,27 +2370,43 @@ document
 
 document
     .getElementById("collapseSidebar")
-    .addEventListener("click", function() {
+    .addEventListener(
+        "click",
+        function() {
 
-        const sidebar =
-            document.getElementById("sidebar");
+            const sidebar =
+                document.getElementById(
+                    "sidebar"
+                );
 
-        const main =
-            document.querySelector(".main");
+            const main =
+                document.querySelector(
+                    ".main"
+                );
 
-        if (sidebar.style.width === "80px") {
 
-            sidebar.style.width = "270px";
-            main.style.marginLeft = "270px";
+            if (
+                sidebar.style.width === "80px"
+            ) {
 
-        } else {
+                sidebar.style.width =
+                    "270px";
 
-            sidebar.style.width = "80px";
-            main.style.marginLeft = "80px";
+                main.style.marginLeft =
+                    "270px";
+
+            } else {
+
+                sidebar.style.width =
+                    "80px";
+
+                main.style.marginLeft =
+                    "80px";
+
+            }
 
         }
-
-    });
+    );
 
 
 /* =========================================================
@@ -2336,18 +2415,34 @@ document
 
 document
     .getElementById("logout")
-    .addEventListener("click", function() {
+    .addEventListener(
+        "click",
+        function() {
 
-        const confirmLogout =
-            confirm("Are you sure you want to logout?");
+            const confirmLogout =
+                confirm(
+                    "Are you sure you want to logout?"
+                );
 
-        if (confirmLogout) {
 
-            alert("Logged out successfully!");
+            if (confirmLogout) {
+
+                /*
+                   Clear login information
+                   if it exists.
+                */
+
+                localStorage.clear();
+
+                sessionStorage.clear();
+
+                window.location.href =
+                    "login.html";
+
+            }
 
         }
-
-    });
+    );
 
 
 /* =========================================================
@@ -2378,18 +2473,24 @@ const hrQuestions = [
 
 ];
 
+
 let hrIndex = 0;
 
 
 function nextHRQuestion() {
 
     const answer =
-        document.getElementById("hrAnswer").value.trim();
+        document
+            .getElementById("hrAnswer")
+            .value
+            .trim();
 
 
     if (answer === "") {
 
-        alert("Please enter your answer first.");
+        alert(
+            "Please enter your answer first."
+        );
 
         return;
 
@@ -2399,34 +2500,166 @@ function nextHRQuestion() {
     hrIndex++;
 
 
-    if (hrIndex >= hrQuestions.length) {
+    if (
+        hrIndex >=
+        hrQuestions.length
+    ) {
 
         alert(
             "Interview completed! Your AI feedback will be generated."
         );
 
+
         hrIndex = 0;
 
+
         showPage("dashboard");
+
 
         return;
 
     }
 
 
-    document.getElementById("hrQuestion").innerText =
+    document
+        .getElementById("hrQuestion")
+        .innerText =
         hrQuestions[hrIndex];
 
 
-    document.getElementById("hrNumber").innerText =
+    document
+        .getElementById("hrNumber")
+        .innerText =
         hrIndex + 1;
 
 
-    document.getElementById("hrProgress").style.width =
-        ((hrIndex + 1) / hrQuestions.length * 100) + "%";
+    document
+        .getElementById("hrProgress")
+        .style.width =
+        (
+            (hrIndex + 1) /
+            hrQuestions.length *
+            100
+        ) + "%";
 
 
-    document.getElementById("hrAnswer").value = "";
+    document
+        .getElementById("hrAnswer")
+        .value = "";
+
+}
+
+
+/* =========================================================
+   LOAD REAL ANALYTICS INTO DASHBOARD
+========================================================= */
+
+async function loadDashboardAnalytics() {
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_URL}/api/analytics`
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Analytics request failed"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        document
+            .getElementById(
+                "dashboardTotalInterviews"
+            )
+            .textContent =
+            data.totalInterviews ?? 0;
+
+
+        document
+            .getElementById(
+                "dashboardAverageScore"
+            )
+            .textContent =
+            data.averageScore ?? 0;
+
+
+        document
+            .getElementById(
+                "dashboardBestScore"
+            )
+            .textContent =
+            data.bestScore ?? 0;
+
+
+        /*
+           Improvement may or may not be
+           returned by your backend.
+
+           If backend sends it, show it.
+           Otherwise show "--".
+        */
+
+        document
+            .getElementById(
+                "dashboardImprovement"
+            )
+            .textContent =
+            data.improvement !== undefined
+                ? "+" + data.improvement + "%"
+                : "--";
+
+
+    } catch (error) {
+
+        console.error(
+            "Dashboard Analytics Error:",
+            error
+        );
+
+
+        /*
+           Do not show fake numbers
+           if backend is unavailable.
+        */
+
+        document
+            .getElementById(
+                "dashboardTotalInterviews"
+            )
+            .textContent = "--";
+
+
+        document
+            .getElementById(
+                "dashboardAverageScore"
+            )
+            .textContent = "--";
+
+
+        document
+            .getElementById(
+                "dashboardBestScore"
+            )
+            .textContent = "--";
+
+
+        document
+            .getElementById(
+                "dashboardImprovement"
+            )
+            .textContent = "--";
+
+    }
 
 }
 
@@ -2435,17 +2668,29 @@ function nextHRQuestion() {
    KEYBOARD SHORTCUT
 ========================================================= */
 
-document.addEventListener("keydown", function(event) {
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-    if (event.key === "Escape") {
+        if (event.key === "Escape") {
 
-        showPage("dashboard");
+            showPage("dashboard");
+
+        }
 
     }
+);
 
-});
+
+/* =========================================================
+   START DASHBOARD
+========================================================= */
+
+loadDashboardAnalytics();
 
 </script>
 
 </body>
+
 </html>
+```
