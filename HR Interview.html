@@ -1,17 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0041)file:///C:/Users/HP/Desktop/HTML/has.HTML -->
 <html lang="en">
-
 <head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>HR Interview</title>
+    <title>HR Interview | InterviewIQ AI</title>
 
     <style>
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -20,646 +15,626 @@
         }
 
         body {
-            background: #f5f7fb;
-            color: #222;
+            background: #f7f7fb;
+            color: #172554;
         }
 
-        .header {
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 290px;
+            height: 100vh;
+            background: #0b102d;
+            color: white;
+            padding: 28px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .logo-box {
+            width: 50px;
+            height: 50px;
+            background: #6545f5;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo-text h2 {
+            font-size: 20px;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: #a7aed0;
+            margin-top: 4px;
+        }
+
+        .section-title {
+            color: #73799b;
+            font-size: 12px;
+            margin: 25px 10px 15px;
+            text-transform: uppercase;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 12px;
+            margin: 5px 0;
+            color: #d6d9ed;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: #20264b;
+            color: white;
+        }
+
+        .icon {
+            width: 25px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* MAIN */
+        .main {
+            margin-left: 290px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 95px;
             background: white;
-            padding: 20px 50px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 45px;
         }
 
-        .header h2 {
-            color: #333;
+        .hamburger {
+            font-size: 28px;
         }
 
+        .notification {
+            font-size: 25px;
+        }
+
+        .content {
+            padding: 35px 70px;
+        }
+
+        .back {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        h1 {
+            margin-top: 30px;
+            font-size: 30px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-top: 8px;
+            font-size: 16px;
+        }
+
+        /* INTERVIEW CARD */
+        .interview-card {
+            margin-top: 30px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        /* PROGRESS */
         .progress-container {
             width: 100%;
-            height: 5px;
-            background: #ddd;
+            height: 9px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 32px;
         }
 
         .progress {
+            height: 100%;
             width: 10%;
-            height: 5px;
-            background: #1976d2;
+            background: #6046e8;
+            transition: width 0.3s;
         }
 
         .question-number {
-            text-align: right;
-            padding: 20px 60px;
-            color: #555;
-            font-size: 14px;
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: #334155;
         }
 
-        .container {
-            width: 82%;
-            margin: 10px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .container h1 {
-            font-size: 27px;
-            margin-bottom: 15px;
+        .question {
+            font-size: 24px;
+            margin-bottom: 12px;
         }
 
         .instruction {
-            color: #555;
-            margin-bottom: 35px;
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 15px;
+            color: #64748b;
+            font-size: 15px;
+            margin-bottom: 25px;
         }
 
         textarea {
             width: 100%;
-            height: 210px;
-            border: 1px solid #ddd;
-            border-radius: 7px;
+            height: 175px;
+            border: 1px solid #d9dce5;
+            border-radius: 10px;
             padding: 18px;
-            font-size: 16px;
+            font-size: 15px;
             resize: none;
             outline: none;
-            background: white;
-            color: #222;
         }
 
         textarea:focus {
-            border-color: #1976d2;
+            border-color: #6046e8;
         }
 
-        .bottom-section {
+        .bottom {
+            margin-top: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 35px;
         }
 
         .timer {
-            font-size: 23px;
-            font-weight: bold;
-            color: #444;
+            font-size: 18px;
+            color: #334155;
         }
 
-        .buttons {
-            text-align: right;
-        }
-
-        button {
-            background: #1976d2;
-            color: white;
+        .next-button {
             border: none;
-            padding: 13px 28px;
-            border-radius: 5px;
+            background: #6046e8;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 8px;
             font-size: 15px;
             cursor: pointer;
         }
 
-        button:hover {
-            background: #125ca5;
+        .next-button:hover {
+            background: #4d36c9;
         }
 
-        .next {
-            margin-top: 20px;
-            color: #555;
-            cursor: pointer;
-            font-size: 14px;
-        }
+        @media(max-width: 800px) {
 
-        .next:hover {
-            color: #1976d2;
-        }
+            .sidebar {
+                width: 220px;
+            }
 
-        .hidden {
-            display: none;
-        }
+            .main {
+                margin-left: 220px;
+            }
 
-        .saved-message {
-            margin-top: 15px;
-            color: green;
-            font-size: 14px;
-            display: none;
+            .content {
+                padding: 25px;
+            }
         }
-
     </style>
-
 </head>
 
 <body>
 
-    <div class="header">
-        <h2>HR Interview</h2>
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+    <div class="logo">
+        <div class="logo-box">AI</div>
+
+        <div class="logo-text">
+            <h2>AI</h2>
+            <p>Your Interview AI</p>
+        </div>
     </div>
 
-    <div class="progress-container">
-        <div class="progress" id="progress" style="width: 10%;"></div>
+    <div class="section-title">MAIN</div>
+
+    <div class="menu">
+
+        <a href="dashboard.html">
+            <span class="icon">⌂</span>
+            Dashboard
+        </a>
+
+        <a href="hr-interview.html" class="active">
+            <span class="icon">♟</span>
+            HR Interview
+        </a>
+
+        <a href="technical-interview.html">
+            <span class="icon">&lt;/&gt;</span>
+            Technical Interview
+        </a>
+
+        <a href="skill-gap.html">
+            <span class="icon">▥</span>
+            Skill Gap Analyzer
+        </a>
+
+        <a href="interview-history.html">
+            <span class="icon">◷</span>
+            Interview History
+        </a>
+
+        <a href="analytics.html">
+            <span class="icon">⌁</span>
+            Analytics
+        </a>
+
     </div>
 
-    <div class="question-number">
-        Question <span id="questionNumber">1</span> of 10
+    <div class="section-title">LEARNING</div>
+
+    <div class="menu">
+
+        <a href="aptitude.html">
+            <span class="icon">▦</span>
+            Aptitude Practice
+        </a>
+
+        <a href="feedback.html">
+            <span class="icon">▤</span>
+            Feedback
+        </a>
+
+        <a href="company-prep.html">
+            <span class="icon">▥</span>
+            Company Prep
+        </a>
+
     </div>
 
-    <div class="container">
+</div>
 
-        <h1 id="question">
-            Tell me about yourself.
-        </h1>
 
-        <p class="instruction" id="instruction">
-            Please introduce yourself and highlight your key strengths and achievements.
+<!-- MAIN CONTENT -->
+<div class="main">
+
+    <div class="topbar">
+
+        <div class="hamburger">☰</div>
+
+        <div class="notification">🔔</div>
+
+    </div>
+
+
+    <div class="content">
+
+        <a href="dashboard.html" class="back">
+            ← Back to Dashboard
+        </a>
+
+        <h1>HR Interview</h1>
+
+        <p class="subtitle">
+            Practice real HR questions with your AI interviewer.
         </p>
 
-        <label>Your Answer</label>
 
-        <textarea
-            id="answer"
-            placeholder="Type your answer here...">
-        </textarea>
+        <div class="interview-card">
 
-        <div class="saved-message" id="savedMessage">
-            Answer saved successfully.
-        </div>
-
-        <div class="bottom-section">
-
-            <div class="timer" id="timer">
-                03:00
+            <!-- PROGRESS BAR -->
+            <div class="progress-container">
+                <div class="progress" id="progress"></div>
             </div>
 
-            <div class="buttons">
 
-                <button
-                    id="startButton"
-                    onclick="startInterview()">
-                    Start & Answer
-                </button>
+            <!-- QUESTION -->
+            <div class="question-number">
+                Question <span id="questionNumber">1</span> of 10
+            </div>
 
-                <button
-                    id="submitButton"
-                    onclick="submitAnswer()"
-                    class="hidden">
-                    Submit Answer
-                </button>
+            <h2 class="question" id="question">
+                Tell me about yourself.
+            </h2>
 
-                <div
-                    class="next hidden"
-                    id="nextButton"
-                    onclick="nextQuestion()">
-                    Next Question →
+            <p class="instruction" id="instruction">
+                Introduce yourself and highlight your key strengths,
+                skills and achievements.
+            </p>
+
+
+            <!-- ANSWER -->
+            <textarea
+                id="answer"
+                placeholder="Type your answer here..."
+            ></textarea>
+
+
+            <!-- BOTTOM -->
+            <div class="bottom">
+
+                <div class="timer" id="timer">
+                    ⏱ 03:00
                 </div>
+
+                <button
+                    class="next-button"
+                    onclick="nextQuestion()"
+                >
+                    Next Question →
+                </button>
 
             </div>
 
         </div>
 
     </div>
+
+</div>
 
 
 <script>
 
-/* ==================================================
-   BACKEND URL
-   ================================================== */
-
 const API_URL = "https://interview-project-uimv.onrender.com";
 
 
-/* ==================================================
-   INTERVIEW VARIABLES
-   ================================================== */
+const questions = [
 
-let currentQuestion = 1;
+    {
+        question: "Tell me about yourself.",
+        instruction:
+        "Introduce yourself and highlight your key strengths, skills and achievements."
+    },
+
+    {
+        question: "What are your strengths?",
+        instruction:
+        "Tell us about your main strengths and how they help you."
+    },
+
+    {
+        question: "What are your weaknesses?",
+        instruction:
+        "Describe one area you are working to improve."
+    },
+
+    {
+        question: "Why should we hire you?",
+        instruction:
+        "Explain why you would be a good fit for this role."
+    },
+
+    {
+        question: "Where do you see yourself in five years?",
+        instruction:
+        "Describe your career goals and future plans."
+    },
+
+    {
+        question: "Why do you want to join our company?",
+        instruction:
+        "Explain why you are interested in this company."
+    },
+
+    {
+        question: "Tell me about a challenge you faced.",
+        instruction:
+        "Describe a challenge you faced and how you handled it."
+    },
+
+    {
+        question: "How do you handle pressure?",
+        instruction:
+        "Explain how you manage stressful situations."
+    },
+
+    {
+        question: "What are your career goals?",
+        instruction:
+        "Tell us about your short-term and long-term career goals."
+    },
+
+    {
+        question: "Do you have any questions for us?",
+        instruction:
+        "Ask any relevant questions you have about the company or role."
+    }
+
+];
+
+
+let currentQuestion = 0;
 
 let timeLeft = 180;
 
-let timerInterval = null;
+let timerInterval;
 
-let interviewStarted = false;
-
-let answers = {};
+let answers = [];
 
 
-/* ==================================================
-   QUESTIONS
-   ================================================== */
+function updatePage() {
 
-const questions = [
+    document.getElementById("questionNumber").textContent =
+        currentQuestion + 1;
 
-    "Tell me about yourself.",
+    document.getElementById("question").textContent =
+        questions[currentQuestion].question;
 
-    "What are your strengths?",
+    document.getElementById("instruction").textContent =
+        questions[currentQuestion].instruction;
 
-    "What are your weaknesses?",
+    document.getElementById("answer").value = "";
 
-    "Why should we hire you?",
+    document.getElementById("progress").style.width =
+        ((currentQuestion + 1) * 10) + "%";
 
-    "Where do you see yourself in five years?",
+    timeLeft = 180;
 
-    "Why do you want to join our company?",
+    updateTimer();
 
-    "Tell me about a challenge you faced.",
-
-    "How do you handle pressure?",
-
-    "What are your career goals?",
-
-    "Do you have any questions for us?"
-
-];
-
-
-const instructions = [
-
-    "Please introduce yourself and highlight your key strengths and achievements.",
-
-    "Tell us about your main strengths and how they help you.",
-
-    "Describe one area you are working to improve.",
-
-    "Explain why you would be a good fit for this role.",
-
-    "Describe your career goals and future plans.",
-
-    "Explain why you are interested in this company.",
-
-    "Describe a challenge you faced and how you handled it.",
-
-    "Explain how you manage stressful situations.",
-
-    "Tell us about your short-term and long-term career goals.",
-
-    "Ask any relevant questions you have about the company or role."
-
-];
-
-
-/* ==================================================
-   START INTERVIEW
-   ================================================== */
-
-function startInterview() {
-
-    if (interviewStarted) {
-        return;
-    }
-
-    interviewStarted = true;
-
-    timerInterval = setInterval(updateTimer, 1000);
-
-    document
-        .getElementById("startButton")
-        .classList.add("hidden");
-
-    document
-        .getElementById("submitButton")
-        .classList.remove("hidden");
-
+    startTimer();
 }
 
 
-/* ==================================================
-   TIMER
-   ================================================== */
-
-function updateTimer() {
-
-    let minutes = Math.floor(timeLeft / 60);
-
-    let seconds = timeLeft % 60;
-
-    minutes = String(minutes).padStart(2, "0");
-
-    seconds = String(seconds).padStart(2, "0");
-
-    document.getElementById("timer").innerText =
-        minutes + ":" + seconds;
-
-
-    if (timeLeft <= 0) {
-
-        clearInterval(timerInterval);
-
-        document.getElementById("timer").innerText =
-            "00:00";
-
-        submitAnswer();
-
-        return;
-    }
-
-    timeLeft--;
-
-}
-
-
-/* ==================================================
-   SUBMIT ANSWER
-   ================================================== */
-
-async function submitAnswer() {
+function startTimer() {
 
     clearInterval(timerInterval);
 
+    timerInterval = setInterval(() => {
 
-    const userAnswer =
+        timeLeft--;
+
+        updateTimer();
+
+        if (timeLeft <= 0) {
+
+            clearInterval(timerInterval);
+
+            nextQuestion();
+        }
+
+    }, 1000);
+}
+
+
+function updateTimer() {
+
+    let minutes =
+        Math.floor(timeLeft / 60);
+
+    let seconds =
+        timeLeft % 60;
+
+    minutes =
+        String(minutes).padStart(2, "0");
+
+    seconds =
+        String(seconds).padStart(2, "0");
+
+    document.getElementById("timer").textContent =
+        "⏱ " + minutes + ":" + seconds;
+}
+
+
+async function nextQuestion() {
+
+    const answer =
         document.getElementById("answer").value.trim();
 
 
-    if (userAnswer === "") {
+    if (answer === "") {
 
-        alert("Please enter your answer before submitting.");
-
-        if (timeLeft > 0) {
-
-            timerInterval =
-                setInterval(updateTimer, 1000);
-
-        }
+        alert("Please enter your answer before continuing.");
 
         return;
     }
 
 
-    /* Save answer locally */
+    // Save answer
+    answers.push({
 
-    answers[currentQuestion] = userAnswer;
+        question:
+        questions[currentQuestion].question,
 
+        answer: answer
 
-    console.log(
-        "Question " + currentQuestion + ":"
-    );
-
-    console.log(userAnswer);
-
-
-    /* Show saved message */
-
-    document
-        .getElementById("savedMessage")
-        .style.display = "block";
+    });
 
 
-    /* Hide submit button */
-
-    document
-        .getElementById("submitButton")
-        .classList.add("hidden");
+    currentQuestion++;
 
 
-    /* Show next button */
+    // Interview completed
+    if (currentQuestion >= questions.length) {
 
-    document
-        .getElementById("nextButton")
-        .classList.remove("hidden");
-
-
-    /* Make answer read-only */
-
-    document
-        .getElementById("answer")
-        .readOnly = true;
-
-
-    /*
-       If this is the final question,
-       save the complete interview.
-    */
-
-    if (currentQuestion === 10) {
+        clearInterval(timerInterval);
 
         await saveInterview();
 
+        alert("Interview completed! 🎉");
+
+        window.location.href =
+            "feedback.html";
+
+        return;
     }
 
+
+    updatePage();
 }
 
-
-/* ==================================================
-   SAVE COMPLETE INTERVIEW TO BACKEND
-   ================================================== */
 
 async function saveInterview() {
 
     try {
 
-        /*
-           Temporary score.
-
-           Later we can replace this
-           with your actual AI evaluation.
-        */
-
-        const interviewData = {
-
-            userName: "Test User",
-
-            type: "HR",
-
-            score: 85,
-
-            communication: 85,
-
-            technical: 85,
-
-            problemSolving: 85,
-
-            confidence: 85,
-
-            feedback:
-                "Interview completed successfully."
-
-        };
-
-
         const response = await fetch(
             `${API_URL}/api/interviews`,
             {
-
                 method: "POST",
 
                 headers: {
                     "Content-Type": "application/json"
                 },
 
-                body: JSON.stringify(interviewData)
+                body: JSON.stringify({
 
+                    userName: "Guest",
+
+                    type: "HR",
+
+                    answers: answers
+
+                })
             }
         );
 
 
-        const data = await response.json();
-
-
-        if (response.ok) {
+        if (!response.ok) {
 
             console.log(
-                "Interview saved:",
-                data
+                "Interview data could not be saved."
             );
 
         } else {
 
-            console.error(
-                "Interview save failed:",
-                data
-            );
-
-            alert(
-                "Interview completed, but result could not be saved."
+            console.log(
+                "Interview saved successfully."
             );
 
         }
 
-    }
+    } catch (error) {
 
-    catch (error) {
-
-        console.error(
+        console.log(
             "Backend connection error:",
             error
         );
 
-        alert(
-            "Interview completed, but backend connection failed."
-        );
-
     }
-
 }
 
 
-/* ==================================================
-   NEXT QUESTION
-   ================================================== */
-
-function nextQuestion() {
-
-    currentQuestion++;
-
-
-    if (currentQuestion > 10) {
-
-        alert("Interview completed!");
-
-        console.log(
-            "All Answers:",
-            answers
-        );
-
-        /*
-           Go to feedback page
-           after completing the interview.
-        */
-
-        window.location.href =
-            "feedback.html";
-
-        return;
-
-    }
-
-
-    /* Update question number */
-
-    document
-        .getElementById("questionNumber")
-        .innerText =
-        currentQuestion;
-
-
-    /* Update progress */
-
-    document
-        .getElementById("progress")
-        .style.width =
-        (currentQuestion * 10) + "%";
-
-
-    /* Update question */
-
-    document
-        .getElementById("question")
-        .innerText =
-        questions[currentQuestion - 1];
-
-
-    /* Update instruction */
-
-    document
-        .getElementById("instruction")
-        .innerText =
-        instructions[currentQuestion - 1];
-
-
-    /* Clear answer */
-
-    document
-        .getElementById("answer")
-        .value = "";
-
-
-    /* Enable answer */
-
-    document
-        .getElementById("answer")
-        .readOnly = false;
-
-
-    /* Hide saved message */
-
-    document
-        .getElementById("savedMessage")
-        .style.display =
-        "none";
-
-
-    /* Reset timer */
-
-    timeLeft = 180;
-
-    document
-        .getElementById("timer")
-        .innerText =
-        "03:00";
-
-
-    /* Reset interview state */
-
-    interviewStarted = false;
-
-
-    /* Show Start */
-
-    document
-        .getElementById("startButton")
-        .classList.remove("hidden");
-
-
-    /* Hide Submit */
-
-    document
-        .getElementById("submitButton")
-        .classList.add("hidden");
-
-
-    /* Hide Next */
-
-    document
-        .getElementById("nextButton")
-        .classList.add("hidden");
-
-}
+// Start first question
+updatePage();
 
 </script>
 
 </body>
-
 </html>
