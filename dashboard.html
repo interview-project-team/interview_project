@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,15 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>InterviewIQ AI</title>
-   <link rel="icon" type="image/png" href="./Robot.png?v=2">
 
-<link rel="icon" type="image/png" href="Robot.png">
+<link rel="icon" type="image/png" href="./Robot.png?v=2">
 
 <style>
-
-/* =========================================================
-   GLOBAL
-========================================================= */
 
 * {
     margin: 0;
@@ -312,7 +306,7 @@ body {
 }
 
 /* =========================================================
-   HISTORY BANNER
+   HISTORY
 ========================================================= */
 
 .history-banner {
@@ -776,130 +770,142 @@ th {
     <div class="logo">
 
         <div class="logo-icon">
-           <link rel="icon" type="image/png" href="./Robot.png?v=2">>
-            
+            🤖
         </div>
 
         <div>
 
-            <div class="logo-text"
-               
+            <div class="logo-text">
                 InterviewIQ<span>AI</span>
             </div>
 
             <div class="logo-subtitle">
-                Your Interview AI 
+                Your Interview AI
             </div>
 
         </div>
 
     </div>
-
 
     <div class="menu-title">
         Main
     </div>
 
-
     <button class="nav-item active" data-page="dashboard">
+
         <span class="nav-icon">⌂</span>
+
         Dashboard
+
     </button>
 
+    <!-- FIXED HR INTERVIEW -->
 
-    <button class="nav-item" >
-        <span class="nav-icon"
-           href="HR Interview.html">♟</span>
+    <button class="nav-item"
+            onclick="window.location.href='HR%20Interview.html'">
+
+        <span class="nav-icon">♟</span>
+
         HR Interview
-    </button>
 
+    </button>
 
     <button class="nav-item" data-page="technical">
-        <span class="nav-icon">&lt;/&gt;</span>
-        Technical Interview
-    </button>
 
+        <span class="nav-icon">&lt;/&gt;</span>
+
+        Technical Interview
+
+    </button>
 
     <button class="nav-item" data-page="skills">
-        <span class="nav-icon">▥</span>
-        Skill Gap Analyzer
-    </button>
 
+        <span class="nav-icon">▥</span>
+
+        Skill Gap Analyzer
+
+    </button>
 
     <button class="nav-item" data-page="history">
+
         <span class="nav-icon">◷</span>
+
         Interview History
+
     </button>
-
-
-    <!-- FIXED: Analytics opens analytics.html -->
 
     <button class="nav-item"
             onclick="window.location.href='analytics.html'">
 
         <span class="nav-icon">⌁</span>
+
         Analytics
 
     </button>
-
 
     <div class="menu-title">
         Learning
     </div>
 
-
     <button class="nav-item" data-page="aptitude">
+
         <span class="nav-icon">▦</span>
+
         Aptitude Practice
+
     </button>
 
+    <button class="nav-item"
+            onclick="window.location.href='feedback.html'">
 
-   <button class="nav-item"
-        onclick="window.location.href='feedback.html'">
+        <span class="nav-icon">▤</span>
 
-    <span class="nav-icon">▤</span>
+        Feedback
 
-    Feedback
-
-</button>
-
+    </button>
 
     <button class="nav-item" data-page="company">
-        <span class="nav-icon">▥</span>
-        Company Prep
-    </button>
 
+        <span class="nav-icon">▥</span>
+
+        Company Prep
+
+    </button>
 
     <div class="menu-title">
         Account
     </div>
 
-
     <button class="nav-item" data-page="settings">
-        <span class="nav-icon">⚙</span>
-        Settings
-    </button>
 
+        <span class="nav-icon">⚙</span>
+
+        Settings
+
+    </button>
 
     <button class="nav-item" data-page="help">
-        <span class="nav-icon">?</span>
-        Help & Support
-    </button>
 
+        <span class="nav-icon">?</span>
+
+        Help & Support
+
+    </button>
 
     <button class="nav-item logout-btn" id="logout">
 
         <span class="nav-icon">↪</span>
+
         Logout
 
     </button>
-
 
     <div class="collapse-btn">
 
         <button class="nav-item" id="collapseSidebar">
 
             <span class="nav-icon">‹</span>
+
             Collapse
 
         </button>
@@ -914,7 +920,6 @@ th {
 ========================================================= -->
 
 <main class="main">
-
 
 <header class="topbar">
 
@@ -943,7 +948,6 @@ th {
 
 <section class="page active-page" id="dashboard">
 
-
     <div class="page-heading">
 
         <h1>
@@ -957,13 +961,14 @@ th {
     </div>
 
 
-    <!-- QUICK ACTIONS -->
-
     <div class="quick-grid">
 
 
+        <!-- FIXED HR CARD -->
+
         <div class="card quick-card"
-           href="HR Interview.html">
+             onclick="window.location.href='HR%20Interview.html'"
+             style="cursor:pointer;">
 
             <div class="icon-box">
                 ♟
@@ -971,7 +976,6 @@ th {
 
             <h3>
                 HR Interview
-              
             </h3>
 
             <p>
@@ -979,7 +983,7 @@ th {
             </p>
 
             <button class="start-btn"
-                    onclick="showPage('hr')">
+                    onclick="window.location.href='HR%20Interview.html'; event.stopPropagation();">
 
                 Start
 
@@ -990,8 +994,7 @@ th {
 
         <div class="card quick-card">
 
-            <div class="icon-box"
-               data-page="technical">
+            <div class="icon-box icon-blue">
                 &lt;/&gt;
             </div>
 
@@ -1013,8 +1016,7 @@ th {
         </div>
 
 
-        <div class="card quick-card"
-           data-page="skills">
+        <div class="card quick-card">
 
             <div class="icon-box icon-green">
                 ▥
@@ -1036,7 +1038,6 @@ th {
             </button>
 
         </div>
-
 
     </div>
 
@@ -1079,9 +1080,7 @@ th {
         Your Performance
     </h2>
 
-
     <div class="stats-grid">
-
 
         <div class="stat">
 
@@ -1157,7 +1156,6 @@ th {
 
         </div>
 
-
     </div>
 
 
@@ -1173,7 +1171,6 @@ th {
             <h3 class="panel-title">
                 Recent Activity
             </h3>
-
 
             <div class="activity-item">
 
@@ -1304,8 +1301,10 @@ th {
 
                 </div>
 
+                <!-- FIXED -->
+
                 <button class="start-btn"
-                        onclick="showPage('hr')">
+                        onclick="window.location.href='HR%20Interview.html'">
 
                     Start
 
@@ -1331,8 +1330,6 @@ th {
                     </small>
 
                 </div>
-
-                <!-- FIXED: coding -> technical -->
 
                 <button class="start-btn"
                         onclick="showPage('technical')">
@@ -1382,7 +1379,6 @@ th {
                 Performance Overview
             </h3>
 
-
             <div class="chart-container">
 
                 <svg class="chart"
@@ -1409,7 +1405,6 @@ th {
 
                     </defs>
 
-
                     <path
                         class="chart-area"
                         d="M0,130
@@ -1425,7 +1420,6 @@ th {
                            L500,190
                            L0,190 Z">
                     </path>
-
 
                     <path
                         class="chart-line"
@@ -1443,7 +1437,6 @@ th {
 
                 </svg>
 
-
                 <div class="chart-labels">
 
                     <span>May 1</span>
@@ -1454,7 +1447,6 @@ th {
                     <span>Jun 5</span>
 
                 </div>
-
 
                 <div class="improving">
 
@@ -1473,84 +1465,6 @@ th {
         </div>
 
     </div>
-
-</section>
-
-
-<!-- =========================================================
-     HR INTERVIEW
-========================================================= -->
-
-<section class="page" id="hr">
-
-<button class="back-btn"
-        onclick="showPage('dashboard')">
-
-    ← Back to Dashboard
-
-</button>
-
-<div class="page-heading">
-
-<h1>
-    HR Interview
-</h1>
-
-<p>
-    Practice real HR questions with your AI interviewer.
-</p>
-
-</div>
-
-
-<div class="question-box">
-
-<div class="progress">
-
-<div class="progress-bar"
-     id="hrProgress">
-</div>
-
-</div>
-
-<small>
-Question <span id="hrNumber">1</span> of 10
-</small>
-
-<h2 class="question"
-    id="hrQuestion">
-
-    Tell me about yourself.
-
-</h2>
-
-<p style="color:#777;font-size:13px;">
-
-    Introduce yourself and highlight your key strengths,
-    skills and achievements.
-
-</p>
-
-<textarea class="answer"
-          id="hrAnswer"
-          placeholder="Type your answer here..."></textarea>
-
-<div class="interview-actions">
-
-<span id="hrTimer">
-    ⏱ 02:45
-</span>
-
-<button class="primary-btn"
-        onclick="nextHRQuestion()">
-
-    Next Question →
-
-</button>
-
-</div>
-
-</div>
 
 </section>
 
@@ -1579,7 +1493,6 @@ Question <span id="hrNumber">1</span> of 10
 </p>
 
 </div>
-
 
 <div class="option-grid">
 
@@ -1713,7 +1626,6 @@ Question <span id="hrNumber">1</span> of 10
 
 </div>
 
-
 <div class="stats-grid">
 
 <div class="stat">
@@ -1737,7 +1649,6 @@ Question <span id="hrNumber">1</span> of 10
 </div>
 
 </div>
-
 
 <div class="large-card"
      style="margin-top:20px;">
@@ -1791,7 +1702,6 @@ SQL and machine learning fundamentals.
 
 </div>
 
-
 <div class="table-wrapper">
 
 <table>
@@ -1810,7 +1720,6 @@ SQL and machine learning fundamentals.
 
 </thead>
 
-
 <tbody>
 
 <tr>
@@ -1823,7 +1732,6 @@ SQL and machine learning fundamentals.
 
 </tr>
 
-
 <tr>
 
 <td>Python Interview</td>
@@ -1834,7 +1742,6 @@ SQL and machine learning fundamentals.
 
 </tr>
 
-
 <tr>
 
 <td>SQL Interview</td>
@@ -1844,7 +1751,6 @@ SQL and machine learning fundamentals.
 <td>Completed</td>
 
 </tr>
-
 
 <tr>
 
@@ -1890,9 +1796,7 @@ SQL and machine learning fundamentals.
 
 </div>
 
-
 <div class="option-grid">
-
 
 <div class="option-card">
 
@@ -1965,9 +1869,7 @@ SQL and machine learning fundamentals.
 
 </div>
 
-
 <div class="option-grid">
-
 
 <div class="option-card">
 
@@ -2070,9 +1972,7 @@ SQL and machine learning fundamentals.
 
 </div>
 
-
 <div class="option-grid">
-
 
 <div class="option-card">
 
@@ -2164,9 +2064,7 @@ SQL and machine learning fundamentals.
 
 </div>
 
-
 <div class="large-card">
-
 
 <div class="form-group">
 
@@ -2228,9 +2126,7 @@ SQL and machine learning fundamentals.
 
 </div>
 
-
 <div class="option-grid">
-
 
 <div class="option-card">
 
@@ -2439,11 +2335,6 @@ document
 
             if (confirmLogout) {
 
-                /*
-                   Clear login information
-                   if it exists.
-                */
-
                 localStorage.clear();
 
                 sessionStorage.clear();
@@ -2458,112 +2349,7 @@ document
 
 
 /* =========================================================
-   HR INTERVIEW
-========================================================= */
-
-const hrQuestions = [
-
-    "Tell me about yourself.",
-
-    "What are your greatest strengths?",
-
-    "What is your biggest weakness?",
-
-    "Why should we hire you?",
-
-    "Where do you see yourself in five years?",
-
-    "Why do you want to join our company?",
-
-    "Tell me about a challenge you faced.",
-
-    "How do you handle pressure?",
-
-    "Why did you choose your degree?",
-
-    "Do you have any questions for us?"
-
-];
-
-
-let hrIndex = 0;
-
-
-function nextHRQuestion() {
-
-    const answer =
-        document
-            .getElementById("hrAnswer")
-            .value
-            .trim();
-
-
-    if (answer === "") {
-
-        alert(
-            "Please enter your answer first."
-        );
-
-        return;
-
-    }
-
-
-    hrIndex++;
-
-
-    if (
-        hrIndex >=
-        hrQuestions.length
-    ) {
-
-        alert(
-            "Interview completed! Your AI feedback will be generated."
-        );
-
-
-        hrIndex = 0;
-
-
-        showPage("dashboard");
-
-
-        return;
-
-    }
-
-
-    document
-        .getElementById("hrQuestion")
-        .innerText =
-        hrQuestions[hrIndex];
-
-
-    document
-        .getElementById("hrNumber")
-        .innerText =
-        hrIndex + 1;
-
-
-    document
-        .getElementById("hrProgress")
-        .style.width =
-        (
-            (hrIndex + 1) /
-            hrQuestions.length *
-            100
-        ) + "%";
-
-
-    document
-        .getElementById("hrAnswer")
-        .value = "";
-
-}
-
-
-/* =========================================================
-   LOAD REAL ANALYTICS INTO DASHBOARD
+   LOAD REAL ANALYTICS
 ========================================================= */
 
 async function loadDashboardAnalytics() {
@@ -2613,14 +2399,6 @@ async function loadDashboardAnalytics() {
             data.bestScore ?? 0;
 
 
-        /*
-           Improvement may or may not be
-           returned by your backend.
-
-           If backend sends it, show it.
-           Otherwise show "--".
-        */
-
         document
             .getElementById(
                 "dashboardImprovement"
@@ -2638,11 +2416,6 @@ async function loadDashboardAnalytics() {
             error
         );
 
-
-        /*
-           Do not show fake numbers
-           if backend is unavailable.
-        */
 
         document
             .getElementById(
@@ -2705,4 +2478,3 @@ loadDashboardAnalytics();
 </body>
 
 </html>
-```
