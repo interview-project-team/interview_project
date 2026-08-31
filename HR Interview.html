@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <!-- saved from url=(0041)file:///C:/Users/HP/Desktop/HTML/has.HTML -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>HR Interview</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -141,7 +147,9 @@
             font-size: 14px;
             display: none;
         }
+
     </style>
+
 </head>
 
 <body>
@@ -151,48 +159,59 @@
     </div>
 
     <div class="progress-container">
-        <div class="progress" id="progress" style="width: 20%;"></div>
+        <div class="progress" id="progress" style="width: 10%;"></div>
     </div>
 
-    <!-- Question starts from 1 -->
     <div class="question-number">
-        Question <span id="questionNumber">2</span> of 10
+        Question <span id="questionNumber">1</span> of 10
     </div>
 
     <div class="container">
 
-        <h1 id="question">What are your strengths?</h1>
+        <h1 id="question">
+            Tell me about yourself.
+        </h1>
 
-        <p class="instruction" id="instruction">Tell us about your main strengths and how they help you.</p>
+        <p class="instruction" id="instruction">
+            Please introduce yourself and highlight your key strengths and achievements.
+        </p>
 
         <label>Your Answer</label>
 
-        <!-- ANSWER BOX IS NOW ENABLED -->
-        <textarea id="answer" placeholder="Type your answer here..."></textarea>
+        <textarea
+            id="answer"
+            placeholder="Type your answer here...">
+        </textarea>
 
-        <div class="saved-message" id="savedMessage" style="display: none;">
+        <div class="saved-message" id="savedMessage">
             Answer saved successfully.
         </div>
 
         <div class="bottom-section">
 
-            <!-- Timer stays at 03:00 initially -->
-            <div class="timer" id="timer">00:00</div>
+            <div class="timer" id="timer">
+                03:00
+            </div>
 
             <div class="buttons">
 
-                <!-- This button only starts the timer -->
-                <button id="startButton" onclick="startInterview()" class="hidden">
-                    Start &amp; Answer
+                <button
+                    id="startButton"
+                    onclick="startInterview()">
+                    Start & Answer
                 </button>
 
-                <!-- Hidden until Start is clicked -->
-                <button id="submitButton" class="" onclick="submitAnswer()">
+                <button
+                    id="submitButton"
+                    onclick="submitAnswer()"
+                    class="hidden">
                     Submit Answer
                 </button>
 
-                <!-- Hidden until answer is submitted -->
-                <div class="next hidden" id="nextButton" onclick="nextQuestion()">
+                <div
+                    class="next hidden"
+                    id="nextButton"
+                    onclick="nextQuestion()">
                     Next Question →
                 </div>
 
@@ -205,218 +224,442 @@
 
 <script>
 
-    let currentQuestion = 1;
+/* ==================================================
+   BACKEND URL
+   ================================================== */
 
-    let timeLeft = 180;
-
-    let timerInterval = null;
-
-    let interviewStarted = false;
-
-    // Store all answers
-    let answers = {};
+const API_URL = "https://interview-project-uimv.onrender.com";
 
 
-    function startInterview() {
+/* ==================================================
+   INTERVIEW VARIABLES
+   ================================================== */
 
-        if (interviewStarted) {
-            return;
-        }
+let currentQuestion = 1;
 
-        interviewStarted = true;
+let timeLeft = 180;
 
-        // Start timer
-        timerInterval = setInterval(updateTimer, 1000);
+let timerInterval = null;
 
-        // Change button
-        document.getElementById("startButton").classList.add("hidden");
+let interviewStarted = false;
 
-        document.getElementById("submitButton").classList.remove("hidden");
+let answers = {};
+
+
+/* ==================================================
+   QUESTIONS
+   ================================================== */
+
+const questions = [
+
+    "Tell me about yourself.",
+
+    "What are your strengths?",
+
+    "What are your weaknesses?",
+
+    "Why should we hire you?",
+
+    "Where do you see yourself in five years?",
+
+    "Why do you want to join our company?",
+
+    "Tell me about a challenge you faced.",
+
+    "How do you handle pressure?",
+
+    "What are your career goals?",
+
+    "Do you have any questions for us?"
+
+];
+
+
+const instructions = [
+
+    "Please introduce yourself and highlight your key strengths and achievements.",
+
+    "Tell us about your main strengths and how they help you.",
+
+    "Describe one area you are working to improve.",
+
+    "Explain why you would be a good fit for this role.",
+
+    "Describe your career goals and future plans.",
+
+    "Explain why you are interested in this company.",
+
+    "Describe a challenge you faced and how you handled it.",
+
+    "Explain how you manage stressful situations.",
+
+    "Tell us about your short-term and long-term career goals.",
+
+    "Ask any relevant questions you have about the company or role."
+
+];
+
+
+/* ==================================================
+   START INTERVIEW
+   ================================================== */
+
+function startInterview() {
+
+    if (interviewStarted) {
+        return;
     }
 
+    interviewStarted = true;
 
-    function updateTimer() {
+    timerInterval = setInterval(updateTimer, 1000);
 
-        let minutes = Math.floor(timeLeft / 60);
-        let seconds = timeLeft % 60;
+    document
+        .getElementById("startButton")
+        .classList.add("hidden");
 
-        minutes = String(minutes).padStart(2, "0");
-        seconds = String(seconds).padStart(2, "0");
+    document
+        .getElementById("submitButton")
+        .classList.remove("hidden");
 
-        document.getElementById("timer").innerText =
-            minutes + ":" + seconds;
-
-        if (timeLeft <= 0) {
-
-            clearInterval(timerInterval);
-
-            document.getElementById("timer").innerText = "00:00";
-
-            submitAnswer();
-
-            return;
-        }
-
-        timeLeft--;
-    }
+}
 
 
-    function submitAnswer() {
+/* ==================================================
+   TIMER
+   ================================================== */
+
+function updateTimer() {
+
+    let minutes = Math.floor(timeLeft / 60);
+
+    let seconds = timeLeft % 60;
+
+    minutes = String(minutes).padStart(2, "0");
+
+    seconds = String(seconds).padStart(2, "0");
+
+    document.getElementById("timer").innerText =
+        minutes + ":" + seconds;
+
+
+    if (timeLeft <= 0) {
 
         clearInterval(timerInterval);
 
-        // Get answer from textarea
-        let userAnswer =
-            document.getElementById("answer").value.trim();
+        document.getElementById("timer").innerText =
+            "00:00";
 
-        // Check whether answer is empty
-        if (userAnswer === "") {
+        submitAnswer();
 
-            alert("Please enter your answer before submitting.");
+        return;
+    }
 
-            // Timer can continue if user hasn't answered
-            if (timeLeft > 0) {
-                timerInterval = setInterval(updateTimer, 1000);
+    timeLeft--;
+
+}
+
+
+/* ==================================================
+   SUBMIT ANSWER
+   ================================================== */
+
+async function submitAnswer() {
+
+    clearInterval(timerInterval);
+
+
+    const userAnswer =
+        document.getElementById("answer").value.trim();
+
+
+    if (userAnswer === "") {
+
+        alert("Please enter your answer before submitting.");
+
+        if (timeLeft > 0) {
+
+            timerInterval =
+                setInterval(updateTimer, 1000);
+
+        }
+
+        return;
+    }
+
+
+    /* Save answer locally */
+
+    answers[currentQuestion] = userAnswer;
+
+
+    console.log(
+        "Question " + currentQuestion + ":"
+    );
+
+    console.log(userAnswer);
+
+
+    /* Show saved message */
+
+    document
+        .getElementById("savedMessage")
+        .style.display = "block";
+
+
+    /* Hide submit button */
+
+    document
+        .getElementById("submitButton")
+        .classList.add("hidden");
+
+
+    /* Show next button */
+
+    document
+        .getElementById("nextButton")
+        .classList.remove("hidden");
+
+
+    /* Make answer read-only */
+
+    document
+        .getElementById("answer")
+        .readOnly = true;
+
+
+    /*
+       If this is the final question,
+       save the complete interview.
+    */
+
+    if (currentQuestion === 10) {
+
+        await saveInterview();
+
+    }
+
+}
+
+
+/* ==================================================
+   SAVE COMPLETE INTERVIEW TO BACKEND
+   ================================================== */
+
+async function saveInterview() {
+
+    try {
+
+        /*
+           Temporary score.
+
+           Later we can replace this
+           with your actual AI evaluation.
+        */
+
+        const interviewData = {
+
+            userName: "Test User",
+
+            type: "HR",
+
+            score: 85,
+
+            communication: 85,
+
+            technical: 85,
+
+            problemSolving: 85,
+
+            confidence: 85,
+
+            feedback:
+                "Interview completed successfully."
+
+        };
+
+
+        const response = await fetch(
+            `${API_URL}/api/interviews`,
+            {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(interviewData)
+
             }
+        );
 
-            return;
+
+        const data = await response.json();
+
+
+        if (response.ok) {
+
+            console.log(
+                "Interview saved:",
+                data
+            );
+
+        } else {
+
+            console.error(
+                "Interview save failed:",
+                data
+            );
+
+            alert(
+                "Interview completed, but result could not be saved."
+            );
+
         }
 
-        // Save answer
-        answers[currentQuestion] = userAnswer;
+    }
 
-        console.log("Question " + currentQuestion + ":");
-        console.log(userAnswer);
+    catch (error) {
 
-        // Show saved message
-        document.getElementById("savedMessage").style.display = "block";
+        console.error(
+            "Backend connection error:",
+            error
+        );
 
-        // Hide submit
-        document.getElementById("submitButton").classList.add("hidden");
+        alert(
+            "Interview completed, but backend connection failed."
+        );
 
-        // Show next question
-        document.getElementById("nextButton").classList.remove("hidden");
+    }
 
-        // Make answer box read-only after submission
-        document.getElementById("answer").readOnly = true;
+}
+
+
+/* ==================================================
+   NEXT QUESTION
+   ================================================== */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (currentQuestion > 10) {
+
+        alert("Interview completed!");
+
+        console.log(
+            "All Answers:",
+            answers
+        );
+
+        /*
+           Go to feedback page
+           after completing the interview.
+        */
+
+        window.location.href =
+            "feedback.html";
+
+        return;
+
     }
 
 
-    function nextQuestion() {
+    /* Update question number */
 
-        currentQuestion++;
-
-        if (currentQuestion > 10) {
-
-            alert("Interview completed!");
-
-            console.log("All Answers:", answers);
-
-            return;
-        }
-
-        const questions = [
-
-            "Tell me about yourself.",
-
-            "What are your strengths?",
-
-            "What are your weaknesses?",
-
-            "Why should we hire you?",
-
-            "Where do you see yourself in five years?",
-
-            "Why do you want to join our company?",
-
-            "Tell me about a challenge you faced.",
-
-            "How do you handle pressure?",
-
-            "What are your career goals?",
-
-            "Do you have any questions for us?"
-        ];
+    document
+        .getElementById("questionNumber")
+        .innerText =
+        currentQuestion;
 
 
-        const instructions = [
+    /* Update progress */
 
-            "Please introduce yourself and highlight your key strengths and achievements.",
-
-            "Tell us about your main strengths and how they help you.",
-
-            "Describe one area you are working to improve.",
-
-            "Explain why you would be a good fit for this role.",
-
-            "Describe your career goals and future plans.",
-
-            "Explain why you are interested in this company.",
-
-            "Describe a challenge you faced and how you handled it.",
-
-            "Explain how you manage stressful situations.",
-
-            "Tell us about your short-term and long-term career goals.",
-
-            "Ask any relevant questions you have about the company or role."
-        ];
+    document
+        .getElementById("progress")
+        .style.width =
+        (currentQuestion * 10) + "%";
 
 
-        // Update question number
-        document.getElementById("questionNumber").innerText =
-            currentQuestion;
+    /* Update question */
+
+    document
+        .getElementById("question")
+        .innerText =
+        questions[currentQuestion - 1];
 
 
-        // Update progress bar
-        document.getElementById("progress").style.width =
-            (currentQuestion * 10) + "%";
+    /* Update instruction */
+
+    document
+        .getElementById("instruction")
+        .innerText =
+        instructions[currentQuestion - 1];
 
 
-        // Update question
-        document.getElementById("question").innerText =
-            questions[currentQuestion - 1];
+    /* Clear answer */
+
+    document
+        .getElementById("answer")
+        .value = "";
 
 
-        // Update instruction
-        document.getElementById("instruction").innerText =
-            instructions[currentQuestion - 1];
+    /* Enable answer */
+
+    document
+        .getElementById("answer")
+        .readOnly = false;
 
 
-        // Clear answer box
-        document.getElementById("answer").value = "";
+    /* Hide saved message */
 
-        // Enable answer box
-        document.getElementById("answer").readOnly = false;
-
-
-        // Hide saved message
-        document.getElementById("savedMessage").style.display = "none";
+    document
+        .getElementById("savedMessage")
+        .style.display =
+        "none";
 
 
-        // Reset timer
-        timeLeft = 180;
+    /* Reset timer */
 
-        document.getElementById("timer").innerText = "03:00";
+    timeLeft = 180;
 
-
-        // Reset interview state
-        interviewStarted = false;
-
-
-        // Show Start button
-        document.getElementById("startButton").classList.remove("hidden");
+    document
+        .getElementById("timer")
+        .innerText =
+        "03:00";
 
 
-        // Hide Submit button
-        document.getElementById("submitButton").classList.add("hidden");
+    /* Reset interview state */
+
+    interviewStarted = false;
 
 
-        // Hide Next button
-        document.getElementById("nextButton").classList.add("hidden");
-    }
+    /* Show Start */
+
+    document
+        .getElementById("startButton")
+        .classList.remove("hidden");
+
+
+    /* Hide Submit */
+
+    document
+        .getElementById("submitButton")
+        .classList.add("hidden");
+
+
+    /* Hide Next */
+
+    document
+        .getElementById("nextButton")
+        .classList.add("hidden");
+
+}
 
 </script>
 
+</body>
 
-</body></html>
+</html>
