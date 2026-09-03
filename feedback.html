@@ -112,7 +112,7 @@
                 }
 
                 // Get the latest interview
-                const latest = interviews[0];
+                const latest = interviews[interviews.length - 1];
 
                 document.getElementById("score").textContent =
                     latest.score + "/100";
