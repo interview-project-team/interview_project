@@ -436,24 +436,31 @@ async function saveInterview() {
 
                     type: "HR",
 
-                    answers: answers
+                    score: 0,
+
+                    communication: 0,
+
+                    technical: 0,
+
+                    problemSolving: 0,
+
+                    confidence: 0,
+
+                    feedback: "Interview completed. Detailed AI feedback will be generated."
+                    
+                    ,answers: answers
 
                 })
             }
         );
 
-
         if (!response.ok) {
 
-            console.log(
-                "Interview data could not be saved."
-            );
+            console.log("Interview data could not be saved.");
 
         } else {
 
-            console.log(
-                "Interview saved successfully."
-            );
+            console.log("Interview saved successfully.");
 
         }
 
@@ -466,7 +473,6 @@ async function saveInterview() {
 
     }
 }
-
 
 // Start first question
 updatePage();
