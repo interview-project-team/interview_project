@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>InterviewIQ AI</title>
-
 <link rel="icon" type="image/png" href="./Robot.png?v=2">
-
 <style>
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 :root {
     --primary: #5b45e8;
     --primary-light: #eeebff;
@@ -31,17 +24,14 @@
     --orange: #ff8b3d;
     --blue: #3182f6;
 }
-
 body {
     font-family: "Segoe UI", Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
 }
-
 /* =========================================================
    SIDEBAR
 ========================================================= */
-
 .sidebar {
     width: 270px;
     height: 100vh;
@@ -54,14 +44,12 @@ body {
     z-index: 1000;
     overflow-y: auto;
 }
-
 .logo {
     display: flex;
     align-items: center;
     gap: 11px;
     padding: 4px 10px 30px;
 }
-
 .logo-icon {
     width: 44px;
     height: 44px;
@@ -72,29 +60,24 @@ body {
     align-items: center;
     font-size: 23px;
 }
-
 .logo-text {
     font-size: 20px;
     font-weight: 700;
 }
-
 .logo-text span {
     color: #8c7cff;
 }
-
 .logo-subtitle {
     font-size: 10px;
     color: #a8adc1;
     margin-top: 2px;
 }
-
 .menu-title {
     font-size: 10px;
     color: #858aa1;
     text-transform: uppercase;
     padding: 16px 12px 7px;
 }
-
 .nav-item {
     width: 100%;
     border: none;
@@ -111,52 +94,42 @@ body {
     text-align: left;
     transition: 0.2s;
 }
-
 .nav-item:hover {
     background: rgba(111, 88, 239, 0.2);
     color: white;
 }
-
 .nav-item.active {
     background: linear-gradient(90deg, #5a45e7, #704de8);
     color: white;
     box-shadow: 0 5px 15px rgba(91, 69, 232, .25);
 }
-
 .nav-icon {
     width: 20px;
     text-align: center;
     font-size: 17px;
 }
-
 .logout-btn {
     color: #ff6868;
 }
-
 .logout-btn:hover {
     background: rgba(255, 80, 80, .1);
     color: #ff8585;
 }
-
 .collapse-btn {
     margin-top: 25px;
     border-top: 1px solid rgba(255,255,255,.12);
     padding-top: 15px;
 }
-
 /* =========================================================
    MAIN
 ========================================================= */
-
 .main {
     margin-left: 270px;
     min-height: 100vh;
 }
-
 /* =========================================================
    TOPBAR
 ========================================================= */
-
 .topbar {
     height: 62px;
     background: white;
@@ -166,19 +139,16 @@ body {
     justify-content: space-between;
     padding: 0 35px;
 }
-
 .menu-toggle {
     border: none;
     background: transparent;
     font-size: 23px;
     cursor: pointer;
 }
-
 .notification {
     position: relative;
     font-size: 21px;
 }
-
 .notification-dot {
     position: absolute;
     right: -3px;
@@ -193,44 +163,35 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 /* =========================================================
    PAGE
 ========================================================= */
-
 .page {
     display: none;
     padding: 30px 42px;
 }
-
 .page.active-page {
     display: block;
 }
-
 .page-heading {
     margin-bottom: 25px;
 }
-
 .page-heading h1 {
     font-size: 25px;
     margin-bottom: 5px;
 }
-
 .page-heading p {
     color: var(--muted);
     font-size: 13px;
 }
-
 /* =========================================================
    DASHBOARD
 ========================================================= */
-
 .quick-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
-
 .card {
     background: white;
     border: 1px solid var(--border);
@@ -238,17 +199,14 @@ body {
     padding: 20px;
     box-shadow: 0 2px 8px rgba(20,20,50,.02);
 }
-
 .quick-card {
     min-height: 165px;
     transition: .2s;
 }
-
 .quick-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(20,20,50,.07);
 }
-
 .icon-box {
     width: 43px;
     height: 43px;
@@ -261,34 +219,28 @@ body {
     font-size: 20px;
     margin-bottom: 15px;
 }
-
 .icon-blue {
     background: #e9f2ff;
     color: var(--blue);
 }
-
 .icon-green {
     background: #e7f9ef;
     color: var(--green);
 }
-
 .icon-orange {
     background: #fff0e7;
     color: var(--orange);
 }
-
 .quick-card h3 {
     font-size: 14px;
     margin-bottom: 8px;
 }
-
 .quick-card p {
     font-size: 12px;
     line-height: 1.5;
     color: var(--muted);
     min-height: 37px;
 }
-
 .start-btn {
     border: 1px solid #cfcbe7;
     background: white;
@@ -299,16 +251,13 @@ body {
     font-weight: 600;
     font-size: 11px;
 }
-
 .start-btn:hover {
     background: var(--primary);
     color: white;
 }
-
 /* =========================================================
    HISTORY
 ========================================================= */
-
 .history-banner {
     margin-top: 17px;
     background: linear-gradient(90deg, #f0edff, #f8f7ff);
@@ -319,13 +268,11 @@ body {
     justify-content: space-between;
     cursor: pointer;
 }
-
 .history-left {
     display: flex;
     align-items: center;
     gap: 14px;
 }
-
 .history-icon {
     width: 42px;
     height: 42px;
@@ -337,80 +284,65 @@ body {
     justify-content: center;
     font-size: 20px;
 }
-
 .history-banner h3 {
     font-size: 13px;
     margin-bottom: 4px;
 }
-
 .history-banner p {
     font-size: 11px;
     color: var(--muted);
 }
-
 /* =========================================================
    STATS
 ========================================================= */
-
 .section-title {
     font-size: 17px;
     margin: 25px 0 14px;
 }
-
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 17px;
 }
-
 .stat {
     background: white;
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 18px;
 }
-
 .stat-label {
     color: var(--muted);
     font-size: 11px;
 }
-
 .stat-value {
     font-size: 27px;
     font-weight: 700;
     margin-top: 7px;
 }
-
 .stat-value span {
     color: var(--muted);
     font-size: 12px;
     font-weight: 400;
 }
-
 .purple {
     color: var(--primary);
 }
-
 .green {
     color: var(--green);
 }
-
 /* =========================================================
    LOWER DASHBOARD
 ========================================================= */
-
 .dashboard-lower {
     display: grid;
     grid-template-columns: 1fr 1fr 1.3fr;
     gap: 18px;
     margin-top: 18px;
 }
-
 .panel-title {
     font-size: 15px;
     margin-bottom: 15px;
 }
-
 .activity-item {
     display: flex;
     align-items: center;
@@ -418,11 +350,9 @@ body {
     padding: 12px 0;
     border-bottom: 1px solid #eeeef4;
 }
-
 .activity-item:last-child {
     border-bottom: none;
 }
-
 .activity-icon {
     width: 35px;
     height: 35px;
@@ -432,26 +362,21 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 .activity-info {
     flex: 1;
 }
-
 .activity-info strong {
     font-size: 11px;
     display: block;
 }
-
 .activity-info small {
     color: var(--muted);
     font-size: 10px;
 }
-
 .time {
     color: #999;
     font-size: 9px;
 }
-
 .next-item {
     border: 1px solid #eeeeF4;
     padding: 11px;
@@ -461,75 +386,61 @@ body {
     align-items: center;
     gap: 10px;
 }
-
 .next-info {
     flex: 1;
 }
-
 .next-info strong {
     display: block;
     font-size: 11px;
 }
-
 .next-info small {
     color: var(--muted);
     font-size: 9px;
 }
-
 /* =========================================================
    CHART
 ========================================================= */
-
 .chart-container {
     height: 230px;
     position: relative;
     margin-top: 15px;
 }
-
 .chart {
     width: 100%;
     height: 180px;
 }
-
 .chart-line {
     fill: none;
     stroke: var(--primary);
     stroke-width: 3;
 }
-
 .chart-area {
     fill: url(#gradient);
 }
-
 .chart-labels {
     display: flex;
     justify-content: space-between;
     font-size: 9px;
     color: #999;
 }
-
 .improving {
     margin-top: 5px;
     background: #f3f0ff;
     padding: 13px;
     border-radius: 10px;
 }
-
 .improving strong {
     color: var(--primary);
     font-size: 12px;
 }
-
 .improving p {
     font-size: 10px;
     color: var(--muted);
     margin-top: 3px;
 }
-
 /* =========================================================
    GENERIC PAGE
 ========================================================= */
-
 .back-btn {
     border: none;
     background: transparent;
@@ -537,39 +448,33 @@ body {
     margin-bottom: 20px;
     color: var(--muted);
 }
-
 .large-card {
     background: white;
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 25px;
 }
-
 .option-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
 }
-
 .option-card {
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 22px;
     background: white;
 }
-
 .option-card h3 {
     font-size: 15px;
     margin-bottom: 8px;
 }
-
 .option-card p {
     font-size: 12px;
     color: var(--muted);
     line-height: 1.5;
     margin-bottom: 15px;
 }
-
 .primary-btn {
     background: var(--primary);
     color: white;
@@ -578,76 +483,22 @@ body {
     border-radius: 8px;
     cursor: pointer;
 }
-
 .primary-btn:hover {
     background: #4936cf;
 }
-
-/* =========================================================
-   INTERVIEW
-========================================================= */
-
-.question-box {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 25px;
-    max-width: 850px;
-}
-
-.progress {
-    width: 100%;
-    height: 7px;
-    background: #e8e7f0;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 25px;
-}
-
-.progress-bar {
-    height: 100%;
-    background: var(--primary);
-    width: 10%;
-}
-
-.question {
-    font-size: 20px;
-    margin-bottom: 12px;
-}
-
-.answer {
-    width: 100%;
-    min-height: 150px;
-    border: 1px solid #ddd;
-    border-radius: 9px;
-    padding: 15px;
-    resize: vertical;
-    font-family: inherit;
-    margin-top: 15px;
-}
-
-.interview-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-}
-
 /* =========================================================
    TABLE
 ========================================================= */
-
 .table-wrapper {
     background: white;
     border: 1px solid var(--border);
     border-radius: 13px;
     overflow: hidden;
 }
-
 table {
     width: 100%;
     border-collapse: collapse;
 }
-
 th,
 td {
     padding: 15px;
@@ -655,27 +506,22 @@ td {
     border-bottom: 1px solid #eee;
     font-size: 12px;
 }
-
 th {
     background: #fafaff;
     color: #666;
 }
-
 /* =========================================================
    SETTINGS
 ========================================================= */
-
 .form-group {
     margin-bottom: 18px;
 }
-
 .form-group label {
     display: block;
     font-size: 12px;
     margin-bottom: 7px;
     font-weight: 600;
 }
-
 .form-group input,
 .form-group select {
     width: 100%;
@@ -683,728 +529,449 @@ th {
     border: 1px solid #ddd;
     border-radius: 8px;
 }
-
 /* =========================================================
    MOBILE
 ========================================================= */
-
 @media(max-width:1100px) {
-
     .quick-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
     .dashboard-lower {
         grid-template-columns: 1fr 1fr;
     }
-
     .chart-panel {
         grid-column: span 2;
     }
 }
-
 @media(max-width:800px) {
-
     .sidebar {
         transform: translateX(-100%);
         transition: .3s;
     }
-
     .sidebar.open {
         transform: translateX(0);
     }
-
     .main {
         margin-left: 0;
     }
-
     .page {
         padding: 25px 18px;
     }
-
     .topbar {
         padding: 0 18px;
     }
-
     .dashboard-lower {
         grid-template-columns: 1fr;
     }
-
     .chart-panel {
         grid-column: span 1;
     }
-
     .option-grid {
         grid-template-columns: 1fr;
     }
 }
-
 @media(max-width:550px) {
-
     .quick-grid,
     .stats-grid {
         grid-template-columns: 1fr;
     }
-
     .page-heading h1 {
         font-size: 21px;
     }
 }
-
 </style>
-
 </head>
-
 <body>
-
 <!-- =========================================================
      SIDEBAR
 ========================================================= -->
-
 <aside class="sidebar" id="sidebar">
-
     <div class="logo">
-
         <div class="logo-icon">
             🤖
         </div>
-
         <div>
-
             <div class="logo-text">
                 InterviewIQ<span>AI</span>
             </div>
-
             <div class="logo-subtitle">
                 Your Interview AI
             </div>
-
         </div>
-
     </div>
-
     <div class="menu-title">
         Main
     </div>
-
     <button class="nav-item active" data-page="dashboard">
-
         <span class="nav-icon">⌂</span>
-
         Dashboard
-
     </button>
-
     <!-- FIXED HR INTERVIEW -->
-
     <button class="nav-item"
             onclick="window.location.href='HR%20Interview.html'">
-
         <span class="nav-icon">♟</span>
-
         HR Interview
-
     </button>
-
     <button class="nav-item" data-page="technical">
-
         <span class="nav-icon">&lt;/&gt;</span>
-
         Technical Interview
-
     </button>
-
     <button class="nav-item" data-page="skills">
-
         <span class="nav-icon">▥</span>
-
         Skill Gap Analyzer
-
     </button>
-
     <button class="nav-item" data-page="history">
-
         <span class="nav-icon">◷</span>
-
         Interview History
-
     </button>
-
     <button class="nav-item"
             onclick="window.location.href='analytics.html'">
-
         <span class="nav-icon">⌁</span>
-
         Analytics
-
     </button>
-
     <div class="menu-title">
         Learning
     </div>
-
     <button class="nav-item" data-page="aptitude">
-
         <span class="nav-icon">▦</span>
-
         Aptitude Practice
-
     </button>
-
     <button class="nav-item"
             onclick="window.location.href='feedback.html'">
-
         <span class="nav-icon">▤</span>
-
         Feedback
-
     </button>
-
     <button class="nav-item" data-page="company">
-
         <span class="nav-icon">▥</span>
-
         Company Prep
-
     </button>
-
     <div class="menu-title">
         Account
     </div>
-
     <button class="nav-item" data-page="settings">
-
         <span class="nav-icon">⚙</span>
-
         Settings
-
     </button>
-
     <button class="nav-item" data-page="help">
-
         <span class="nav-icon">?</span>
-
         Help & Support
-
     </button>
-
     <button class="nav-item logout-btn" id="logout">
-
         <span class="nav-icon">↪</span>
-
         Logout
-
     </button>
-
     <div class="collapse-btn">
-
         <button class="nav-item" id="collapseSidebar">
-
             <span class="nav-icon">‹</span>
-
             Collapse
-
         </button>
-
     </div>
-
 </aside>
-
-
 <!-- =========================================================
      MAIN
 ========================================================= -->
-
 <main class="main">
-
 <header class="topbar">
-
     <button class="menu-toggle" id="mobileMenu">
         ☰
     </button>
-
     <div></div>
-
     <div class="notification">
-
         🔔
-
         <span class="notification-dot">
             3
         </span>
-
     </div>
-
 </header>
-
-
 <!-- =========================================================
      DASHBOARD
 ========================================================= -->
-
 <section class="page active-page" id="dashboard">
-
     <div class="page-heading">
-
         <h1>
             Welcome back!
         </h1>
-
         <p>
             Let's crack your dream role today.
         </p>
-
     </div>
-
-
     <div class="quick-grid">
-
-
         <!-- FIXED HR CARD -->
-
         <div class="card quick-card"
              onclick="window.location.href='HR%20Interview.html'"
              style="cursor:pointer;">
-
             <div class="icon-box">
                 ♟
             </div>
-
             <h3>
                 HR Interview
             </h3>
-
             <p>
                 Practice HR questions with AI.
             </p>
-
             <button class="start-btn"
                     onclick="window.location.href='HR%20Interview.html'; event.stopPropagation();">
-
                 Start
-
             </button>
-
         </div>
-
-
         <div class="card quick-card">
-
             <div class="icon-box icon-blue">
                 &lt;/&gt;
             </div>
-
             <h3>
                 Technical Interview
             </h3>
-
             <p>
                 Practice technical questions.
             </p>
-
             <button class="start-btn"
-                    onclick="showPage('technical')">
-
-                Start
-
+                    onclick="showComingSoon('Technical Interview')">
+                Coming Soon
             </button>
-
         </div>
-
-
         <div class="card quick-card">
-
             <div class="icon-box icon-green">
                 ▥
             </div>
-
             <h3>
                 Skill Gap Analyzer
             </h3>
-
             <p>
                 Find your weak areas and improve.
             </p>
-
             <button class="start-btn"
                     onclick="showPage('skills')">
-
                 Start
-
             </button>
-
         </div>
-
     </div>
-
-
     <!-- HISTORY -->
-
     <div class="history-banner"
          onclick="showPage('history')">
-
         <div class="history-left">
-
             <div class="history-icon">
                 ▣
             </div>
-
             <div>
-
                 <h3>
                     Interview History
                 </h3>
-
                 <p>
                     View your past interviews and performance
                 </p>
-
             </div>
-
         </div>
-
         <strong>
             →
         </strong>
-
     </div>
-
-
     <!-- STATS -->
-
     <h2 class="section-title">
         Your Performance
     </h2>
-
     <div class="stats-grid">
-
         <div class="stat">
-
             <div class="stat-label">
                 Total Interviews
             </div>
-
             <div class="stat-value purple"
                  id="dashboardTotalInterviews">
-
                 --
-
             </div>
-
         </div>
-
-
         <div class="stat">
-
             <div class="stat-label">
                 Average Score
             </div>
-
             <div class="stat-value">
-
                 <span id="dashboardAverageScore">
                     --
                 </span>
-
                 <span>
                     /100
                 </span>
-
             </div>
-
         </div>
-
-
         <div class="stat">
-
             <div class="stat-label">
                 Best Score
             </div>
-
             <div class="stat-value">
-
                 <span id="dashboardBestScore">
                     --
                 </span>
-
                 <span>
                     /100
                 </span>
-
             </div>
-
         </div>
-
-
         <div class="stat">
-
             <div class="stat-label">
                 Improvement
             </div>
-
             <div class="stat-value green">
-
                 <span id="dashboardImprovement">
                     --
                 </span>
-
             </div>
-
         </div>
-
     </div>
-
-
     <!-- LOWER DASHBOARD -->
-
     <div class="dashboard-lower">
-
-
         <!-- ACTIVITY -->
-
         <div class="card">
-
             <h3 class="panel-title">
                 Recent Activity
             </h3>
-
             <div class="activity-item">
-
                 <div class="activity-icon">
                     ♟
                 </div>
-
                 <div class="activity-info">
-
                     <strong>
                         Completed HR Mock Interview
                     </strong>
-
                     <small>
                         Score: 76/100
                     </small>
-
                 </div>
-
                 <span class="time">
                     2h ago
                 </span>
-
             </div>
-
-
             <div class="activity-item">
-
                 <div class="activity-icon">
                     &lt;/&gt;
                 </div>
-
                 <div class="activity-info">
-
                     <strong>
                         Solved 5 Coding Problems
                     </strong>
-
                     <small>
                         Python · Easy
                     </small>
-
                 </div>
-
                 <span class="time">
                     5h ago
                 </span>
-
             </div>
-
-
             <div class="activity-item">
-
                 <div class="activity-icon">
                     &lt;/&gt;
                 </div>
-
                 <div class="activity-info">
-
                     <strong>
                         Technical Interview Completed
                     </strong>
-
                     <small>
                         Score: 82/100
                     </small>
-
                 </div>
-
                 <span class="time">
                     1d ago
                 </span>
-
             </div>
-
-
             <div class="activity-item">
-
                 <div class="activity-icon">
                     ▦
                 </div>
-
                 <div class="activity-info">
-
                     <strong>
                         Aptitude Test Completed
                     </strong>
-
                     <small>
                         Score: 68/100
                     </small>
-
                 </div>
-
                 <span class="time">
                     2d ago
                 </span>
-
             </div>
-
         </div>
-
-
         <!-- NEXT UP -->
-
         <div class="card">
-
             <h3 class="panel-title">
                 Next Up
             </h3>
-
-
             <div class="next-item">
-
                 <div class="activity-icon">
                     ♟
                 </div>
-
                 <div class="next-info">
-
                     <strong>
                         HR Interview Practice
                     </strong>
-
                     <small>
                         10 Questions
                     </small>
-
                 </div>
-
                 <!-- FIXED -->
-
                 <button class="start-btn"
                         onclick="window.location.href='HR%20Interview.html'">
-
                     Start
-
                 </button>
-
             </div>
-
-
             <div class="next-item">
-
                 <div class="activity-icon icon-green">
                     &lt;/&gt;
                 </div>
-
                 <div class="next-info">
-
                     <strong>
                         Data Structures - Arrays
                     </strong>
-
                     <small>
                         Practice Problems
                     </small>
-
                 </div>
-
                 <button class="start-btn"
-                        onclick="showPage('technical')">
-
-                    Start
-
+                        onclick="showComingSoon('Technical Interview')">
+                    Coming Soon
                 </button>
-
             </div>
-
-
             <div class="next-item">
-
                 <div class="activity-icon icon-orange">
                     ▦
                 </div>
-
                 <div class="next-info">
-
                     <strong>
                         Aptitude Practice
                     </strong>
-
                     <small>
                         20 Questions
                     </small>
-
                 </div>
-
                 <button class="start-btn"
         onclick="showComingSoon('Aptitude Practice')">
-
     Coming Soon
-
 </button>
-
             </div>
-
         </div>
-
-
         <!-- CHART -->
-
         <div class="card chart-panel">
-
             <h3 class="panel-title">
                 Performance Overview
             </h3>
-
             <div class="chart-container">
-
                 <svg class="chart"
                      viewBox="0 0 500 190"
                      preserveAspectRatio="none">
-
                     <defs>
-
                         <linearGradient id="gradient"
                                         x1="0"
                                         y1="0"
                                         x2="0"
                                         y2="1">
-
                             <stop offset="0%"
                                   stop-color="#6552e8"
                                   stop-opacity=".18"/>
-
                             <stop offset="100%"
                                   stop-color="#6552e8"
                                   stop-opacity="0"/>
-
                         </linearGradient>
-
                     </defs>
-
                     <path
                         class="chart-area"
                         d="M0,130
@@ -1420,7 +987,6 @@ th {
                            L500,190
                            L0,190 Z">
                     </path>
-
                     <path
                         class="chart-line"
                         d="M0,130
@@ -1434,971 +1000,605 @@ th {
                            L440,45
                            L500,30">
                     </path>
-
                 </svg>
-
                 <div class="chart-labels">
-
                     <span>May 1</span>
                     <span>May 8</span>
                     <span>May 15</span>
                     <span>May 22</span>
                     <span>May 29</span>
                     <span>Jun 5</span>
-
                 </div>
-
                 <div class="improving">
-
                     <strong>
                         🏆 You are improving!
                     </strong>
-
                     <p>
                         Keep practicing to achieve your dream role.
                     </p>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
-
-
 <!-- =========================================================
      TECHNICAL
 ========================================================= -->
-
 <section class="page" id="technical">
-
 <button class="back-btn"
         onclick="showPage('dashboard')">
-
     ← Back to Dashboard
-
 </button>
-
 <div class="page-heading">
-
 <h1>
     Technical Interview
 </h1>
-
 <p>
-    Test your technical knowledge.
+    Coming Soon
 </p>
-
 </div>
-
 <div class="option-grid">
-
-
 <div class="option-card">
-
 <div class="icon-box">
     🐍
 </div>
-
 <h3>
     Python
 </h3>
-
 <p>
     Variables, functions, OOP, exceptions,
     libraries and problem solving.
 </p>
-
 <button class="primary-btn"
-        onclick="alert('Python interview started!')">
-
-    Start Interview
-
+        onclick="showComingSoon('Python Technical Interview')">
+    Coming Soon
 </button>
-
 </div>
-
-
 <div class="option-card">
-
 <div class="icon-box icon-blue">
     🗄
 </div>
-
 <h3>
     SQL & DBMS
 </h3>
-
 <p>
     SQL queries, normalization, joins,
     transactions and database concepts.
 </p>
-
 <button class="primary-btn"
-        onclick="alert('SQL interview started!')">
-
-    Start Interview
-
+        onclick="showComingSoon('SQL & DBMS Technical Interview')">
+    Coming Soon
 </button>
-
 </div>
-
-
 <div class="option-card">
-
 <div class="icon-box icon-green">
     🤖
 </div>
-
 <h3>
     AI & Machine Learning
 </h3>
-
 <p>
     ML algorithms, preprocessing,
     evaluation and AI fundamentals.
 </p>
-
 <button class="primary-btn"
-        onclick="alert('AI interview started!')">
-
-    Start Interview
-
+        onclick="showComingSoon('AI & Machine Learning Technical Interview')">
+    Coming Soon
 </button>
-
 </div>
-
-
 <div class="option-card">
-
 <div class="icon-box icon-orange">
     💻
 </div>
-
 <h3>
     Data Structures
 </h3>
-
 <p>
     Arrays, strings, stacks, queues,
     trees and algorithms.
 </p>
-
 <button class="primary-btn"
-        onclick="alert('DSA interview started!')">
-
-    Start Interview
-
+        onclick="showComingSoon('Data Structures Technical Interview')">
+    Coming Soon
 </button>
-
 </div>
-
 </div>
-
 </section>
-
-
 <!-- =========================================================
      SKILLS
 ========================================================= -->
-
 <section class="page" id="skills">
-
 <button class="back-btn"
         onclick="showPage('dashboard')">
-
     ← Back to Dashboard
-
 </button>
-
 <div class="page-heading">
-
 <h1>
     Skill Gap Analyzer
 </h1>
-
 <p>
     Identify your strengths and areas that need improvement.
 </p>
-
 </div>
-
 <div class="stats-grid">
-
 <div class="stat">
 <div class="stat-label">Python</div>
 <div class="stat-value purple">85%</div>
 </div>
-
 <div class="stat">
 <div class="stat-label">SQL</div>
 <div class="stat-value">72%</div>
 </div>
-
 <div class="stat">
 <div class="stat-label">Machine Learning</div>
 <div class="stat-value">65%</div>
 </div>
-
 <div class="stat">
 <div class="stat-label">Communication</div>
 <div class="stat-value green">58%</div>
 </div>
-
 </div>
-
 <div class="large-card"
      style="margin-top:20px;">
-
 <h3 style="font-size:17px;margin-bottom:15px;">
     AI Recommendation
 </h3>
-
 <p style="color:#666;font-size:13px;line-height:1.7;">
-
 Your strongest skill is Python. Your current
 priority should be improving communication,
 SQL and machine learning fundamentals.
-
 </p>
-
 <button class="primary-btn"
         onclick="showPage('study')">
-
     Generate Learning Plan
-
 </button>
-
 </div>
-
 </section>
-
-
 <!-- =========================================================
      HISTORY
 ========================================================= -->
-
 <section class="page" id="history">
-
 <button class="back-btn"
         onclick="showPage('dashboard')">
-
     ← Back to Dashboard
-
 </button>
-
 <div class="page-heading">
-
 <h1>
     Interview History
 </h1>
-
 <p>
-    Track all your previous interview performances.
+    Track all your previous interview performances dynamically.
 </p>
-
 </div>
-
 <div class="table-wrapper">
-
-<table>
-
+<table id="historyTable">
 <thead>
-
 <tr>
-
 <th>Interview</th>
 <th>Type</th>
 <th>Score</th>
 <th>Date</th>
 <th>Status</th>
-
 </tr>
-
 </thead>
-
 <tbody>
-
-<tr>
-
-<td>HR Mock Interview</td>
-<td>HR</td>
-<td>76/100</td>
-<td>Today</td>
-<td>Completed</td>
-
-</tr>
-
-<tr>
-
-<td>Python Interview</td>
-<td>Technical</td>
-<td>82/100</td>
-<td>Yesterday</td>
-<td>Completed</td>
-
-</tr>
-
-<tr>
-
-<td>SQL Interview</td>
-<td>Technical</td>
-<td>74/100</td>
-<td>May 28</td>
-<td>Completed</td>
-
-</tr>
-
-<tr>
-
-<td>HR Practice</td>
-<td>HR</td>
-<td>68/100</td>
-<td>May 25</td>
-<td>Completed</td>
-
-</tr>
-
+<!-- Dynamically populated from LocalStorage or API -->
 </tbody>
-
 </table>
-
 </div>
-
 </section>
-
-
 <!-- =========================================================
      APTITUDE
 ========================================================= -->
-
 <section class="page" id="aptitude">
-
 <button class="back-btn"
         onclick="showPage('dashboard')">
-
     ← Back to Dashboard
-
 </button>
-
 <div class="page-heading">
-
 <h1>
     Aptitude Practice
 </h1>
-
 <p>
-    Practice placement aptitude questions.
+    Coming Soon
 </p>
-
 </div>
-
 <div class="option-grid">
-
 <div class="option-card">
-
 <h3>
     Quantitative Aptitude
 </h3>
-
 <p>
     Percentages, profit and loss, time and work,
     probability and number systems.
 </p>
-
 <button class="primary-btn"
-        onclick="alert('Quantitative Aptitude started!')">
-
-    Start Practice
-
+        onclick="showComingSoon('Quantitative Aptitude')">
+    Coming Soon
 </button>
-
 </div>
-
-
 <div class="option-card">
-
 <h3>
     Logical Reasoning
 </h3>
-
 <p>
     Puzzles, coding-decoding, sequences,
     directions and logical reasoning.
 </p>
-
 <button class="primary-btn"
-        onclick="alert('Logical Reasoning started!')">
-
-    Start Practice
-
+        onclick="showComingSoon('Logical Reasoning')">
+    Coming Soon
 </button>
-
 </div>
-
 </div>
-
 </section>
-
-
 <!-- =========================================================
      STUDY
 ========================================================= -->
-
 <section class="page" id="study">
-
 <button class="back-btn"
         onclick="showPage('dashboard')">
-
     ← Back to Dashboard
-
 </button>
-
 <div class="page-heading">
-
 <h1>
     Study Materials
 </h1>
-
 <p>
-    Improve your placement skills.
+    Coming Soon
 </p>
-
 </div>
-
 <div class="option-grid">
-
 <div class="option-card">
-
 <h3>
     Python
 </h3>
-
 <p>
     Python fundamentals, OOP, functions,
     libraries and interview questions.
 </p>
-
-<button class="primary-btn">
-    Learn
+<button class="primary-btn"
+        onclick="showComingSoon('Python Study Materials')">
+    Coming Soon
 </button>
-
 </div>
-
-
 <div class="option-card">
-
 <h3>
     SQL & DBMS
 </h3>
-
 <p>
     SQL queries, DBMS concepts, joins,
     normalization and interview preparation.
 </p>
-
-<button class="primary-btn">
-    Learn
+<button class="primary-btn"
+        onclick="showComingSoon('SQL & DBMS Study Materials')">
+    Coming Soon
 </button>
-
 </div>
-
-
 <div class="option-card">
-
 <h3>
     Machine Learning
 </h3>
-
 <p>
     Supervised learning, unsupervised learning,
     preprocessing and model evaluation.
 </p>
-
-<button class="primary-btn">
-    Learn
+<button class="primary-btn"
+        onclick="showComingSoon('Machine Learning Study Materials')">
+    Coming Soon
 </button>
-
 </div>
-
-
 <div class="option-card">
-
 <h3>
     Communication
 </h3>
-
 <p>
     Improve speaking, confidence and interview
     communication.
 </p>
-
-<button class="primary-btn">
-    Learn
+<button class="primary-btn"
+        onclick="showComingSoon('Communication Study Materials')">
+    Coming Soon
 </button>
-
 </div>
-
 </div>
-
 </section>
-
-
 <!-- =========================================================
      COMPANY
 ========================================================= -->
-
 <section class="page" id="company">
-
 <button class="back-btn"
         onclick="showPage('dashboard')">
-
     ← Back to Dashboard
-
 </button>
-
 <div class="page-heading">
-
 <h1>
     Company Preparation
 </h1>
-
 <p>
-    Prepare specifically for your target companies.
+    Coming Soon
 </p>
-
 </div>
-
 <div class="option-grid">
-
 <div class="option-card">
-
 <h3>
     TCS
 </h3>
-
 <p>
     Aptitude → Technical → HR
 </p>
-
-<button class="primary-btn">
-    Prepare
+<button class="primary-btn"
+        onclick="showComingSoon('TCS Company Preparation')">
+    Coming Soon
 </button>
-
 </div>
-
-
 <div class="option-card">
-
 <h3>
     Infosys
 </h3>
-
 <p>
     Aptitude → Technical → Interview
 </p>
-
-<button class="primary-btn">
-    Prepare
+<button class="primary-btn"
+        onclick="showComingSoon('Infosys Company Preparation')">
+    Coming Soon
 </button>
-
 </div>
-
-
 <div class="option-card">
-
 <h3>
     Accenture
 </h3>
-
 <p>
     Cognitive → Technical → Coding → Communication
 </p>
-
-<button class="primary-btn">
-    Prepare
+<button class="primary-btn"
+        onclick="showComingSoon('Accenture Company Preparation')">
+    Coming Soon
 </button>
-
 </div>
-
-
 <div class="option-card">
-
 <h3>
     Product Companies
 </h3>
-
 <p>
     DSA → System Design → Technical → HR
 </p>
-
-<button class="primary-btn">
-    Prepare
+<button class="primary-btn"
+        onclick="showComingSoon('Product Companies Preparation')">
+    Coming Soon
 </button>
-
 </div>
-
 </div>
-
 </section>
-
-
 <!-- =========================================================
      SETTINGS
 ========================================================= -->
-
 <section class="page" id="settings">
-
 <div class="page-heading">
-
 <h1>
     Settings
 </h1>
-
 <p>
-    Manage your PlacementAI preferences.
+    Manage your InterviewIQ AI preferences with localStorage.
 </p>
-
 </div>
-
 <div class="large-card">
-
 <div class="form-group">
-
 <label>
     Target Role
 </label>
-
-<input type="text"
+<input type="text" id="settingTargetRole"
        placeholder="Example: Data Scientist">
-
 </div>
-
-
 <div class="form-group">
-
 <label>
     Preferred Skill
 </label>
-
-<select>
-
+<select id="settingPreferredSkill">
 <option>Artificial Intelligence</option>
 <option>Data Science</option>
 <option>Machine Learning</option>
 <option>Software Development</option>
-
 </select>
-
 </div>
-
-
-<button class="primary-btn"
-        onclick="alert('Settings saved!')">
-
+<button class="primary-btn" id="saveSettingsBtn">
     Save Changes
-
 </button>
-
 </div>
-
 </section>
-
-
 <!-- =========================================================
      HELP
 ========================================================= -->
-
 <section class="page" id="help">
-
 <div class="page-heading">
-
 <h1>
     Help & Support
 </h1>
-
 <p>
-    Need help using PlacementAI?
+    Need help using InterviewIQ AI?
 </p>
-
 </div>
-
 <div class="option-grid">
-
 <div class="option-card">
-
 <h3>
     How does AI Interview work?
 </h3>
-
 <p>
     Practice realistic interview questions
     and receive AI-powered feedback.
 </p>
-
 </div>
-
-
 <div class="option-card">
-
 <h3>
     How is my score calculated?
 </h3>
-
 <p>
     Your score is based on communication,
     technical knowledge, problem solving
     and confidence.
 </p>
-
 </div>
-
 </div>
-
 </section>
-
-
 </main>
-
-
 <script>
-
 /* =========================================================
    API
 ========================================================= */
-
 const API_URL =
     "https://interview-project-uimv.onrender.com";
-
 
 /* =========================================================
    PAGE NAVIGATION
 ========================================================= */
-
 const navItems =
     document.querySelectorAll(
         ".nav-item[data-page]"
     );
-
 const pages =
     document.querySelectorAll(".page");
-
-
 function showPage(pageId) {
-
     pages.forEach(page => {
-
         page.classList.remove("active-page");
-
     });
-
-
     const selected =
         document.getElementById(pageId);
-
-
     if (selected) {
-
         selected.classList.add("active-page");
-
-    }
-
-
-    navItems.forEach(item => {
-
-        item.classList.remove("active");
-
-
-        if (item.dataset.page === pageId) {
-
-            item.classList.add("active");
-
+        if (pageId === 'history') {
+            loadInterviewHistory();
         }
-
+    }
+    navItems.forEach(item => {
+        item.classList.remove("active");
+        if (item.dataset.page === pageId) {
+            item.classList.add("active");
+        }
     });
-
-
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
-
     document
         .getElementById("sidebar")
         .classList.remove("open");
-
 }
-
 
 /* =========================================================
    SIDEBAR BUTTONS
 ========================================================= */
-
 navItems.forEach(item => {
-
     item.addEventListener(
         "click",
         function() {
-
             showPage(
                 this.dataset.page
             );
-
         }
     );
-
 });
-
 
 /* =========================================================
    MOBILE MENU
 ========================================================= */
-
 document
     .getElementById("mobileMenu")
     .addEventListener(
         "click",
         function() {
-
             document
                 .getElementById("sidebar")
                 .classList.toggle("open");
-
         }
     );
-
 
 /* =========================================================
    COLLAPSE SIDEBAR
 ========================================================= */
-
 document
     .getElementById("collapseSidebar")
     .addEventListener(
         "click",
         function() {
-
             const sidebar =
                 document.getElementById(
                     "sidebar"
                 );
-
             const main =
                 document.querySelector(
                     ".main"
                 );
-
-
             if (
                 sidebar.style.width === "80px"
             ) {
-
                 sidebar.style.width =
                     "270px";
-
                 main.style.marginLeft =
                     "270px";
-
             } else {
-
                 sidebar.style.width =
                     "80px";
-
                 main.style.marginLeft =
                     "80px";
-
             }
-
         }
     );
-
 
 /* =========================================================
    LOGOUT
 ========================================================= */
-
 document
     .getElementById("logout")
     .addEventListener(
         "click",
         function() {
-
             const confirmLogout =
                 confirm(
                     "Are you sure you want to logout?"
                 );
-
-
             if (confirmLogout) {
-
                 localStorage.clear();
-
                 sessionStorage.clear();
-
                 window.location.href =
                     "login.html";
-
             }
-
         }
     );
 
-
 /* =========================================================
-   LOAD REAL ANALYTICS
+   LOAD REAL ANALYTICS (/api/analytics)
 ========================================================= */
-
 async function loadDashboardAnalytics() {
-
     try {
-
         const response =
             await fetch(
                 `${API_URL}/api/analytics`
             );
-
-
         if (!response.ok) {
-
             throw new Error(
                 "Analytics request failed"
             );
-
         }
-
-
         const data =
             await response.json();
-
-
         document
             .getElementById(
                 "dashboardTotalInterviews"
             )
             .textContent =
             data.totalInterviews ?? 0;
-
-
         document
             .getElementById(
                 "dashboardAverageScore"
             )
             .textContent =
             data.averageScore ?? 0;
-
-
         document
             .getElementById(
                 "dashboardBestScore"
             )
             .textContent =
             data.bestScore ?? 0;
-
-
         document
             .getElementById(
                 "dashboardImprovement"
@@ -2407,81 +1607,109 @@ async function loadDashboardAnalytics() {
             data.improvement !== undefined
                 ? "+" + data.improvement + "%"
                 : "--";
-
-
     } catch (error) {
-
         console.error(
             "Dashboard Analytics Error:",
             error
         );
-
-
         document
             .getElementById(
                 "dashboardTotalInterviews"
             )
             .textContent = "--";
-
-
         document
             .getElementById(
                 "dashboardAverageScore"
             )
             .textContent = "--";
-
-
         document
             .getElementById(
                 "dashboardBestScore"
             )
             .textContent = "--";
-
-
         document
             .getElementById(
                 "dashboardImprovement"
             )
             .textContent = "--";
-
     }
-
 }
 
+/* =========================================================
+   DYNAMIC INTERVIEW HISTORY
+========================================================= */
+function loadInterviewHistory() {
+    const historyTableBody = document.querySelector("#historyTable tbody");
+    if (!historyTableBody) return;
+
+    // Retrieve from localStorage or use default mock array if empty
+    let historyData = JSON.parse(localStorage.getItem("interviewHistory")) || [
+        { interview: "HR Mock Interview", type: "HR", score: "76/100", date: "Today", status: "Completed" },
+        { interview: "Python Interview", type: "Technical", score: "82/100", date: "Yesterday", status: "Completed" },
+        { interview: "SQL Interview", type: "Technical", score: "74/100", date: "May 28", status: "Completed" },
+        { interview: "HR Practice", type: "HR", score: "68/100", date: "May 25", status: "Completed" }
+    ];
+
+    historyTableBody.innerHTML = "";
+    historyData.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${item.interview}</td>
+            <td>${item.type}</td>
+            <td>${item.score}</td>
+            <td>${item.date}</td>
+            <td>${item.status}</td>
+        `;
+        historyTableBody.appendChild(row);
+    });
+}
+
+/* =========================================================
+   SETTINGS WITH LOCALSTORAGE
+========================================================= */
+const saveSettingsBtn = document.getElementById("saveSettingsBtn");
+const settingTargetRole = document.getElementById("settingTargetRole");
+const settingPreferredSkill = document.getElementById("settingPreferredSkill");
+
+function loadSettings() {
+    const savedRole = localStorage.getItem("targetRole");
+    const savedSkill = localStorage.getItem("preferredSkill");
+    if (savedRole && settingTargetRole) settingTargetRole.value = savedRole;
+    if (savedSkill && settingPreferredSkill) settingPreferredSkill.value = savedSkill;
+}
+
+if (saveSettingsBtn) {
+    saveSettingsBtn.addEventListener("click", () => {
+        if (settingTargetRole) localStorage.setItem("targetRole", settingTargetRole.value);
+        if (settingPreferredSkill) localStorage.setItem("preferredSkill", settingPreferredSkill.value);
+        alert("Settings saved successfully to localStorage!");
+    });
+}
 
 /* =========================================================
    KEYBOARD SHORTCUT
 ========================================================= */
-
 document.addEventListener(
     "keydown",
     function(event) {
-
         if (event.key === "Escape") {
-
             showPage("dashboard");
-
         }
-
     }
 );
 
 function showComingSoon(feature) {
-
     alert(
         "🚀 " + feature +
         "\n\nThis feature is coming soon!\nWe are working to make it better for you."
     );
-
 }
+
 /* =========================================================
-   START DASHBOARD
+   START DASHBOARD & INITIALIZE STORAGE
 ========================================================= */
-
 loadDashboardAnalytics();
-
+loadSettings();
 </script>
-
 </body>
-
 </html>
