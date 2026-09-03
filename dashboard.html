@@ -12,272 +12,321 @@
     box-sizing: border-box;
 }
 :root {
-    --primary: #5b45e8;
-    --primary-light: #eeebff;
-    --dark: #0c1229;
-    --text: #15182b;
-    --muted: #73778a;
-    --border: #e7e7ef;
-    --bg: #f8f8fc;
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --primary-light: #e0e7ff;
+    --dark: #0f172a;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #f1f5f9;
+    --border-dark: #e2e8f0;
+    --bg: #f8fafc;
     --white: #ffffff;
-    --green: #18a957;
-    --orange: #ff8b3d;
-    --blue: #3182f6;
+    --green: #10b981;
+    --orange: #f59e0b;
+    --blue: #3b82f6;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 10px 30px -4px rgba(99, 102, 241, 0.15);
 }
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: var(--bg);
     color: var(--text);
+    -webkit-font-smoothing: antialiased;
 }
+
 /* =========================================================
    SIDEBAR
 ========================================================= */
 .sidebar {
-    width: 270px;
+    width: 280px;
     height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
-    background: linear-gradient(180deg, #101632, #080d21);
+    background: #0f172a;
     color: white;
-    padding: 22px 14px;
+    padding: 24px 16px;
     z-index: 1000;
     overflow-y: auto;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .logo {
     display: flex;
     align-items: center;
-    gap: 11px;
-    padding: 4px 10px 30px;
+    gap: 12px;
+    padding: 4px 8px 32px;
 }
 .logo-icon {
-    width: 44px;
-    height: 44px;
-    background: linear-gradient(135deg, #6046ee, #815cff);
-    border-radius: 11px;
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 23px;
+    font-size: 20px;
+    box-shadow: 0 8px 16px -4px rgba(99, 102, 241, 0.4);
 }
 .logo-text {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
+    letter-spacing: -0.025em;
 }
 .logo-text span {
-    color: #8c7cff;
+    color: #818cf8;
 }
 .logo-subtitle {
-    font-size: 10px;
-    color: #a8adc1;
+    font-size: 11px;
+    color: #94a3b8;
     margin-top: 2px;
+    font-weight: 500;
 }
 .menu-title {
-    font-size: 10px;
-    color: #858aa1;
+    font-size: 11px;
+    color: #64748b;
     text-transform: uppercase;
-    padding: 16px 12px 7px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    padding: 20px 12px 8px;
 }
 .nav-item {
     width: 100%;
     border: none;
     background: transparent;
-    color: #c7cad7;
+    color: #94a3b8;
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap: 12px;
     padding: 12px 14px;
-    margin: 3px 0;
-    border-radius: 9px;
+    margin: 4px 0;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-size: 13px;
+    font-weight: 500;
     text-align: left;
-    transition: 0.2s;
+    transition: all 0.2s ease;
 }
 .nav-item:hover {
-    background: rgba(111, 88, 239, 0.2);
+    background: rgba(255, 255, 255, 0.05);
     color: white;
 }
 .nav-item.active {
-    background: linear-gradient(90deg, #5a45e7, #704de8);
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
     color: white;
-    box-shadow: 0 5px 15px rgba(91, 69, 232, .25);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
 }
 .nav-icon {
     width: 20px;
     text-align: center;
-    font-size: 17px;
+    font-size: 16px;
 }
 .logout-btn {
-    color: #ff6868;
+    color: #f87171;
 }
 .logout-btn:hover {
-    background: rgba(255, 80, 80, .1);
-    color: #ff8585;
+    background: rgba(248, 113, 113, 0.1);
+    color: #ef4444;
 }
 .collapse-btn {
-    margin-top: 25px;
-    border-top: 1px solid rgba(255,255,255,.12);
-    padding-top: 15px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 16px;
 }
+
 /* =========================================================
-   MAIN
+   MAIN & TOPBAR
 ========================================================= */
 .main {
-    margin-left: 270px;
+    margin-left: 280px;
     min-height: 100vh;
+    transition: margin-left 0.3s ease;
 }
-/* =========================================================
-   TOPBAR
-========================================================= */
 .topbar {
-    height: 62px;
-    background: white;
-    border-bottom: 1px solid var(--border);
+    height: 70px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-dark);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 35px;
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 .menu-toggle {
     border: none;
     background: transparent;
-    font-size: 23px;
+    font-size: 20px;
     cursor: pointer;
+    color: var(--text);
 }
 .notification {
     position: relative;
-    font-size: 21px;
+    font-size: 18px;
+    cursor: pointer;
+    background: var(--bg);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-dark);
+    transition: 0.2s;
+}
+.notification:hover {
+    background: var(--border-dark);
 }
 .notification-dot {
     position: absolute;
-    right: -3px;
-    top: -4px;
-    width: 16px;
-    height: 16px;
-    background: #ff4545;
-    color: white;
+    right: 8px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
     border-radius: 50%;
-    font-size: 9px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
+
 /* =========================================================
-   PAGE
+   PAGE CONTAINER
 ========================================================= */
 .page {
     display: none;
-    padding: 30px 42px;
+    padding: 36px 48px;
+    animation: fadeIn 0.3s ease;
 }
 .page.active-page {
     display: block;
 }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 .page-heading {
-    margin-bottom: 25px;
+    margin-bottom: 28px;
 }
 .page-heading h1 {
-    font-size: 25px;
-    margin-bottom: 5px;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
 }
 .page-heading p {
     color: var(--muted);
-    font-size: 13px;
+    font-size: 14px;
 }
+
 /* =========================================================
-   DASHBOARD
+   CARDS & DASHBOARD
 ========================================================= */
 .quick-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    gap: 20px;
 }
 .card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(20,20,50,.02);
+    background: var(--white);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .quick-card {
-    min-height: 165px;
-    transition: .2s;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
 }
 .quick-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(20,20,50,.07);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: #c7d2fe;
 }
 .icon-box {
-    width: 43px;
-    height: 43px;
-    border-radius: 11px;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
     background: var(--primary-light);
     color: var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
-.icon-blue {
-    background: #e9f2ff;
-    color: var(--blue);
-}
-.icon-green {
-    background: #e7f9ef;
-    color: var(--green);
-}
-.icon-orange {
-    background: #fff0e7;
-    color: var(--orange);
-}
+.icon-blue { background: #eff6ff; color: var(--blue); }
+.icon-green { background: #ecfdf5; color: var(--green); }
+.icon-orange { background: #fffbeb; color: var(--orange); }
+
 .quick-card h3 {
-    font-size: 14px;
-    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
 }
 .quick-card p {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.5;
     color: var(--muted);
-    min-height: 37px;
+    margin-bottom: 16px;
 }
 .start-btn {
-    border: 1px solid #cfcbe7;
-    background: white;
+    border: 1px solid var(--border-dark);
+    background: var(--white);
     color: var(--primary);
-    padding: 7px 17px;
-    border-radius: 7px;
+    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 11px;
+    font-size: 12px;
+    transition: all 0.2s;
+    align-self: flex-start;
 }
 .start-btn:hover {
     background: var(--primary);
     color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
 }
+
 /* =========================================================
-   HISTORY
+   HISTORY BANNER
 ========================================================= */
 .history-banner {
-    margin-top: 17px;
-    background: linear-gradient(90deg, #f0edff, #f8f7ff);
-    border-radius: 12px;
-    padding: 17px 20px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #f5f3ff, #eef2ff);
+    border: 1px solid #e0e7ff;
+    border-radius: var(--radius);
+    padding: 20px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    transition: all 0.2s;
+}
+.history-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.08);
 }
 .history-left {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
 }
 .history-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    background: #e2dcff;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: #e0e7ff;
     color: var(--primary);
     display: flex;
     align-items: center;
@@ -285,134 +334,166 @@ body {
     font-size: 20px;
 }
 .history-banner h3 {
-    font-size: 13px;
-    margin-bottom: 4px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2px;
 }
 .history-banner p {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--muted);
 }
+.history-banner strong {
+    font-size: 18px;
+    color: var(--primary);
+}
+
 /* =========================================================
-   STATS
+   STATS SECTION
 ========================================================= */
 .section-title {
-    font-size: 17px;
-    margin: 25px 0 14px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 32px 0 16px;
+    letter-spacing: -0.02em;
 }
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 17px;
+    gap: 20px;
 }
 .stat {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px;
+    background: var(--white);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: var(--shadow);
 }
 .stat-label {
     color: var(--muted);
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 .stat-value {
-    font-size: 27px;
-    font-weight: 700;
-    margin-top: 7px;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-top: 8px;
+    letter-spacing: -0.03em;
 }
 .stat-value span {
     color: var(--muted);
-    font-size: 12px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 500;
 }
-.purple {
-    color: var(--primary);
-}
-.green {
-    color: var(--green);
-}
+.purple { color: var(--primary); }
+.green { color: var(--green); }
+
 /* =========================================================
    LOWER DASHBOARD
 ========================================================= */
 .dashboard-lower {
     display: grid;
     grid-template-columns: 1fr 1fr 1.3fr;
-    gap: 18px;
-    margin-top: 18px;
+    gap: 20px;
+    margin-top: 20px;
 }
 .panel-title {
-    font-size: 15px;
-    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
 }
 .activity-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 0;
-    border-bottom: 1px solid #eeeef4;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
 }
 .activity-item:last-child {
     border-bottom: none;
 }
 .activity-icon {
-    width: 35px;
-    height: 35px;
-    border-radius: 9px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
     background: var(--primary-light);
+    color: var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 14px;
 }
 .activity-info {
     flex: 1;
 }
 .activity-info strong {
-    font-size: 11px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
     display: block;
+    margin-bottom: 2px;
 }
 .activity-info small {
     color: var(--muted);
-    font-size: 10px;
+    font-size: 11px;
 }
 .time {
-    color: #999;
-    font-size: 9px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 500;
 }
 .next-item {
-    border: 1px solid #eeeeF4;
-    padding: 11px;
-    border-radius: 9px;
-    margin-bottom: 9px;
+    border: 1px solid var(--border);
+    background: #fafafa;
+    padding: 14px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    transition: 0.2s;
+}
+.next-item:hover {
+    background: var(--white);
+    border-color: var(--border-dark);
 }
 .next-info {
     flex: 1;
 }
 .next-info strong {
     display: block;
-    font-size: 11px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 2px;
 }
 .next-info small {
     color: var(--muted);
-    font-size: 9px;
+    font-size: 11px;
 }
+
 /* =========================================================
-   CHART
+   CHART WIDGET
 ========================================================= */
 .chart-container {
-    height: 230px;
+    height: 220px;
     position: relative;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 .chart {
     width: 100%;
-    height: 180px;
+    height: 170px;
 }
 .chart-line {
     fill: none;
     stroke: var(--primary);
     stroke-width: 3;
+    stroke-linecap: round;
 }
 .chart-area {
     fill: url(#gradient);
@@ -420,26 +501,32 @@ body {
 .chart-labels {
     display: flex;
     justify-content: space-between;
-    font-size: 9px;
-    color: #999;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 4px;
 }
 .improving {
-    margin-top: 5px;
-    background: #f3f0ff;
-    padding: 13px;
-    border-radius: 10px;
+    margin-top: 16px;
+    background: #f5f3ff;
+    border: 1px solid #ede9fe;
+    padding: 14px;
+    border-radius: var(--radius-sm);
 }
 .improving strong {
     color: var(--primary);
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2px;
 }
 .improving p {
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 3px;
+    font-size: 12px;
+    color: #6d28d9;
 }
+
 /* =========================================================
-   GENERIC PAGE
+   GENERIC PAGES & TABLES
 ========================================================= */
 .back-btn {
     border: none;
@@ -447,33 +534,51 @@ body {
     cursor: pointer;
     margin-bottom: 20px;
     color: var(--muted);
+    font-weight: 600;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+}
+.back-btn:hover {
+    color: var(--dark);
 }
 .large-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 25px;
+    background: var(--white);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
 }
 .option-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    gap: 20px;
 }
 .option-card {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px;
-    background: white;
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius);
+    padding: 24px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    transition: 0.2s;
+}
+.option-card:hover {
+    border-color: #c7d2fe;
+    box-shadow: var(--shadow-hover);
 }
 .option-card h3 {
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
     margin-bottom: 8px;
 }
 .option-card p {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--muted);
     line-height: 1.5;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 .primary-btn {
     background: var(--primary);
@@ -482,105 +587,95 @@ body {
     padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.2s;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 .primary-btn:hover {
-    background: #4936cf;
+    background: var(--primary-hover);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
 }
-/* =========================================================
-   TABLE
-========================================================= */
 .table-wrapper {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 13px;
+    background: var(--white);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius);
     overflow: hidden;
+    box-shadow: var(--shadow);
 }
 table {
     width: 100%;
     border-collapse: collapse;
 }
-th,
-td {
-    padding: 15px;
+th, td {
+    padding: 16px 20px;
     text-align: left;
-    border-bottom: 1px solid #eee;
-    font-size: 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
 }
 th {
-    background: #fafaff;
-    color: #666;
+    background: #f8fafc;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
 }
-/* =========================================================
-   SETTINGS
-========================================================= */
+td {
+    color: var(--text);
+}
+tr:last-child td {
+    border-bottom: none;
+}
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 .form-group label {
     display: block;
-    font-size: 12px;
-    margin-bottom: 7px;
+    font-size: 13px;
+    margin-bottom: 8px;
     font-weight: 600;
+    color: var(--dark);
 }
-.form-group input,
-.form-group select {
+.form-group input, .form-group select {
     width: 100%;
-    padding: 11px;
-    border: 1px solid #ddd;
+    padding: 12px 14px;
+    border: 1px solid var(--border-dark);
     border-radius: 8px;
+    font-size: 13px;
+    color: var(--text);
+    background: var(--bg);
+    transition: 0.2s;
 }
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
 /* =========================================================
-   MOBILE
+   RESPONSIVE QUERIES
 ========================================================= */
 @media(max-width:1100px) {
-    .quick-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .dashboard-lower {
-        grid-template-columns: 1fr 1fr;
-    }
-    .chart-panel {
-        grid-column: span 2;
-    }
+    .quick-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .dashboard-lower { grid-template-columns: 1fr 1fr; }
+    .chart-panel { grid-column: span 2; }
 }
 @media(max-width:800px) {
-    .sidebar {
-        transform: translateX(-100%);
-        transition: .3s;
-    }
-    .sidebar.open {
-        transform: translateX(0);
-    }
-    .main {
-        margin-left: 0;
-    }
-    .page {
-        padding: 25px 18px;
-    }
-    .topbar {
-        padding: 0 18px;
-    }
-    .dashboard-lower {
-        grid-template-columns: 1fr;
-    }
-    .chart-panel {
-        grid-column: span 1;
-    }
-    .option-grid {
-        grid-template-columns: 1fr;
-    }
+    .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; }
+    .page { padding: 28px 20px; }
+    .topbar { padding: 0 20px; }
+    .dashboard-lower { grid-template-columns: 1fr; }
+    .chart-panel { grid-column: span 1; }
+    .option-grid { grid-template-columns: 1fr; }
 }
 @media(max-width:550px) {
-    .quick-grid,
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-    .page-heading h1 {
-        font-size: 21px;
-    }
+    .quick-grid, .stats-grid { grid-template-columns: 1fr; }
+    .page-heading h1 { font-size: 22px; }
 }
 </style>
 </head>
@@ -590,1083 +685,515 @@ th {
 ========================================================= -->
 <aside class="sidebar" id="sidebar">
     <div class="logo">
-        <div class="logo-icon">
-            🤖
-        </div>
+        <div class="logo-icon">🤖</div>
         <div>
-            <div class="logo-text">
-                InterviewIQ<span>AI</span>
-            </div>
-            <div class="logo-subtitle">
-                Your Interview AI
-            </div>
+            <div class="logo-text">InterviewIQ<span>AI</span></div>
+            <div class="logo-subtitle">Next-Gen Prep Platform</div>
         </div>
     </div>
-    <div class="menu-title">
-        Main
-    </div>
+    <div class="menu-title">Main</div>
     <button class="nav-item active" data-page="dashboard">
-        <span class="nav-icon">⌂</span>
-        Dashboard
+        <span class="nav-icon">⌂</span> Dashboard
     </button>
-    <!-- FIXED HR INTERVIEW -->
-    <button class="nav-item"
-            onclick="window.location.href='HR%20Interview.html'">
-        <span class="nav-icon">♟</span>
-        HR Interview
+    <button class="nav-item" onclick="window.location.href='HR%20Interview.html'">
+        <span class="nav-icon">♟</span> HR Interview
     </button>
     <button class="nav-item" data-page="technical">
-        <span class="nav-icon">&lt;/&gt;</span>
-        Technical Interview
+        <span class="nav-icon">&lt;/&gt;</span> Technical Interview
     </button>
     <button class="nav-item" data-page="skills">
-        <span class="nav-icon">▥</span>
-        Skill Gap Analyzer
+        <span class="nav-icon">▥</span> Skill Gap Analyzer
     </button>
     <button class="nav-item" data-page="history">
-        <span class="nav-icon">◷</span>
-        Interview History
+        <span class="nav-icon">◷</span> Interview History
     </button>
-    <button class="nav-item"
-            onclick="window.location.href='analytics.html'">
-        <span class="nav-icon">⌁</span>
-        Analytics
+    <button class="nav-item" onclick="window.location.href='analytics.html'">
+        <span class="nav-icon">⌁</span> Analytics
     </button>
-    <div class="menu-title">
-        Learning
-    </div>
+    <div class="menu-title">Learning</div>
     <button class="nav-item" data-page="aptitude">
-        <span class="nav-icon">▦</span>
-        Aptitude Practice
+        <span class="nav-icon">▦</span> Aptitude Practice
     </button>
-    <button class="nav-item"
-            onclick="window.location.href='feedback.html'">
-        <span class="nav-icon">▤</span>
-        Feedback
+    <button class="nav-item" onclick="window.location.href='feedback.html'">
+        <span class="nav-icon">▤</span> Feedback
     </button>
     <button class="nav-item" data-page="company">
-        <span class="nav-icon">▥</span>
-        Company Prep
+        <span class="nav-icon">▥</span> Company Prep
     </button>
-    <div class="menu-title">
-        Account
-    </div>
+    <div class="menu-title">Account</div>
     <button class="nav-item" data-page="settings">
-        <span class="nav-icon">⚙</span>
-        Settings
+        <span class="nav-icon">⚙</span> Settings
     </button>
     <button class="nav-item" data-page="help">
-        <span class="nav-icon">?</span>
-        Help & Support
+        <span class="nav-icon">?</span> Help & Support
     </button>
     <button class="nav-item logout-btn" id="logout">
-        <span class="nav-icon">↪</span>
-        Logout
+        <span class="nav-icon">↪</span> Logout
     </button>
     <div class="collapse-btn">
         <button class="nav-item" id="collapseSidebar">
-            <span class="nav-icon">‹</span>
-            Collapse
+            <span class="nav-icon">‹</span> Collapse Menu
         </button>
     </div>
 </aside>
+
 <!-- =========================================================
      MAIN
 ========================================================= -->
 <main class="main">
 <header class="topbar">
-    <button class="menu-toggle" id="mobileMenu">
-        ☰
-    </button>
+    <button class="menu-toggle" id="mobileMenu">☰</button>
     <div></div>
     <div class="notification">
         🔔
-        <span class="notification-dot">
-            3
-        </span>
+        <span class="notification-dot"></span>
     </div>
 </header>
+
 <!-- =========================================================
      DASHBOARD
 ========================================================= -->
 <section class="page active-page" id="dashboard">
     <div class="page-heading">
-        <h1>
-            Welcome back!
-        </h1>
-        <p>
-            Let's crack your dream role today.
-        </p>
+        <h1>Welcome back! 👋</h1>
+        <p>Track your stats and conquer your dream role today.</p>
     </div>
     <div class="quick-grid">
-        <!-- FIXED HR CARD -->
-        <div class="card quick-card"
-             onclick="window.location.href='HR%20Interview.html'"
-             style="cursor:pointer;">
-            <div class="icon-box">
-                ♟
-            </div>
-            <h3>
-                HR Interview
-            </h3>
-            <p>
-                Practice HR questions with AI.
-            </p>
-            <button class="start-btn"
-                    onclick="window.location.href='HR%20Interview.html'; event.stopPropagation();">
-                Start
-            </button>
-        </div>
-        <div class="card quick-card">
-            <div class="icon-box icon-blue">
-                &lt;/&gt;
-            </div>
-            <h3>
-                Technical Interview
-            </h3>
-            <p>
-                Practice technical questions.
-            </p>
-            <button class="start-btn"
-                    onclick="showComingSoon('Technical Interview')">
-                Coming Soon
-            </button>
-        </div>
-        <div class="card quick-card">
-            <div class="icon-box icon-green">
-                ▥
-            </div>
-            <h3>
-                Skill Gap Analyzer
-            </h3>
-            <p>
-                Find your weak areas and improve.
-            </p>
-            <button class="start-btn"
-                    onclick="showPage('skills')">
-                Start
-            </button>
-        </div>
-    </div>
-    <!-- HISTORY -->
-    <div class="history-banner"
-         onclick="showPage('history')">
-        <div class="history-left">
-            <div class="history-icon">
-                ▣
-            </div>
+        <div class="card quick-card" onclick="window.location.href='HR%20Interview.html'" style="cursor:pointer;">
             <div>
-                <h3>
-                    Interview History
-                </h3>
-                <p>
-                    View your past interviews and performance
-                </p>
+                <div class="icon-box">♟</div>
+                <h3>HR Interview</h3>
+                <p>Simulate face-to-face HR sessions with real-time feedback.</p>
+            </div>
+            <button class="start-btn" onclick="window.location.href='HR%20Interview.html'; event.stopPropagation();">Start Session</button>
+        </div>
+        <div class="card quick-card">
+            <div>
+                <div class="icon-box icon-blue">&lt;/&gt;</div>
+                <h3>Technical Interview</h3>
+                <p>Deep-dive into programming and logic assessments.</p>
+            </div>
+            <button class="start-btn" onclick="showComingSoon('Technical Interview')">Coming Soon</button>
+        </div>
+        <div class="card quick-card">
+            <div>
+                <div class="icon-box icon-green">▥</div>
+                <h3>Skill Gap Analyzer</h3>
+                <p>Pinpoint weak areas and focus your preparation smartly.</p>
+            </div>
+            <button class="start-btn" onclick="showPage('skills')">Analyze</button>
+        </div>
+    </div>
+
+    <!-- HISTORY BANNER -->
+    <div class="history-banner" onclick="showPage('history')">
+        <div class="history-left">
+            <div class="history-icon">◷</div>
+            <div>
+                <h3>Interview History & Logs</h3>
+                <p>Review comprehensive reports of all past mock tests.</p>
             </div>
         </div>
-        <strong>
-            →
-        </strong>
+        <strong>→</strong>
     </div>
+
     <!-- STATS -->
-    <h2 class="section-title">
-        Your Performance
-    </h2>
+    <h2 class="section-title">Performance Overview</h2>
     <div class="stats-grid">
         <div class="stat">
-            <div class="stat-label">
-                Total Interviews
-            </div>
-            <div class="stat-value purple"
-                 id="dashboardTotalInterviews">
-                --
-            </div>
+            <div class="stat-label">Total Interviews</div>
+            <div class="stat-value purple" id="dashboardTotalInterviews">--</div>
         </div>
         <div class="stat">
-            <div class="stat-label">
-                Average Score
-            </div>
+            <div class="stat-label">Average Score</div>
             <div class="stat-value">
-                <span id="dashboardAverageScore">
-                    --
-                </span>
-                <span>
-                    /100
-                </span>
+                <span id="dashboardAverageScore">--</span><span>/100</span>
             </div>
         </div>
         <div class="stat">
-            <div class="stat-label">
-                Best Score
-            </div>
+            <div class="stat-label">Best Score</div>
             <div class="stat-value">
-                <span id="dashboardBestScore">
-                    --
-                </span>
-                <span>
-                    /100
-                </span>
+                <span id="dashboardBestScore">--</span><span>/100</span>
             </div>
         </div>
         <div class="stat">
-            <div class="stat-label">
-                Improvement
-            </div>
+            <div class="stat-label">Improvement Rate</div>
             <div class="stat-value green">
-                <span id="dashboardImprovement">
-                    --
-                </span>
+                <span id="dashboardImprovement">--</span>
             </div>
         </div>
     </div>
+
     <!-- LOWER DASHBOARD -->
     <div class="dashboard-lower">
         <!-- ACTIVITY -->
         <div class="card">
-            <h3 class="panel-title">
-                Recent Activity
-            </h3>
+            <h3 class="panel-title">Recent Activity</h3>
             <div class="activity-item">
-                <div class="activity-icon">
-                    ♟
-                </div>
+                <div class="activity-icon">♟</div>
                 <div class="activity-info">
-                    <strong>
-                        Completed HR Mock Interview
-                    </strong>
-                    <small>
-                        Score: 76/100
-                    </small>
+                    <strong>HR Mock Interview</strong>
+                    <small>Score: 76/100</small>
                 </div>
-                <span class="time">
-                    2h ago
-                </span>
+                <span class="time">2h ago</span>
             </div>
             <div class="activity-item">
-                <div class="activity-icon">
-                    &lt;/&gt;
-                </div>
+                <div class="activity-icon">&lt;/&gt;</div>
                 <div class="activity-info">
-                    <strong>
-                        Solved 5 Coding Problems
-                    </strong>
-                    <small>
-                        Python · Easy
-                    </small>
+                    <strong>Coding Challenge</strong>
+                    <small>Python · Easy</small>
                 </div>
-                <span class="time">
-                    5h ago
-                </span>
+                <span class="time">5h ago</span>
             </div>
             <div class="activity-item">
-                <div class="activity-icon">
-                    &lt;/&gt;
-                </div>
+                <div class="activity-icon">&lt;/&gt;</div>
                 <div class="activity-info">
-                    <strong>
-                        Technical Interview Completed
-                    </strong>
-                    <small>
-                        Score: 82/100
-                    </small>
+                    <strong>Technical Screening</strong>
+                    <small>Score: 82/100</small>
                 </div>
-                <span class="time">
-                    1d ago
-                </span>
+                <span class="time">1d ago</span>
             </div>
             <div class="activity-item">
-                <div class="activity-icon">
-                    ▦
-                </div>
+                <div class="activity-icon">▦</div>
                 <div class="activity-info">
-                    <strong>
-                        Aptitude Test Completed
-                    </strong>
-                    <small>
-                        Score: 68/100
-                    </small>
+                    <strong>Aptitude Assessment</strong>
+                    <small>Score: 68/100</small>
                 </div>
-                <span class="time">
-                    2d ago
-                </span>
+                <span class="time">2d ago</span>
             </div>
         </div>
+
         <!-- NEXT UP -->
         <div class="card">
-            <h3 class="panel-title">
-                Next Up
-            </h3>
+            <h3 class="panel-title">Recommended Next</h3>
             <div class="next-item">
-                <div class="activity-icon">
-                    ♟
-                </div>
+                <div class="activity-icon">♟</div>
                 <div class="next-info">
-                    <strong>
-                        HR Interview Practice
-                    </strong>
-                    <small>
-                        10 Questions
-                    </small>
+                    <strong>HR Interview Practice</strong>
+                    <small>10 Core Questions</small>
                 </div>
-                <!-- FIXED -->
-                <button class="start-btn"
-                        onclick="window.location.href='HR%20Interview.html'">
-                    Start
-                </button>
+                <button class="start-btn" onclick="window.location.href='HR%20Interview.html'">Start</button>
             </div>
             <div class="next-item">
-                <div class="activity-icon icon-green">
-                    &lt;/&gt;
-                </div>
+                <div class="activity-icon icon-green">&lt;/&gt;</div>
                 <div class="next-info">
-                    <strong>
-                        Data Structures - Arrays
-                    </strong>
-                    <small>
-                        Practice Problems
-                    </small>
+                    <strong>Data Structures</strong>
+                    <small>Arrays & Strings</small>
                 </div>
-                <button class="start-btn"
-                        onclick="showComingSoon('Technical Interview')">
-                    Coming Soon
-                </button>
+                <button class="start-btn" onclick="showComingSoon('Technical Interview')">Soon</button>
             </div>
             <div class="next-item">
-                <div class="activity-icon icon-orange">
-                    ▦
-                </div>
+                <div class="activity-icon icon-orange">▦</div>
                 <div class="next-info">
-                    <strong>
-                        Aptitude Practice
-                    </strong>
-                    <small>
-                        20 Questions
-                    </small>
+                    <strong>Aptitude Drills</strong>
+                    <small>20 Quick Questions</small>
                 </div>
-                <button class="start-btn"
-        onclick="showComingSoon('Aptitude Practice')">
-    Coming Soon
-</button>
+                <button class="start-btn" onclick="showComingSoon('Aptitude Practice')">Soon</button>
             </div>
         </div>
+
         <!-- CHART -->
         <div class="card chart-panel">
-            <h3 class="panel-title">
-                Performance Overview
-            </h3>
+            <h3 class="panel-title">Progress Trend</h3>
             <div class="chart-container">
-                <svg class="chart"
-                     viewBox="0 0 500 190"
-                     preserveAspectRatio="none">
+                <svg class="chart" viewBox="0 0 500 190" preserveAspectRatio="none">
                     <defs>
-                        <linearGradient id="gradient"
-                                        x1="0"
-                                        y1="0"
-                                        x2="0"
-                                        y2="1">
-                            <stop offset="0%"
-                                  stop-color="#6552e8"
-                                  stop-opacity=".18"/>
-                            <stop offset="100%"
-                                  stop-color="#6552e8"
-                                  stop-opacity="0"/>
+                        <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#6366f1" stop-opacity="0.25"/>
+                            <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
                         </linearGradient>
                     </defs>
-                    <path
-                        class="chart-area"
-                        d="M0,130
-                           L55,120
-                           L110,85
-                           L165,105
-                           L220,120
-                           L275,70
-                           L330,60
-                           L385,90
-                           L440,45
-                           L500,30
-                           L500,190
-                           L0,190 Z">
-                    </path>
-                    <path
-                        class="chart-line"
-                        d="M0,130
-                           L55,120
-                           L110,85
-                           L165,105
-                           L220,120
-                           L275,70
-                           L330,60
-                           L385,90
-                           L440,45
-                           L500,30">
-                    </path>
+                    <path class="chart-area" d="M0,130 L55,120 L110,85 L165,105 L220,120 L275,70 L330,60 L385,90 L440,45 L500,30 L500,190 L0,190 Z"></path>
+                    <path class="chart-line" d="M0,130 L55,120 L110,85 L165,105 L220,120 L275,70 L330,60 L385,90 L440,45 L500,30"></path>
                 </svg>
                 <div class="chart-labels">
-                    <span>May 1</span>
-                    <span>May 8</span>
-                    <span>May 15</span>
-                    <span>May 22</span>
-                    <span>May 29</span>
-                    <span>Jun 5</span>
+                    <span>May 1</span><span>May 15</span><span>Jun 1</span><span>Jun 15</span>
                 </div>
                 <div class="improving">
-                    <strong>
-                        🏆 You are improving!
-                    </strong>
-                    <p>
-                        Keep practicing to achieve your dream role.
-                    </p>
+                    <strong>🚀 Upward trajectory!</strong>
+                    <p>Your scores are improving consistently. Keep it up.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 <!-- =========================================================
      TECHNICAL
 ========================================================= -->
 <section class="page" id="technical">
-<button class="back-btn"
-        onclick="showPage('dashboard')">
-    ← Back to Dashboard
-</button>
-<div class="page-heading">
-<h1>
-    Technical Interview
-</h1>
-<p>
-    Coming Soon
-</p>
-</div>
-<div class="option-grid">
-<div class="option-card">
-<div class="icon-box">
-    🐍
-</div>
-<h3>
-    Python
-</h3>
-<p>
-    Variables, functions, OOP, exceptions,
-    libraries and problem solving.
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('Python Technical Interview')">
-    Coming Soon
-</button>
-</div>
-<div class="option-card">
-<div class="icon-box icon-blue">
-    🗄
-</div>
-<h3>
-    SQL & DBMS
-</h3>
-<p>
-    SQL queries, normalization, joins,
-    transactions and database concepts.
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('SQL & DBMS Technical Interview')">
-    Coming Soon
-</button>
-</div>
-<div class="option-card">
-<div class="icon-box icon-green">
-    🤖
-</div>
-<h3>
-    AI & Machine Learning
-</h3>
-<p>
-    ML algorithms, preprocessing,
-    evaluation and AI fundamentals.
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('AI & Machine Learning Technical Interview')">
-    Coming Soon
-</button>
-</div>
-<div class="option-card">
-<div class="icon-box icon-orange">
-    💻
-</div>
-<h3>
-    Data Structures
-</h3>
-<p>
-    Arrays, strings, stacks, queues,
-    trees and algorithms.
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('Data Structures Technical Interview')">
-    Coming Soon
-</button>
-</div>
-</div>
+    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
+    <div class="page-heading">
+        <h1>Technical Interview</h1>
+        <p>Targeted technical training modules</p>
+    </div>
+    <div class="option-grid">
+        <div class="option-card">
+            <div class="icon-box">🐍</div>
+            <h3>Python Mastery</h3>
+            <p>Syntax, OOP, advanced paradigms, and exception logic.</p>
+            <button class="primary-btn" onclick="showComingSoon('Python Technical Interview')">Coming Soon</button>
+        </div>
+        <div class="option-card">
+            <div class="icon-box icon-blue">🗄</div>
+            <h3>SQL & Databases</h3>
+            <p>Complex queries, joins, optimizations, and schema rules.</p>
+            <button class="primary-btn" onclick="showComingSoon('SQL & DBMS Technical Interview')">Coming Soon</button>
+        </div>
+        <div class="option-card">
+            <div class="icon-box icon-green">🤖</div>
+            <h3>AI & Machine Learning</h3>
+            <p>Algorithms, dataset normalization, and foundational theory.</p>
+            <button class="primary-btn" onclick="showComingSoon('AI & Machine Learning Technical Interview')">Coming Soon</button>
+        </div>
+        <div class="option-card">
+            <div class="icon-box icon-orange">💻</div>
+            <h3>Data Structures</h3>
+            <p>Core structures, time complexities, and coding strategies.</p>
+            <button class="primary-btn" onclick="showComingSoon('Data Structures Technical Interview')">Coming Soon</button>
+        </div>
+    </div>
 </section>
+
 <!-- =========================================================
      SKILLS
 ========================================================= -->
 <section class="page" id="skills">
-<button class="back-btn"
-        onclick="showPage('dashboard')">
-    ← Back to Dashboard
-</button>
-<div class="page-heading">
-<h1>
-    Skill Gap Analyzer
-</h1>
-<p>
-    Identify your strengths and areas that need improvement.
-</p>
-</div>
-<div class="stats-grid">
-<div class="stat">
-<div class="stat-label">Python</div>
-<div class="stat-value purple">85%</div>
-</div>
-<div class="stat">
-<div class="stat-label">SQL</div>
-<div class="stat-value">72%</div>
-</div>
-<div class="stat">
-<div class="stat-label">Machine Learning</div>
-<div class="stat-value">65%</div>
-</div>
-<div class="stat">
-<div class="stat-label">Communication</div>
-<div class="stat-value green">58%</div>
-</div>
-</div>
-<div class="large-card"
-     style="margin-top:20px;">
-<h3 style="font-size:17px;margin-bottom:15px;">
-    AI Recommendation
-</h3>
-<p style="color:#666;font-size:13px;line-height:1.7;">
-Your strongest skill is Python. Your current
-priority should be improving communication,
-SQL and machine learning fundamentals.
-</p>
-<button class="primary-btn"
-        onclick="showPage('study')">
-    Generate Learning Plan
-</button>
-</div>
+    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
+    <div class="page-heading">
+        <h1>Skill Gap Analyzer</h1>
+        <p>Evaluate your profile against industry standards</p>
+    </div>
+    <div class="stats-grid">
+        <div class="stat"><div class="stat-label">Python</div><div class="stat-value purple">85%</div></div>
+        <div class="stat"><div class="stat-label">SQL</div><div class="stat-value">72%</div></div>
+        <div class="stat"><div class="stat-label">Machine Learning</div><div class="stat-value">65%</div></div>
+        <div class="stat"><div class="stat-label">Communication</div><div class="stat-value green">58%</div></div>
+    </div>
+    <div class="large-card" style="margin-top:20px;">
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;color:var(--dark);">AI Diagnostic Insight</h3>
+        <p style="color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:20px;">Your Python expertise stands out strongly. Focus your immediate study routines on communication dynamics, structural database queries, and ML fundamentals.</p>
+        <button class="primary-btn" onclick="showPage('study')">Generate Dynamic Study Plan</button>
+    </div>
 </section>
+
 <!-- =========================================================
      HISTORY
 ========================================================= -->
 <section class="page" id="history">
-<button class="back-btn"
-        onclick="showPage('dashboard')">
-    ← Back to Dashboard
-</button>
-<div class="page-heading">
-<h1>
-    Interview History
-</h1>
-<p>
-    Track all your previous interview performances dynamically.
-</p>
-</div>
-<div class="table-wrapper">
-<table id="historyTable">
-<thead>
-<tr>
-<th>Interview</th>
-<th>Type</th>
-<th>Score</th>
-<th>Date</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-<!-- Dynamically populated from LocalStorage or API -->
-</tbody>
-</table>
-</div>
+    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
+    <div class="page-heading">
+        <h1>Interview History</h1>
+        <p>Comprehensive logs of all simulated assessments</p>
+    </div>
+    <div class="table-wrapper">
+        <table id="historyTable">
+            <thead>
+                <tr>
+                    <th>Interview Title</th>
+                    <th>Category</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 </section>
+
 <!-- =========================================================
      APTITUDE
 ========================================================= -->
 <section class="page" id="aptitude">
-<button class="back-btn"
-        onclick="showPage('dashboard')">
-    ← Back to Dashboard
-</button>
-<div class="page-heading">
-<h1>
-    Aptitude Practice
-</h1>
-<p>
-    Coming Soon
-</p>
-</div>
-<div class="option-grid">
-<div class="option-card">
-<h3>
-    Quantitative Aptitude
-</h3>
-<p>
-    Percentages, profit and loss, time and work,
-    probability and number systems.
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('Quantitative Aptitude')">
-    Coming Soon
-</button>
-</div>
-<div class="option-card">
-<h3>
-    Logical Reasoning
-</h3>
-<p>
-    Puzzles, coding-decoding, sequences,
-    directions and logical reasoning.
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('Logical Reasoning')">
-    Coming Soon
-</button>
-</div>
-</div>
+    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
+    <div class="page-heading">
+        <h1>Aptitude Practice</h1>
+        <p>Sharpen your analytical problem-solving speed</p>
+    </div>
+    <div class="option-grid">
+        <div class="option-card">
+            <h3>Quantitative Aptitude</h3>
+            <p>Fractions, percentages, work-rate problems, and number theory.</p>
+            <button class="primary-btn" onclick="showComingSoon('Quantitative Aptitude')">Coming Soon</button>
+        </div>
+        <div class="option-card">
+            <h3>Logical Reasoning</h3>
+            <p>Sequence tracing, direction tracking, deductive arguments.</p>
+            <button class="primary-btn" onclick="showComingSoon('Logical Reasoning')">Coming Soon</button>
+        </div>
+    </div>
 </section>
+
 <!-- =========================================================
      STUDY
 ========================================================= -->
 <section class="page" id="study">
-<button class="back-btn"
-        onclick="showPage('dashboard')">
-    ← Back to Dashboard
-</button>
-<div class="page-heading">
-<h1>
-    Study Materials
-</h1>
-<p>
-    Coming Soon
-</p>
-</div>
-<div class="option-grid">
-<div class="option-card">
-<h3>
-    Python
-</h3>
-<p>
-    Python fundamentals, OOP, functions,
-    libraries and interview questions.
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('Python Study Materials')">
-    Coming Soon
-</button>
-</div>
-<div class="option-card">
-<h3>
-    SQL & DBMS
-</h3>
-<p>
-    SQL queries, DBMS concepts, joins,
-    normalization and interview preparation.
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('SQL & DBMS Study Materials')">
-    Coming Soon
-</button>
-</div>
-<div class="option-card">
-<h3>
-    Machine Learning
-</h3>
-<p>
-    Supervised learning, unsupervised learning,
-    preprocessing and model evaluation.
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('Machine Learning Study Materials')">
-    Coming Soon
-</button>
-</div>
-<div class="option-card">
-<h3>
-    Communication
-</h3>
-<p>
-    Improve speaking, confidence and interview
-    communication.
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('Communication Study Materials')">
-    Coming Soon
-</button>
-</div>
-</div>
+    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
+    <div class="page-heading">
+        <h1>Study Materials</h1>
+        <p>Curated learning roadmaps</p>
+    </div>
+    <div class="option-grid">
+        <div class="option-card"><h3>Python</h3><p>Deep foundational notes and common interview traps.</p><button class="primary-btn" onclick="showComingSoon('Python Study Materials')">Coming Soon</button></div>
+        <div class="option-card"><h3>SQL & DBMS</h3><p>Normalization paradigms and high-performance querying tips.</p><button class="primary-btn" onclick="showComingSoon('SQL Study Materials')">Coming Soon</button></div>
+        <div class="option-card"><h3>Machine Learning</h3><p>Supervised model optimization guidelines.</p><button class="primary-btn" onclick="showComingSoon('ML Study Materials')">Coming Soon</button></div>
+        <div class="option-card"><h3>Communication</h3><p>Professional vocabulary and structured speech delivery matrices.</p><button class="primary-btn" onclick="showComingSoon('Communication Study Materials')">Coming Soon</button></div>
+    </div>
 </section>
+
 <!-- =========================================================
      COMPANY
 ========================================================= -->
 <section class="page" id="company">
-<button class="back-btn"
-        onclick="showPage('dashboard')">
-    ← Back to Dashboard
-</button>
-<div class="page-heading">
-<h1>
-    Company Preparation
-</h1>
-<p>
-    Coming Soon
-</p>
-</div>
-<div class="option-grid">
-<div class="option-card">
-<h3>
-    TCS
-</h3>
-<p>
-    Aptitude → Technical → HR
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('TCS Company Preparation')">
-    Coming Soon
-</button>
-</div>
-<div class="option-card">
-<h3>
-    Infosys
-</h3>
-<p>
-    Aptitude → Technical → Interview
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('Infosys Company Preparation')">
-    Coming Soon
-</button>
-</div>
-<div class="option-card">
-<h3>
-    Accenture
-</h3>
-<p>
-    Cognitive → Technical → Coding → Communication
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('Accenture Company Preparation')">
-    Coming Soon
-</button>
-</div>
-<div class="option-card">
-<h3>
-    Product Companies
-</h3>
-<p>
-    DSA → System Design → Technical → HR
-</p>
-<button class="primary-btn"
-        onclick="showComingSoon('Product Companies Preparation')">
-    Coming Soon
-</button>
-</div>
-</div>
+    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
+    <div class="page-heading">
+        <h1>Company Preparation</h1>
+        <p>Targeted blueprints for top-tier employers</p>
+    </div>
+    <div class="option-grid">
+        <div class="option-card"><h3>TCS</h3><p>Aptitude screening → Technical evaluation → HR review.</p><button class="primary-btn" onclick="showComingSoon('TCS Prep')">Coming Soon</button></div>
+        <div class="option-card"><h3>Infosys</h3><p>Core programming tests → System checks → Personal interview.</p><button class="primary-btn" onclick="showComingSoon('Infosys Prep')">Coming Soon</button></div>
+        <div class="option-card"><h3>Accenture</h3><p>Cognitive tests → Coding validation → Communication round.</p><button class="primary-btn" onclick="showComingSoon('Accenture Prep')">Coming Soon</button></div>
+        <div class="option-card"><h3>Product Companies</h3><p>Advanced DSA loops → Multi-tier system designs → HR.</p><button class="primary-btn" onclick="showComingSoon('Product Companies Prep')">Coming Soon</button></div>
+    </div>
 </section>
+
 <!-- =========================================================
      SETTINGS
 ========================================================= -->
 <section class="page" id="settings">
-<div class="page-heading">
-<h1>
-    Settings
-</h1>
-<p>
-    Manage your InterviewIQ AI preferences with localStorage.
-</p>
-</div>
-<div class="large-card">
-<div class="form-group">
-<label>
-    Target Role
-</label>
-<input type="text" id="settingTargetRole"
-       placeholder="Example: Data Scientist">
-</div>
-<div class="form-group">
-<label>
-    Preferred Skill
-</label>
-<select id="settingPreferredSkill">
-<option>Artificial Intelligence</option>
-<option>Data Science</option>
-<option>Machine Learning</option>
-<option>Software Development</option>
-</select>
-</div>
-<button class="primary-btn" id="saveSettingsBtn">
-    Save Changes
-</button>
-</div>
+    <div class="page-heading">
+        <h1>Account Settings</h1>
+        <p>Manage your profile preferences and target fields</p>
+    </div>
+    <div class="large-card" style="max-width: 600px;">
+        <div class="form-group">
+            <label>Target Role</label>
+            <input type="text" id="settingTargetRole" placeholder="e.g. Senior Data Scientist">
+        </div>
+        <div class="form-group">
+            <label>Primary Focus Area</label>
+            <select id="settingPreferredSkill">
+                <option>Artificial Intelligence</option>
+                <option>Data Science</option>
+                <option>Machine Learning</option>
+                <option>Software Development</option>
+            </select>
+        </div>
+        <button class="primary-btn" id="saveSettingsBtn">Save Preferences</button>
+    </div>
 </section>
+
 <!-- =========================================================
      HELP
 ========================================================= -->
 <section class="page" id="help">
-<div class="page-heading">
-<h1>
-    Help & Support
-</h1>
-<p>
-    Need help using InterviewIQ AI?
-</p>
-</div>
-<div class="option-grid">
-<div class="option-card">
-<h3>
-    How does AI Interview work?
-</h3>
-<p>
-    Practice realistic interview questions
-    and receive AI-powered feedback.
-</p>
-</div>
-<div class="option-card">
-<h3>
-    How is my score calculated?
-</h3>
-<p>
-    Your score is based on communication,
-    technical knowledge, problem solving
-    and confidence.
-</p>
-</div>
-</div>
+    <div class="page-heading">
+        <h1>Help & Support</h1>
+        <p>Everything you need to know about navigating InterviewIQ AI</p>
+    </div>
+    <div class="option-grid">
+        <div class="option-card"><h3>How does the AI mock session work?</h3><p>Our intelligent system evaluates verbal response pacing, contextual precision, and keyword density dynamically.</p></div>
+        <div class="option-card"><h3>How are evaluation metrics compiled?</h3><p>Scores aggregate linguistic confidence, technical accuracy metrics, and structural answer clarity.</p></div>
+    </div>
 </section>
 </main>
-<script>
-/* =========================================================
-   API
-========================================================= */
-const API_URL =
-    "https://interview-project-uimv.onrender.com";
 
-/* =========================================================
-   PAGE NAVIGATION
-========================================================= */
-const navItems =
-    document.querySelectorAll(
-        ".nav-item[data-page]"
-    );
-const pages =
-    document.querySelectorAll(".page");
+<script>
+const API_URL = "https://interview-project-uimv.onrender.com";
+
+const navItems = document.querySelectorAll(".nav-item[data-page]");
+const pages = document.querySelectorAll(".page");
+
 function showPage(pageId) {
-    pages.forEach(page => {
-        page.classList.remove("active-page");
-    });
-    const selected =
-        document.getElementById(pageId);
+    pages.forEach(page => page.classList.remove("active-page"));
+    const selected = document.getElementById(pageId);
     if (selected) {
         selected.classList.add("active-page");
-        if (pageId === 'history') {
-            loadInterviewHistory();
-        }
+        if (pageId === 'history') loadInterviewHistory();
     }
     navItems.forEach(item => {
         item.classList.remove("active");
-        if (item.dataset.page === pageId) {
-            item.classList.add("active");
-        }
+        if (item.dataset.page === pageId) item.classList.add("active");
     });
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-    document
-        .getElementById("sidebar")
-        .classList.remove("open");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.getElementById("sidebar").classList.remove("open");
 }
 
-/* =========================================================
-   SIDEBAR BUTTONS
-========================================================= */
 navItems.forEach(item => {
-    item.addEventListener(
-        "click",
-        function() {
-            showPage(
-                this.dataset.page
-            );
-        }
-    );
+    item.addEventListener("click", function() {
+        showPage(this.dataset.page);
+    });
 });
 
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-document
-    .getElementById("mobileMenu")
-    .addEventListener(
-        "click",
-        function() {
-            document
-                .getElementById("sidebar")
-                .classList.toggle("open");
-        }
-    );
+document.getElementById("mobileMenu").addEventListener("click", function() {
+    document.getElementById("sidebar").classList.toggle("open");
+});
 
-/* =========================================================
-   COLLAPSE SIDEBAR
-========================================================= */
-document
-    .getElementById("collapseSidebar")
-    .addEventListener(
-        "click",
-        function() {
-            const sidebar =
-                document.getElementById(
-                    "sidebar"
-                );
-            const main =
-                document.querySelector(
-                    ".main"
-                );
-            if (
-                sidebar.style.width === "80px"
-            ) {
-                sidebar.style.width =
-                    "270px";
-                main.style.marginLeft =
-                    "270px";
-            } else {
-                sidebar.style.width =
-                    "80px";
-                main.style.marginLeft =
-                    "80px";
-            }
-        }
-    );
+document.getElementById("collapseSidebar").addEventListener("click", function() {
+    const sidebar = document.getElementById("sidebar");
+    const main = document.querySelector(".main");
+    if (sidebar.style.width === "80px") {
+        sidebar.style.width = "280px";
+        main.style.marginLeft = "280px";
+    } else {
+        sidebar.style.width = "80px";
+        main.style.marginLeft = "80px";
+    }
+});
 
-/* =========================================================
-   LOGOUT
-========================================================= */
-document
-    .getElementById("logout")
-    .addEventListener(
-        "click",
-        function() {
-            const confirmLogout =
-                confirm(
-                    "Are you sure you want to logout?"
-                );
-            if (confirmLogout) {
-                localStorage.clear();
-                sessionStorage.clear();
-                window.location.href =
-                    "login.html";
-            }
-        }
-    );
+document.getElementById("logout").addEventListener("click", function() {
+    if (confirm("Are you sure you want to log out?")) {
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = "login.html";
+    }
+});
 
-/* =========================================================
-   LOAD REAL ANALYTICS (/api/analytics)
-========================================================= */
 async function loadDashboardAnalytics() {
     try {
-        const response =
-            await fetch(
-                `${API_URL}/api/analytics`
-            );
-        if (!response.ok) {
-            throw new Error(
-                "Analytics request failed"
-            );
-        }
-        const data =
-            await response.json();
-        document
-            .getElementById(
-                "dashboardTotalInterviews"
-            )
-            .textContent =
-            data.totalInterviews ?? 0;
-        document
-            .getElementById(
-                "dashboardAverageScore"
-            )
-            .textContent =
-            data.averageScore ?? 0;
-        document
-            .getElementById(
-                "dashboardBestScore"
-            )
-            .textContent =
-            data.bestScore ?? 0;
-        document
-            .getElementById(
-                "dashboardImprovement"
-            )
-            .textContent =
-            data.improvement !== undefined
-                ? "+" + data.improvement + "%"
-                : "--";
+        const response = await fetch(`${API_URL}/api/analytics`);
+        if (!response.ok) throw new Error("Analytics request failed");
+        const data = await response.json();
+        document.getElementById("dashboardTotalInterviews").textContent = data.totalInterviews ?? 0;
+        document.getElementById("dashboardAverageScore").textContent = data.averageScore ?? 0;
+        document.getElementById("dashboardBestScore").textContent = data.bestScore ?? 0;
+        document.getElementById("dashboardImprovement").textContent = data.improvement !== undefined ? "+" + data.improvement + "%" : "--";
     } catch (error) {
-        console.error(
-            "Dashboard Analytics Error:",
-            error
-        );
-        document
-            .getElementById(
-                "dashboardTotalInterviews"
-            )
-            .textContent = "--";
-        document
-            .getElementById(
-                "dashboardAverageScore"
-            )
-            .textContent = "--";
-        document
-            .getElementById(
-                "dashboardBestScore"
-            )
-            .textContent = "--";
-        document
-            .getElementById(
-                "dashboardImprovement"
-            )
-            .textContent = "--";
+        console.error("Dashboard Analytics Error:", error);
+        document.getElementById("dashboardTotalInterviews").textContent = "--";
+        document.getElementById("dashboardAverageScore").textContent = "--";
+        document.getElementById("dashboardBestScore").textContent = "--";
+        document.getElementById("dashboardImprovement").textContent = "--";
     }
 }
 
-/* =========================================================
-   DYNAMIC INTERVIEW HISTORY
-========================================================= */
 function loadInterviewHistory() {
     const historyTableBody = document.querySelector("#historyTable tbody");
     if (!historyTableBody) return;
 
-    // Retrieve from localStorage or use default mock array if empty
     let historyData = JSON.parse(localStorage.getItem("interviewHistory")) || [
         { interview: "HR Mock Interview", type: "HR", score: "76/100", date: "Today", status: "Completed" },
-        { interview: "Python Interview", type: "Technical", score: "82/100", date: "Yesterday", status: "Completed" },
-        { interview: "SQL Interview", type: "Technical", score: "74/100", date: "May 28", status: "Completed" },
-        { interview: "HR Practice", type: "HR", score: "68/100", date: "May 25", status: "Completed" }
+        { interview: "Python Screening", type: "Technical", score: "82/100", date: "Yesterday", status: "Completed" },
+        { interview: "SQL Deep-Dive", type: "Technical", score: "74/100", date: "May 28", status: "Completed" },
+        { interview: "HR Basic Practice", type: "HR", score: "68/100", date: "May 25", status: "Completed" }
     ];
 
     historyTableBody.innerHTML = "";
     historyData.forEach(item => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${item.interview}</td>
+            <td><strong>${item.interview}</strong></td>
             <td>${item.type}</td>
-            <td>${item.score}</td>
+            <td><span style="font-weight:600; color:var(--primary);">${item.score}</span></td>
             <td>${item.date}</td>
-            <td>${item.status}</td>
+            <td><span style="color:var(--green); font-weight:600;">● ${item.status}</span></td>
         `;
         historyTableBody.appendChild(row);
     });
 }
 
-/* =========================================================
-   SETTINGS WITH LOCALSTORAGE
-========================================================= */
 const saveSettingsBtn = document.getElementById("saveSettingsBtn");
 const settingTargetRole = document.getElementById("settingTargetRole");
 const settingPreferredSkill = document.getElementById("settingPreferredSkill");
@@ -1682,32 +1209,18 @@ if (saveSettingsBtn) {
     saveSettingsBtn.addEventListener("click", () => {
         if (settingTargetRole) localStorage.setItem("targetRole", settingTargetRole.value);
         if (settingPreferredSkill) localStorage.setItem("preferredSkill", settingPreferredSkill.value);
-        alert("Settings saved successfully to localStorage!");
+        alert("Preferences saved successfully!");
     });
 }
 
-/* =========================================================
-   KEYBOARD SHORTCUT
-========================================================= */
-document.addEventListener(
-    "keydown",
-    function(event) {
-        if (event.key === "Escape") {
-            showPage("dashboard");
-        }
-    }
-);
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") showPage("dashboard");
+});
 
 function showComingSoon(feature) {
-    alert(
-        "🚀 " + feature +
-        "\n\nThis feature is coming soon!\nWe are working to make it better for you."
-    );
+    alert("🚀 " + feature + "\n\nThis module is currently in development and launching soon!");
 }
 
-/* =========================================================
-   START DASHBOARD & INITIALIZE STORAGE
-========================================================= */
 loadDashboardAnalytics();
 loadSettings();
 </script>
