@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>HR Interview | InterviewIQ AI</title>
-     <link rel="icon" type="image/png" href="./Robot.png?v=2">
+
+    <link rel="icon" type="image/png" href="./Robot.png?v=2">
+
     <style>
         * {
             box-sizing: border-box;
@@ -18,16 +21,6 @@
             background: #f7f7fb;
             color: #172554;
         }
-
-         /* MAIN */
-        .main {
-            margin-left: 290px;
-            min-height: 100vh;
-        }
-
-       
-
-        
 
         .content {
             padding: 35px 70px;
@@ -50,16 +43,14 @@
             font-size: 16px;
         }
 
-        /* INTERVIEW CARD */
         .interview-card {
             margin-top: 30px;
             background: white;
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
-        /* PROGRESS */
         .progress-container {
             width: 100%;
             height: 9px;
@@ -135,15 +126,6 @@
         }
 
         @media(max-width: 800px) {
-
-            .sidebar {
-                width: 220px;
-            }
-
-            .main {
-                margin-left: 220px;
-            }
-
             .content {
                 padding: 25px;
             }
@@ -152,13 +134,6 @@
 </head>
 
 <body>
-
-
-
-
-<!-- MAIN CONTENT -->
-
-
 
     <div class="content">
 
@@ -172,16 +147,12 @@
             Practice real HR questions with your AI interviewer.
         </p>
 
-
         <div class="interview-card">
 
-            <!-- PROGRESS BAR -->
             <div class="progress-container">
                 <div class="progress" id="progress"></div>
             </div>
 
-
-            <!-- QUESTION -->
             <div class="question-number">
                 Question <span id="questionNumber">1</span> of 10
             </div>
@@ -195,15 +166,11 @@
                 skills and achievements.
             </p>
 
-
-            <!-- ANSWER -->
             <textarea
                 id="answer"
-                placeholder="Type your answer here..."
+                placeholder="Type your answer here... Press Enter for the next question."
             ></textarea>
 
-
-            <!-- BOTTOM -->
             <div class="bottom">
 
                 <div class="timer" id="timer">
@@ -223,8 +190,6 @@
 
     </div>
 
-</div>
-
 
 <script>
 
@@ -235,73 +200,60 @@ const questions = [
 
     {
         question: "Tell me about yourself.",
-        instruction:
-        "Introduce yourself and highlight your key strengths, skills and achievements."
+        instruction: "Introduce yourself and highlight your key strengths, skills and achievements."
     },
 
     {
         question: "What are your strengths?",
-        instruction:
-        "Tell us about your main strengths and how they help you."
+        instruction: "Tell us about your main strengths and how they help you."
     },
 
     {
         question: "What are your weaknesses?",
-        instruction:
-        "Describe one area you are working to improve."
+        instruction: "Describe one area you are working to improve."
     },
 
     {
         question: "Why should we hire you?",
-        instruction:
-        "Explain why you would be a good fit for this role."
+        instruction: "Explain why you would be a good fit for this role."
     },
 
     {
         question: "Where do you see yourself in five years?",
-        instruction:
-        "Describe your career goals and future plans."
+        instruction: "Describe your career goals and future plans."
     },
 
     {
         question: "Why do you want to join our company?",
-        instruction:
-        "Explain why you are interested in this company."
+        instruction: "Explain why you are interested in this company."
     },
 
     {
         question: "Tell me about a challenge you faced.",
-        instruction:
-        "Describe a challenge you faced and how you handled it."
+        instruction: "Describe a challenge you faced and how you handled it."
     },
 
     {
         question: "How do you handle pressure?",
-        instruction:
-        "Explain how you manage stressful situations."
+        instruction: "Explain how you manage stressful situations."
     },
 
     {
         question: "What are your career goals?",
-        instruction:
-        "Tell us about your short-term and long-term career goals."
+        instruction: "Tell us about your short-term and long-term career goals."
     },
 
     {
         question: "Do you have any questions for us?",
-        instruction:
-        "Ask any relevant questions you have about the company or role."
+        instruction: "Ask any relevant questions you have about the company or role."
     }
 
 ];
 
 
 let currentQuestion = 0;
-
 let timeLeft = 180;
-
 let timerInterval;
-
 let answers = [];
 
 
@@ -324,7 +276,6 @@ function updatePage() {
     timeLeft = 180;
 
     updateTimer();
-
     startTimer();
 }
 
@@ -342,7 +293,6 @@ function startTimer() {
         if (timeLeft <= 0) {
 
             clearInterval(timerInterval);
-
             nextQuestion();
         }
 
@@ -352,17 +302,11 @@ function startTimer() {
 
 function updateTimer() {
 
-    let minutes =
-        Math.floor(timeLeft / 60);
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
 
-    let seconds =
-        timeLeft % 60;
-
-    minutes =
-        String(minutes).padStart(2, "0");
-
-    seconds =
-        String(seconds).padStart(2, "0");
+    minutes = String(minutes).padStart(2, "0");
+    seconds = String(seconds).padStart(2, "0");
 
     document.getElementById("timer").textContent =
         "⏱ " + minutes + ":" + seconds;
@@ -374,7 +318,6 @@ async function nextQuestion() {
     const answer =
         document.getElementById("answer").value.trim();
 
-
     if (answer === "") {
 
         alert("Please enter your answer before continuing.");
@@ -382,22 +325,16 @@ async function nextQuestion() {
         return;
     }
 
-
-    // Save answer
     answers.push({
 
-        question:
-        questions[currentQuestion].question,
-
+        question: questions[currentQuestion].question,
         answer: answer
 
     });
 
-
     currentQuestion++;
 
 
-    // Interview completed
     if (currentQuestion >= questions.length) {
 
         clearInterval(timerInterval);
@@ -406,15 +343,15 @@ async function nextQuestion() {
 
         alert("Interview completed! 🎉");
 
-        window.location.href =
-            "feedback.html";
+        window.location.href = "feedback.html";
 
         return;
     }
 
-
     updatePage();
 }
+
+
 function evaluateInterview() {
 
     let totalScore = 0;
@@ -425,16 +362,16 @@ function evaluateInterview() {
 
         let score = 0;
 
-        // Answer length
         if (answer.length >= 50) {
             score += 30;
-        } else if (answer.length >= 25) {
+        }
+        else if (answer.length >= 25) {
             score += 20;
-        } else {
+        }
+        else {
             score += 10;
         }
 
-        // Relevant HR keywords
         const keywords = [
             "team",
             "skill",
@@ -456,7 +393,6 @@ function evaluateInterview() {
 
         });
 
-        // Maximum 100
         score = Math.min(score, 100);
 
         totalScore += score;
@@ -467,63 +403,83 @@ function evaluateInterview() {
         Math.round(totalScore / answers.length);
 
     return {
+
         score: averageScore,
-        communication: Math.min(averageScore + 3, 100),
-        technical: Math.max(averageScore - 5, 0),
-        problemSolving: Math.min(averageScore + 1, 100),
-        confidence: Math.min(averageScore + 2, 100)
+
+        communication:
+            Math.min(averageScore + 3, 100),
+
+        technical:
+            Math.max(averageScore - 5, 0),
+
+        problemSolving:
+            Math.min(averageScore + 1, 100),
+
+        confidence:
+            Math.min(averageScore + 2, 100)
+
     };
 }
+
 
 async function saveInterview() {
 
     try {
+
         const evaluation = evaluateInterview();
+
         const response = await fetch(
+
             `${API_URL}/api/interviews`,
+
             {
+
                 method: "POST",
 
                 headers: {
                     "Content-Type": "application/json"
                 },
 
-                    body: JSON.stringify({
-                    
-                        userName: "Guest",
-                    
-                        type: "HR",
-                    
-                        score: evaluation.score,
-                    
-                        communication: evaluation.communication,
-                    
-                        technical: evaluation.technical,
-                    
-                        problemSolving: evaluation.problemSolving,
-                    
-                        confidence: evaluation.confidence,
-                    
-                        feedback:
-                            "Your interview has been evaluated based on answer quality, relevance and communication.",
-                    
-                        answers: answers
-                    
-                    })
+                body: JSON.stringify({
+
+                    userName: "Guest",
+
+                    type: "HR",
+
+                    score: evaluation.score,
+
+                    communication: evaluation.communication,
+
+                    technical: evaluation.technical,
+
+                    problemSolving: evaluation.problemSolving,
+
+                    confidence: evaluation.confidence,
+
+                    feedback:
+                        "Your interview has been evaluated based on your answer quality, relevance and communication.",
+
+                    answers: answers
+
+                })
+
             }
+
         );
 
         if (!response.ok) {
 
             console.log("Interview data could not be saved.");
 
-        } else {
+        }
+        else {
 
             console.log("Interview saved successfully.");
 
         }
 
-    } catch (error) {
+    }
+    catch (error) {
 
         console.log(
             "Backend connection error:",
@@ -531,9 +487,33 @@ async function saveInterview() {
         );
 
     }
+
 }
 
-// Start first question
+
+/* ENTER KEY → NEXT QUESTION */
+
+document.getElementById("answer").addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter" &&
+            !event.shiftKey
+        ) {
+
+            event.preventDefault();
+
+            nextQuestion();
+
+        }
+
+    }
+);
+
+
+// START FIRST QUESTION
+
 updatePage();
 
 </script>
