@@ -415,12 +415,70 @@ async function nextQuestion() {
 
     updatePage();
 }
+function evaluateInterview() {
 
+    let totalScore = 0;
+
+    answers.forEach(item => {
+
+        const answer = item.answer.toLowerCase();
+
+        let score = 0;
+
+        // Answer length
+        if (answer.length >= 50) {
+            score += 30;
+        } else if (answer.length >= 25) {
+            score += 20;
+        } else {
+            score += 10;
+        }
+
+        // Relevant HR keywords
+        const keywords = [
+            "team",
+            "skill",
+            "experience",
+            "project",
+            "learn",
+            "communication",
+            "problem",
+            "goal",
+            "improve",
+            "challenge"
+        ];
+
+        keywords.forEach(keyword => {
+
+            if (answer.includes(keyword)) {
+                score += 7;
+            }
+
+        });
+
+        // Maximum 100
+        score = Math.min(score, 100);
+
+        totalScore += score;
+
+    });
+
+    const averageScore =
+        Math.round(totalScore / answers.length);
+
+    return {
+        score: averageScore,
+        communication: Math.min(averageScore + 3, 100),
+        technical: Math.max(averageScore - 5, 0),
+        problemSolving: Math.min(averageScore + 1, 100),
+        confidence: Math.min(averageScore + 2, 100)
+    };
+}
 
 async function saveInterview() {
 
     try {
-
+        const evaluation = evaluateInterview();
         const response = await fetch(
             `${API_URL}/api/interviews`,
             {
@@ -430,27 +488,28 @@ async function saveInterview() {
                     "Content-Type": "application/json"
                 },
 
-                body: JSON.stringify({
-
-                    userName: "Guest",
-
-                    type: "HR",
-
-                    score: 0,
-
-                    communication: 0,
-
-                    technical: 0,
-
-                    problemSolving: 0,
-
-                    confidence: 0,
-
-                    feedback: "Interview completed. Detailed AI feedback will be generated."
+                    body: JSON.stringify({
                     
-                    ,answers: answers
-
-                })
+                        userName: "Guest",
+                    
+                        type: "HR",
+                    
+                        score: evaluation.score,
+                    
+                        communication: evaluation.communication,
+                    
+                        technical: evaluation.technical,
+                    
+                        problemSolving: evaluation.problemSolving,
+                    
+                        confidence: evaluation.confidence,
+                    
+                        feedback:
+                            "Your interview has been evaluated based on answer quality, relevance and communication.",
+                    
+                        answers: answers
+                    
+                    })
             }
         );
 
