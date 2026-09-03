@@ -24,13 +24,17 @@ mongoose
 
 
 // ==========================================
-// 2. USER MODEL - LOGIN
+// 2. USER MODEL - REGISTER AND LOGIN
 // ==========================================
 
 const userSchema = new mongoose.Schema({
+
     name: String,
+
     email: String,
+
     password: String
+
 });
 
 const User = mongoose.model("User", userSchema);
@@ -41,14 +45,20 @@ const User = mongoose.model("User", userSchema);
 // ==========================================
 
 const practiceSchema = new mongoose.Schema({
+
     userName: String,
+
     question: String,
+
     answer: String,
+
     score: Number,
+
     createdAt: {
         type: Date,
         default: Date.now
     }
+
 });
 
 const Practice = mongoose.model("Practice", practiceSchema);
@@ -59,25 +69,65 @@ const Practice = mongoose.model("Practice", practiceSchema);
 // ==========================================
 
 const interviewSchema = new mongoose.Schema({
-    userName: String,
-    type: String,
 
-    score: Number,
+    userName: {
+        type: String,
+        default: "Guest"
+    },
 
-    communication: Number,
-    technical: Number,
-    problemSolving: Number,
-    confidence: Number,
+    type: {
+        type: String,
+        default: "HR"
+    },
 
-    feedback: String,
+    score: {
+        type: Number,
+        default: 0
+    },
+
+    communication: {
+        type: Number,
+        default: 0
+    },
+
+    technical: {
+        type: Number,
+        default: 0
+    },
+
+    problemSolving: {
+        type: Number,
+        default: 0
+    },
+
+    confidence: {
+        type: Number,
+        default: 0
+    },
+
+    feedback: {
+        type: String,
+        default: "Your interview has been evaluated based on your answers."
+    },
+
+    answers: [
+        {
+            question: String,
+            answer: String
+        }
+    ],
 
     createdAt: {
         type: Date,
         default: Date.now
     }
+
 });
 
-const Interview = mongoose.model("Interview", interviewSchema);
+const Interview = mongoose.model(
+    "Interview",
+    interviewSchema
+);
 
 
 // ==========================================
@@ -94,7 +144,7 @@ app.get("/", (req, res) => {
 
 
 // ==========================================
-// 6. REGISTER
+// 6. REGISTER USER
 // ==========================================
 
 app.post("/api/register", async (req, res) => {
@@ -103,7 +153,8 @@ app.post("/api/register", async (req, res) => {
 
         const { name, email, password } = req.body;
 
-        const existingUser = await User.findOne({ email });
+        const existingUser =
+            await User.findOne({ email });
 
         if (existingUser) {
 
@@ -113,26 +164,43 @@ app.post("/api/register", async (req, res) => {
 
         }
 
+
         const user = await User.create({
+
             name,
+
             email,
+
             password
+
         });
 
+
         res.status(201).json({
+
             message: "Registration successful",
+
             user: {
+
                 name: user.name,
+
                 email: user.email
+
             }
+
         });
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Registration error:",
+            error
+        );
 
         res.status(500).json({
+
             message: "Registration failed"
+
         });
 
     }
@@ -141,7 +209,7 @@ app.post("/api/register", async (req, res) => {
 
 
 // ==========================================
-// 7. LOGIN
+// 7. LOGIN USER
 // ==========================================
 
 app.post("/api/login", async (req, res) => {
@@ -150,33 +218,52 @@ app.post("/api/login", async (req, res) => {
 
         const { email, password } = req.body;
 
+
         const user = await User.findOne({
+
             email: email,
+
             password: password
+
         });
+
 
         if (!user) {
 
             return res.status(401).json({
+
                 message: "Invalid email or password"
+
             });
 
         }
 
+
         res.json({
+
             message: "Login successful",
+
             user: {
+
                 name: user.name,
+
                 email: user.email
+
             }
+
         });
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Login error:",
+            error
+        );
 
         res.status(500).json({
+
             message: "Login failed"
+
         });
 
     }
@@ -192,19 +279,29 @@ app.post("/api/practice", async (req, res) => {
 
     try {
 
-        const practice = await Practice.create(req.body);
+        const practice =
+            await Practice.create(req.body);
+
 
         res.status(201).json({
+
             message: "Practice saved successfully",
+
             practice
+
         });
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Practice save error:",
+            error
+        );
 
         res.status(500).json({
+
             message: "Error saving practice"
+
         });
 
     }
@@ -224,14 +321,20 @@ app.get("/api/practice", async (req, res) => {
             .find()
             .sort({ createdAt: -1 });
 
+
         res.json(practices);
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Practice fetch error:",
+            error
+        );
 
         res.status(500).json({
+
             message: "Error getting practice data"
+
         });
 
     }
@@ -247,19 +350,82 @@ app.post("/api/interviews", async (req, res) => {
 
     try {
 
-        const interview = await Interview.create(req.body);
+        const {
+
+            userName,
+
+            type,
+
+            score,
+
+            communication,
+
+            technical,
+
+            problemSolving,
+
+            confidence,
+
+            feedback,
+
+            answers
+
+        } = req.body;
+
+
+        const interview =
+            await Interview.create({
+
+                userName:
+                    userName || "Guest",
+
+                type:
+                    type || "HR",
+
+                score:
+                    Number(score) || 0,
+
+                communication:
+                    Number(communication) || 0,
+
+                technical:
+                    Number(technical) || 0,
+
+                problemSolving:
+                    Number(problemSolving) || 0,
+
+                confidence:
+                    Number(confidence) || 0,
+
+                feedback:
+                    feedback ||
+                    "Your interview has been evaluated based on your answers.",
+
+                answers:
+                    answers || []
+
+            });
+
 
         res.status(201).json({
+
             message: "Interview saved successfully",
+
             interview
+
         });
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Error saving interview:",
+            error
+        );
 
         res.status(500).json({
+
             message: "Error saving interview"
+
         });
 
     }
@@ -279,14 +445,20 @@ app.get("/api/interviews", async (req, res) => {
             .find()
             .sort({ createdAt: -1 });
 
+
         res.json(interviews);
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Interview fetch error:",
+            error
+        );
 
         res.status(500).json({
+
             message: "Error getting interviews"
+
         });
 
     }
@@ -302,45 +474,76 @@ app.get("/api/analytics", async (req, res) => {
 
     try {
 
-        const interviews = await Interview.find();
+        const interviews =
+            await Interview.find();
+
 
         if (interviews.length === 0) {
 
             return res.json({
+
                 totalInterviews: 0,
+
                 averageScore: 0,
+
                 bestScore: 0
+
             });
 
         }
 
-        const totalInterviews = interviews.length;
 
-        const totalScore = interviews.reduce(
-            (sum, interview) => sum + interview.score,
-            0
-        );
+        const totalInterviews =
+            interviews.length;
+
+
+        const validScores =
+            interviews.map(interview =>
+                Number(interview.score) || 0
+            );
+
+
+        const totalScore =
+            validScores.reduce(
+
+                (sum, score) => sum + score,
+
+                0
+
+            );
+
 
         const averageScore =
-            Math.round(totalScore / totalInterviews);
+            Math.round(
+                totalScore / totalInterviews
+            );
+
 
         const bestScore =
-            Math.max(...interviews.map(
-                interview => interview.score
-            ));
+            Math.max(...validScores);
+
 
         res.json({
+
             totalInterviews,
+
             averageScore,
+
             bestScore
+
         });
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Analytics error:",
+            error
+        );
 
         res.status(500).json({
+
             message: "Analytics error"
+
         });
 
     }
@@ -352,17 +555,14 @@ app.get("/api/analytics", async (req, res) => {
 // 13. START SERVER
 // ==========================================
 
-/*const PORT = process.env.PORT || 5000;
+const PORT =
+    process.env.PORT || 5000;
+
 
 app.listen(PORT, () => {
 
     console.log(
-        `Server running on https://interview-project-uimv.onrender.com:${PORT}`
+        `Server running on port ${PORT}`
     );
 
-});*/
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
 });
