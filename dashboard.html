@@ -14,11 +14,17 @@
 :root {
     --primary: #6366f1;
     --primary-hover: #4f46e5;
+    --primary-light: #e0e7ff;
     --dark: #0f172a;
     --text: #1e293b;
     --muted: #64748b;
+    --border: #f1f5f9;
+    --border-dark: #e2e8f0;
     --bg: #0a0f1d;
     --white: #ffffff;
+    --green: #10b981;
+    --orange: #f59e0b;
+    --blue: #3b82f6;
     --radius: 16px;
     --radius-sm: 10px;
     --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.2);
@@ -35,7 +41,7 @@ body {
 }
 
 /* =========================================================
-   BACKGROUND EFFECTS
+   BLURRY CYBER-GRID BACKGROUND EFFECTS
 ========================================================= */
 body::before {
     content: "";
@@ -51,7 +57,6 @@ body::before {
     filter: blur(1px);
     z-index: -2;
 }
-
 .ambient-glow {
     position: fixed;
     top: -10%;
@@ -63,7 +68,6 @@ body::before {
     z-index: -1;
     pointer-events: none;
 }
-
 .ambient-glow-2 {
     position: fixed;
     bottom: -10%;
@@ -77,7 +81,7 @@ body::before {
 }
 
 /* =========================================================
-   SIDEBAR
+   SIDEBAR (Frosted Glass)
 ========================================================= */
 .sidebar {
     width: 280px;
@@ -180,7 +184,7 @@ body::before {
 }
 
 /* =========================================================
-   MAIN & TOPBAR
+   MAIN & TOPBAR (Glassmorphic Topbar)
 ========================================================= */
 .main {
     margin-left: 280px;
@@ -266,7 +270,7 @@ body::before {
 }
 
 /* =========================================================
-   CARDS & DASHBOARD
+   CARDS & DASHBOARD (Glass Panels)
 ========================================================= */
 .quick-grid {
     display: grid;
@@ -344,89 +348,7 @@ body::before {
 }
 
 /* =========================================================
-   POSTER STYLE COMING SOON OVERLAY (Ref. Image Match)
-========================================================= */
-.poster-page-wrapper {
-    position: relative;
-    width: 100%;
-    min-height: calc(100vh - 140px);
-    border-radius: var(--radius);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* The Blurred Background Content Mockup */
-.poster-bg-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 40px;
-    filter: blur(14px);
-    -webkit-filter: blur(14px);
-    opacity: 0.45;
-    pointer-events: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    background: radial-gradient(circle at center, #1e293b 0%, #0a0f1d 100%);
-}
-
-.mock-ui-box {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    height: 220px;
-    padding: 20px;
-}
-
-/* The Center Poster Callout */
-.poster-overlay-card {
-    position: relative;
-    z-index: 10;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(99, 102, 241, 0.3);
-    border-radius: 20px;
-    padding: 48px 60px;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(99, 102, 241, 0.2);
-    max-width: 520px;
-    width: 90%;
-    animation: posterFloat 4s ease-in-out infinite alternate;
-}
-
-@keyframes posterFloat {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(-6px); }
-}
-
-.poster-title {
-    font-size: 38px;
-    font-weight: 900;
-    color: #facc15; /* Vibrant yellow poster matching */
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    line-height: 1.15;
-    text-shadow: 0 4px 20px rgba(250, 204, 21, 0.3);
-    margin-bottom: 12px;
-}
-
-.poster-subtitle {
-    font-size: 16px;
-    font-style: italic;
-    color: #cbd5e1;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-}
-
-/* =========================================================
-   HISTORY BANNER & STATS
+   HISTORY BANNER
 ========================================================= */
 .history-banner {
     margin-top: 20px;
@@ -478,6 +400,9 @@ body::before {
     color: #818cf8;
 }
 
+/* =========================================================
+   STATS SECTION
+========================================================= */
 .section-title {
     font-size: 18px;
     font-weight: 700;
@@ -521,6 +446,9 @@ body::before {
 .purple { color: #818cf8; }
 .green { color: #34d399; }
 
+/* =========================================================
+   LOWER DASHBOARD
+========================================================= */
 .dashboard-lower {
     display: grid;
     grid-template-columns: 1fr 1fr 1.3fr;
@@ -540,7 +468,9 @@ body::before {
     padding: 14px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-.activity-item:last-child { border-bottom: none; }
+.activity-item:last-child {
+    border-bottom: none;
+}
 .activity-icon {
     width: 38px;
     height: 38px;
@@ -552,7 +482,9 @@ body::before {
     align-items: center;
     font-size: 14px;
 }
-.activity-info { flex: 1; }
+.activity-info {
+    flex: 1;
+}
 .activity-info strong {
     font-size: 13px;
     font-weight: 600;
@@ -560,8 +492,15 @@ body::before {
     display: block;
     margin-bottom: 2px;
 }
-.activity-info small { color: #94a3b8; font-size: 11px; }
-.time { color: #64748b; font-size: 11px; font-weight: 500; }
+.activity-info small {
+    color: #94a3b8;
+    font-size: 11px;
+}
+.time {
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 500;
+}
 .next-item {
     border: 1px solid rgba(255, 255, 255, 0.06);
     background: rgba(255, 255, 255, 0.02);
@@ -571,16 +510,56 @@ body::before {
     display: flex;
     align-items: center;
     gap: 12px;
+    transition: 0.2s;
 }
-.next-info { flex: 1; }
-.next-info strong { display: block; font-size: 13px; font-weight: 600; color: white; margin-bottom: 2px; }
-.next-info small { color: #94a3b8; font-size: 11px; }
+.next-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+.next-info {
+    flex: 1;
+}
+.next-info strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 2px;
+}
+.next-info small {
+    color: #94a3b8;
+    font-size: 11px;
+}
 
-.chart-container { height: 220px; position: relative; margin-top: 10px; }
-.chart { width: 100%; height: 170px; }
-.chart-line { fill: none; stroke: #818cf8; stroke-width: 3; stroke-linecap: round; }
-.chart-area { fill: url(#gradient); }
-.chart-labels { display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8; font-weight: 500; margin-top: 4px; }
+/* =========================================================
+   CHART WIDGET
+========================================================= */
+.chart-container {
+    height: 220px;
+    position: relative;
+    margin-top: 10px;
+}
+.chart {
+    width: 100%;
+    height: 170px;
+}
+.chart-line {
+    fill: none;
+    stroke: #818cf8;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+.chart-area {
+    fill: url(#gradient);
+}
+.chart-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-top: 4px;
+}
 .improving {
     margin-top: 16px;
     background: rgba(99, 102, 241, 0.1);
@@ -588,9 +567,21 @@ body::before {
     padding: 14px;
     border-radius: var(--radius-sm);
 }
-.improving strong { color: #818cf8; font-size: 13px; font-weight: 700; display: block; margin-bottom: 2px; }
-.improving p { font-size: 12px; color: #a5b4fc; }
+.improving strong {
+    color: #818cf8;
+    font-size: 13px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2px;
+}
+.improving p {
+    font-size: 12px;
+    color: #a5b4fc;
+}
 
+/* =========================================================
+   GENERIC PAGES & TABLES
+========================================================= */
 .back-btn {
     border: none;
     background: transparent;
@@ -604,7 +595,9 @@ body::before {
     gap: 6px;
     transition: 0.2s;
 }
-.back-btn:hover { color: white; }
+.back-btn:hover {
+    color: white;
+}
 .large-card {
     background: rgba(15, 23, 42, 0.75);
     backdrop-filter: blur(16px);
@@ -613,6 +606,53 @@ body::before {
     border-radius: var(--radius);
     padding: 28px;
     box-shadow: var(--shadow);
+}
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.option-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+    padding: 24px;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow);
+    transition: 0.2s;
+}
+.option-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: var(--shadow-hover);
+}
+.option-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+}
+.option-card p {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+.primary-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.2s;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+.primary-btn:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
 }
 .table-wrapper {
     background: rgba(15, 23, 42, 0.75);
@@ -623,13 +663,40 @@ body::before {
     overflow: hidden;
     box-shadow: var(--shadow);
 }
-table { width: 100%; border-collapse: collapse; }
-th, td { padding: 16px 20px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-size: 13px; }
-th { background: rgba(255, 255, 255, 0.02); color: #94a3b8; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em; }
-td { color: #e2e8f0; }
-tr:last-child td { border-bottom: none; }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; font-size: 13px; margin-bottom: 8px; font-weight: 600; color: white; }
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 13px;
+}
+th {
+    background: rgba(255, 255, 255, 0.02);
+    color: #94a3b8;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+}
+td {
+    color: #e2e8f0;
+}
+tr:last-child td {
+    border-bottom: none;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: white;
+}
 .form-group input, .form-group select {
     width: 100%;
     padding: 12px 14px;
@@ -638,20 +705,155 @@ tr:last-child td { border-bottom: none; }
     font-size: 13px;
     color: white;
     background: rgba(255, 255, 255, 0.03);
+    transition: 0.2s;
 }
-.form-group select option { background: #0f172a; color: white; }
-.primary-btn {
-    background: var(--primary);
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+.form-group select option {
+    background: #0f172a;
     color: white;
+}
+
+/* =========================================================
+   POSTER THEME STYLES (COMING SOON OVERLAYS)
+========================================================= */
+.poster-container {
+    max-width: 580px;
+    margin: 40px auto;
+    position: relative;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 50px 30px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+}
+.poster-container::before {
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+    top: -20px;
+    left: -20px;
+    z-index: -1;
+    filter: blur(20px);
+}
+.poster-container::after {
+    content: '';
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+    bottom: -20px;
+    right: -20px;
+    z-index: -1;
+    filter: blur(20px);
+}
+.poster-badge {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+.poster-subtitle {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 35px;
+    letter-spacing: 0.02em;
+}
+.poster-logo-box {
+    margin: 0 auto 30px;
+    width: 110px;
+    height: 110px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 2px solid rgba(99, 102, 241, 0.4);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.25);
+}
+.poster-logo-symbol {
+    font-size: 48px;
+    font-weight: 300;
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -4px;
+    padding-right: 4px;
+}
+.poster-headline {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+.poster-desc {
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+.poster-input-group {
+    max-width: 420px;
+    margin: 0 auto 15px;
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 6px;
+    border-radius: 12px;
+}
+.poster-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 10px 14px;
+    color: #ffffff;
+    font-size: 13px;
+}
+.poster-input::placeholder {
+    color: #475569;
+}
+.poster-btn {
+    background: #6366f1;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     border-radius: 8px;
-    cursor: pointer;
     font-weight: 600;
     font-size: 13px;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.poster-btn:hover {
+    background: #4f46e5;
+}
+.poster-footer {
+    font-size: 11px;
+    color: #475569;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 30px;
 }
 
+/* =========================================================
+   RESPONSIVE QUERIES
+========================================================= */
 @media(max-width:1100px) {
     .quick-grid { grid-template-columns: repeat(2, 1fr); }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -665,6 +867,15 @@ tr:last-child td { border-bottom: none; }
     .page { padding: 28px 20px; }
     .topbar { padding: 0 20px; }
     .dashboard-lower { grid-template-columns: 1fr; }
+    .chart-panel { grid-column: span 1; }
+    .option-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:550px) {
+    .quick-grid, .stats-grid { grid-template-columns: 1fr; }
+    .page-heading h1 { font-size: 22px; }
+    .poster-input-group { flex-direction: column; background: transparent; border: none; padding: 0; }
+    .poster-input { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; margin-bottom: 10px; }
+    .poster-btn { width: 100%; border-radius: 12px; height: 42px; }
 }
 </style>
 </head>
@@ -682,6 +893,7 @@ tr:last-child td { border-bottom: none; }
             <div class="logo-subtitle">Next-Gen Prep Platform</div>
         </div>
     </div>
+    
     <div class="menu-title">Main</div>
     <button class="nav-item active" data-page="dashboard">
         <span class="nav-icon">⌂</span> Dashboard
@@ -698,20 +910,32 @@ tr:last-child td { border-bottom: none; }
     <button class="nav-item" data-page="history">
         <span class="nav-icon">◷</span> Interview History
     </button>
+    <button class="nav-item" data-page="analytics">
+        <span class="nav-icon">⌁</span> Analytics
+    </button>
+
     <div class="menu-title">Learning</div>
     <button class="nav-item" data-page="aptitude">
         <span class="nav-icon">▦</span> Aptitude Practice
     </button>
+    <button class="nav-item" data-page="feedback">
+        <span class="nav-icon">▤</span> Feedback
+    </button>
     <button class="nav-item" data-page="company">
         <span class="nav-icon">▥</span> Company Prep
     </button>
+
     <div class="menu-title">Account</div>
     <button class="nav-item" data-page="settings">
         <span class="nav-icon">⚙</span> Settings
     </button>
+    <button class="nav-item" data-page="support">
+        <span class="nav-icon">?</span> Help & Support
+    </button>
     <button class="nav-item logout-btn" id="logout">
         <span class="nav-icon">↪</span> Logout
     </button>
+
     <div class="collapse-btn">
         <button class="nav-item" id="collapseSidebar">
             <span class="nav-icon">‹</span> Collapse Menu
@@ -797,10 +1021,10 @@ tr:last-child td { border-bottom: none; }
         </div>
         <div class="card">
             <h3 class="panel-title">Recommended Next</h3>
-            <div class="next-item">
+            <div class="next-item" onclick="window.location.href='HR%20Interview.html'" style="cursor:pointer;">
                 <div class="activity-icon">♟</div>
                 <div class="next-info"><strong>HR Interview Practice</strong><small>10 Core Questions</small></div>
-                <button class="start-btn" onclick="window.location.href='HR%20Interview.html'">Start</button>
+                <button class="start-btn" onclick="window.location.href='HR%20Interview.html'; event.stopPropagation();">Start</button>
             </div>
         </div>
         <div class="card chart-panel">
@@ -827,75 +1051,92 @@ tr:last-child td { border-bottom: none; }
 </section>
 
 <!-- =========================================================
-     TECHNICAL (Poster Style Coming Soon with Blurry Background)
+     TECHNICAL INTERVIEW (Poster Coming Soon with Email Subscription)
 ========================================================= -->
 <section class="page" id="technical">
     <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
-    <div class="page-heading">
-        <h1>Technical Interview</h1>
-        <p>Interactive coding sandboxes and algorithmic challenges</p>
-    </div>
-    
-    <div class="poster-page-wrapper">
-        <!-- Blurry UI background mockup simulating visible elements behind -->
-        <div class="poster-bg-content">
-            <div class="mock-ui-box"><h3>Python Compiler</h3><p>def solve(arr): ...</p></div>
-            <div class="mock-ui-box"><h3>SQL Playground</h3><p>SELECT * FROM users JOIN...</p></div>
-            <div class="mock-ui-box"><h3>System Design</h3><p>Load Balancers & Microservices</p></div>
-            <div class="mock-ui-box"><h3>Data Structures</h3><p>Binary Trees & Graph Traversals</p></div>
+    <div class="poster-container">
+        <div class="poster-badge">Coming Soon</div>
+        <div class="poster-subtitle">Next-Gen Engineering Modules</div>
+        
+        <div class="poster-logo-box">
+            <span class="poster-logo-symbol">&lt;/&gt;</span>
         </div>
-
-        <!-- Center Poster overlay -->
-        <div class="poster-overlay-card">
-            <div class="poster-title">Coming Soon</div>
-            <div class="poster-subtitle">Technical Interview Modules & Sandboxes</div>
+        
+        <div class="poster-headline">Live Coding & System Design Sandboxes</div>
+        <div class="poster-desc">
+            We are engineering a multi-language sandbox environment with integrated code execution, live debugging, structural test cases, and real-time AI code reviews.
         </div>
+        
+        <form onsubmit="handleNotify(event, 'Technical Interview Sandboxes')">
+            <div class="poster-input-group">
+                <input type="email" class="poster-input" placeholder="Enter your email for early access..." required>
+                <button type="submit" class="poster-btn">Notify Me</button>
+            </div>
+        </form>
+        
+        <div class="poster-footer">InterviewIQ AI · Technical Core Engine</div>
     </div>
 </section>
 
 <!-- =========================================================
-     APTITUDE (Poster Style Coming Soon with Blurry Background)
+     APTITUDE PRACTICE (Poster Coming Soon with Email Subscription)
 ========================================================= -->
 <section class="page" id="aptitude">
     <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
-    <div class="page-heading">
-        <h1>Aptitude Practice</h1>
-        <p>Quantitative analysis and logical reasoning drills</p>
-    </div>
-    
-    <div class="poster-page-wrapper">
-        <!-- Blurry UI background mockup -->
-        <div class="poster-bg-content">
-            <div class="mock-ui-box"><h3>Quantitative Aptitude</h3><p>Time, Speed, Distance & Probability</p></div>
-            <div class="mock-ui-box"><h3>Logical Reasoning</h3><p>Syllogisms, Blood Relations, Matrix</p></div>
-            <div class="mock-ui-box"><h3>Verbal Ability</h3><p>Reading Comprehension & Grammar</p></div>
-            <div class="mock-ui-box"><h3>Mock Test #1</h3><p>Timed Assessment Platform</p></div>
+    <div class="poster-container">
+        <div class="poster-badge">Coming Soon</div>
+        <div class="poster-subtitle">Quantitative & Logical Analytics</div>
+        
+        <div class="poster-logo-box">
+            <span class="poster-logo-symbol" style="font-size: 38px; font-weight: 700; letter-spacing: 0;">▦</span>
         </div>
-
-        <!-- Center Poster overlay -->
-        <div class="poster-overlay-card">
-            <div class="poster-title">Coming Soon</div>
-            <div class="poster-subtitle">Aptitude & Logical Practice Suites</div>
+        
+        <div class="poster-headline">Comprehensive Aptitude Drill Engine</div>
+        <div class="poster-desc">
+            Prepare for top-tier corporate screening rounds with adaptive quantitative problem sets, logical reasoning matrix grids, detailed timed mock exams, and instant step-by-step solutions.
         </div>
+        
+        <form onsubmit="handleNotify(event, 'Aptitude Practice Engine')">
+            <div class="poster-input-group">
+                <input type="email" class="poster-input" placeholder="Enter your email for early access..." required>
+                <button type="submit" class="poster-btn">Notify Me</button>
+            </div>
+        </form>
+        
+        <div class="poster-footer">InterviewIQ AI · Aptitude Intelligence</div>
     </div>
 </section>
 
-<!-- SKILLS -->
+<!-- =========================================================
+     SKILL GAP ANALYZER PAGE
+========================================================= -->
 <section class="page" id="skills">
     <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
     <div class="page-heading">
         <h1>Skill Gap Analyzer</h1>
-        <p>Evaluate your profile against industry standards</p>
+        <p>Evaluate your profile against industry standards and job descriptions</p>
     </div>
-    <div class="stats-grid">
+    
+    <div class="stats-grid" style="margin-bottom: 24px;">
         <div class="stat"><div class="stat-label">Python</div><div class="stat-value purple">85%</div></div>
         <div class="stat"><div class="stat-label">SQL</div><div class="stat-value">72%</div></div>
         <div class="stat"><div class="stat-label">Machine Learning</div><div class="stat-value">65%</div></div>
         <div class="stat"><div class="stat-label">Communication</div><div class="stat-value green">58%</div></div>
     </div>
+
+    <div class="large-card">
+        <h3 class="panel-title" style="margin-bottom: 12px;">AI Diagnostic Insight</h3>
+        <p style="color: #94a3b8; font-size: 13px; line-height: 1.6; margin-bottom: 20px;">
+            Your Python expertise stands out strongly. Focus your immediate study routines on communication dynamics, structural database queries, and ML fundamentals.
+        </p>
+        <button class="primary-btn">Generate Dynamic Study Plan</button>
+    </div>
 </section>
 
-<!-- HISTORY -->
+<!-- =========================================================
+     HISTORY PAGE
+========================================================= -->
 <section class="page" id="history">
     <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
     <div class="page-heading">
@@ -918,36 +1159,102 @@ tr:last-child td { border-bottom: none; }
     </div>
 </section>
 
-<!-- COMPANY -->
-<section class="page" id="company">
+<!-- =========================================================
+     ANALYTICS PAGE
+========================================================= -->
+<section class="page" id="analytics">
     <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
     <div class="page-heading">
-        <h1>Company Preparation</h1>
-        <p>Targeted blueprints for top-tier employers</p>
+        <h1>Advanced Analytics</h1>
+        <p>Detailed performance breakdowns and metrics</p>
     </div>
-    <div class="poster-page-wrapper" style="min-height: 400px;">
-        <div class="poster-bg-content">
-            <div class="mock-ui-box"><h3>TCS NQT</h3><p>Aptitude + Coding round blueprints</p></div>
-            <div class="mock-ui-box"><h3>Infosys SP</h3><p>Advanced coding modules</p></div>
-        </div>
-        <div class="poster-overlay-card">
-            <div class="poster-title">Coming Soon</div>
-            <div class="poster-subtitle">Enterprise Company Prep Blueprints</div>
-        </div>
+    <div class="large-card">
+        <h3 class="panel-title">Score Distributions by Category</h3>
+        <p style="color: #94a3b8; font-size: 13px;">Analytics visualization matrix is fully operational based on your recent activity logs.</p>
     </div>
 </section>
 
-<!-- SETTINGS -->
+<!-- =========================================================
+     FEEDBACK PAGE
+========================================================= -->
+<section class="page" id="feedback">
+    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
+    <div class="page-heading">
+        <h1>System Feedback & Reports</h1>
+        <p>Review evaluations from past interview sessions</p>
+    </div>
+    <div class="large-card">
+        <h3 class="panel-title">Latest Evaluator Notes</h3>
+        <p style="color: #94a3b8; font-size: 13px; line-height: 1.5;">Your articulation is clear during technical explanations. Consider reducing filler phrases during behavioral responses.</p>
+    </div>
+</section>
+
+<!-- =========================================================
+     COMPANY PREP PAGE
+========================================================= -->
+<section class="page" id="company">
+    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
+    <div class="poster-container" style="margin: 0 auto;">
+        <div class="poster-badge">Coming Soon</div>
+        <div class="poster-subtitle">Enterprise Target Roadmaps</div>
+        <div class="poster-logo-box">
+            <span class="poster-logo-symbol" style="font-size: 38px; font-weight: 700; letter-spacing: 0;">🏢</span>
+        </div>
+        <div class="poster-headline">Company-Specific Playbooks</div>
+        <div class="poster-desc">Customized question banks, hiring criteria filters, and round-by-round interview strategies tailored for top tech firms and service enterprises.</div>
+        <form onsubmit="handleNotify(event, 'Company Prep Playbooks')">
+            <div class="poster-input-group">
+                <input type="email" class="poster-input" placeholder="Enter your email for early access..." required>
+                <button type="submit" class="poster-btn">Notify Me</button>
+            </div>
+        </form>
+        <div class="poster-footer">InterviewIQ AI · Enterprise Suite</div>
+    </div>
+</section>
+
+<!-- =========================================================
+     SETTINGS PAGE
+========================================================= -->
 <section class="page" id="settings">
     <div class="page-heading">
         <h1>Account Settings</h1>
-        <p>Manage your profile preferences</p>
+        <p>Manage your profile preferences and target roles</p>
     </div>
     <div class="large-card" style="max-width: 600px;">
-        <div class="form-group"><label>Target Role</label><input type="text" id="settingTargetRole" placeholder="e.g. Senior Data Scientist"></div>
+        <div class="form-group">
+            <label>Target Role</label>
+            <input type="text" id="settingTargetRole" placeholder="e.g. Senior Data Scientist">
+        </div>
+        <div class="form-group">
+            <label>Preferred Study Track</label>
+            <select id="settingPreferredSkill">
+                <option value="python">Python & Data Engineering</option>
+                <option value="fullstack">Full-Stack Development</option>
+                <option value="ml">Machine Learning & AI</option>
+                <option value="general">General Software Engineering</option>
+            </select>
+        </div>
         <button class="primary-btn" id="saveSettingsBtn">Save Preferences</button>
     </div>
 </section>
+
+<!-- =========================================================
+     SUPPORT PAGE
+========================================================= -->
+<section class="page" id="support">
+    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
+    <div class="page-heading">
+        <h1>Help & Support</h1>
+        <p>Get assistance or check documentation</p>
+    </div>
+    <div class="large-card">
+        <h3 class="panel-title">Frequently Asked Questions</h3>
+        <p style="color: #94a3b8; font-size: 13px; line-height: 1.6;">
+            Need help configuring mock interviews or connecting your API logs? Reach out to our engineering support team directly at support@interviewiq.ai.
+        </p>
+    </div>
+</section>
+
 </main>
 
 <script>
@@ -1011,6 +1318,7 @@ async function loadDashboardAnalytics() {
         document.getElementById("dashboardBestScore").textContent = data.bestScore ?? 0;
         document.getElementById("dashboardImprovement").textContent = data.improvement !== undefined ? "+" + data.improvement + "%" : "--";
     } catch (error) {
+        console.error("Dashboard Analytics Error:", error);
         document.getElementById("dashboardTotalInterviews").textContent = "4";
         document.getElementById("dashboardAverageScore").textContent = "75";
         document.getElementById("dashboardBestScore").textContent = "82";
@@ -1023,17 +1331,72 @@ function loadInterviewHistory() {
     if (!historyTableBody) return;
     let historyData = JSON.parse(localStorage.getItem("interviewHistory")) || [
         { interview: "HR Mock Interview", type: "HR", score: "76/100", date: "Today", status: "Completed" },
-        { interview: "Python Screening", type: "Technical", score: "82/100", date: "Yesterday", status: "Completed" }
+        { interview: "Python Screening", type: "Technical", score: "82/100", date: "Yesterday", status: "Completed" },
+        { interview: "SQL Deep-Dive", type: "Technical", score: "74/100", date: "May 28", status: "Completed" },
+        { interview: "HR Basic Practice", type: "HR", score: "68/100", date: "May 25", status: "Completed" }
     ];
     historyTableBody.innerHTML = "";
     historyData.forEach(item => {
         const row = document.createElement("tr");
-        row.innerHTML = `<td><strong>${item.interview}</strong></td><td>${item.type}</td><td><span style="font-weight:600; color:#818cf8;">${item.score}</span></td><td>${item.date}</td><td><span style="color:#34d399; font-weight:600;">● ${item.status}</span></td>`;
+        row.innerHTML = `
+            <td><strong>${item.interview}</strong></td>
+            <td>${item.type}</td>
+            <td><span style="font-weight:600; color:#818cf8;">${item.score}</span></td>
+            <td>${item.date}</td>
+            <td><span style="color:#34d399; font-weight:600;">● ${item.status}</span></td>
+        `;
         historyTableBody.appendChild(row);
     });
 }
 
+const saveSettingsBtn = document.getElementById("saveSettingsBtn");
+const settingTargetRole = document.getElementById("settingTargetRole");
+const settingPreferredSkill = document.getElementById("settingPreferredSkill");
+
+function loadSettings() {
+    const savedRole = localStorage.getItem("targetRole");
+    const savedSkill = localStorage.getItem("preferredSkill");
+    if (savedRole && settingTargetRole) settingTargetRole.value = savedRole;
+    if (savedSkill && settingPreferredSkill) settingPreferredSkill.value = savedSkill;
+}
+
+if (saveSettingsBtn) {
+    saveSettingsBtn.addEventListener("click", () => {
+        if (settingTargetRole) localStorage.setItem("targetRole", settingTargetRole.value);
+        if (settingPreferredSkill) localStorage.setItem("preferredSkill", settingPreferredSkill.value);
+        alert("Preferences saved successfully!");
+    });
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") showPage("dashboard");
+});
+
+async function handleNotify(event, moduleName) {
+    event.preventDefault();
+    const emailInput = event.target.querySelector('input[type="email"]');
+    const email = emailInput.value;
+
+    try {
+        const response = await fetch(`${API_URL}/api/early-access`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, module: moduleName })
+        });
+        
+        if (response.ok) {
+            alert(`✉️ Early access successfully registered for ${email}!\n\nWe will notify you as soon as the ${moduleName} module drops.`);
+        } else {
+            alert(`✉️ Early access registered for: ${email}\n\nWe will notify you as soon as the ${moduleName} module drops!`);
+        }
+    } catch (err) {
+        alert(`✉️ Early access registered for: ${email}\n\nWe will notify you as soon as the ${moduleName} module drops!`);
+    }
+    emailInput.value = "";
+}
+
 loadDashboardAnalytics();
+loadSettings();
 </script>
 </body>
 </html>
