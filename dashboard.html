@@ -976,7 +976,7 @@ tr:last-child td {
             </div>
             <button class="start-btn" onclick="showPage('technical'); event.stopPropagation();">Explore</button>
         </div>
-        <div class="card quick-card" onclick="window.location.href='analytics.html'" style="cursor:pointer;">
+        <div class="card quick-card" onclick="window.location.href='analytics.html'" style="cursor:pointer;" data-page="skills">
             <div>
                 <div class="icon-box icon-green">▥</div>
                 <h3>Skill Gap Analyzer</h3>
@@ -1311,27 +1311,69 @@ async function loadDashboardAnalytics() {
     }
 }
 
-function loadInterviewHistory() {
+async function loadInterviewHistory() {
     const historyTableBody = document.querySelector("#historyTable tbody");
     if (!historyTableBody) return;
-    let historyData = JSON.parse(localStorage.getItem("interviewHistory")) || [
-        { interview: "HR Mock Interview", type: "HR", score: "76/100", date: "Today", status: "Completed" },
-        { interview: "Python Screening", type: "Technical", score: "82/100", date: "Yesterday", status: "Completed" },
-        { interview: "SQL Deep-Dive", type: "Technical", score: "74/100", date: "May 28", status: "Completed" },
-        { interview: "HR Basic Practice", type: "HR", score: "68/100", date: "May 25", status: "Completed" }
-    ];
-    historyTableBody.innerHTML = "";
-    historyData.forEach(item => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td><strong>${item.interview}</strong></td>
-            <td>${item.type}</td>
-            <td><span style="font-weight:600; color:#818cf8;">${item.score}</span></td>
-            <td>${item.date}</td>
-            <td><span style="color:#34d399; font-weight:600;">● ${item.status}</span></td>
+
+    try {
+        const response = await fetch(`${API_URL}/api/interviews`);
+
+        if (!response.ok) {
+            throw new Error("Failed to load interview history");
+        }
+
+        const interviews = await response.json();
+
+        historyTableBody.innerHTML = "";
+
+        if (!interviews || interviews.length === 0) {
+            historyTableBody.innerHTML = `
+                <tr>
+                    <td colspan="5" style="text-align:center;color:#94a3b8;">
+                        No interviews completed yet.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        interviews.forEach(interview => {
+            const row = document.createElement("tr");
+
+            const date = interview.createdAt
+                ? new Date(interview.createdAt).toLocaleDateString()
+                : "-";
+
+            row.innerHTML = `
+                <td><strong>${interview.type || "Interview"}</strong></td>
+                <td>${interview.type || "-"}</td>
+                <td>
+                    <span style="font-weight:600;color:#818cf8;">
+                        ${interview.score ?? 0}/100
+                    </span>
+                </td>
+                <td>${date}</td>
+                <td>
+                    <span style="color:#34d399;font-weight:600;">
+                        ● Completed
+                    </span>
+                </td>
+            `;
+
+            historyTableBody.appendChild(row);
+        });
+
+    } catch (error) {
+        console.error("Interview History Error:", error);
+
+        historyTableBody.innerHTML = `
+            <tr>
+                <td colspan="5" style="text-align:center;color:#f87171;">
+                    Unable to load interview history.
+                </td>
+            </tr>
         `;
-        historyTableBody.appendChild(row);
-    });
+    }
 }
 
 const saveSettingsBtn = document.getElementById("saveSettingsBtn");
