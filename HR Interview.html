@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>HR Interview | InterviewIQ AI</title>
-
-    <link rel="icon" type="image/png" href="./Robot.png?v=2">
+    <link rel="icon" type="image/png" href="./Robot.png?v=3">
 
     <style>
 
@@ -17,10 +16,6 @@
             padding: 0;
             font-family: Arial, sans-serif;
         }
-
-        /* =========================
-           BODY
-        ========================== */
 
         body {
             background: #050b18;
@@ -32,10 +27,28 @@
             padding: 35px 70px;
         }
 
-        /* =========================
-           BACK BUTTON
-        ========================== */
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
+        .brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .brand-name span {
+            color: #6366f1;
+        }
+    
         .back {
             color: #8b98ad;
             text-decoration: none;
@@ -47,9 +60,6 @@
             color: #ffffff;
         }
 
-        /* =========================
-           HEADING
-        ========================== */
 
         h1 {
             margin-top: 30px;
@@ -62,119 +72,64 @@
             margin-top: 8px;
             font-size: 16px;
         }
-
-        /* =========================
-           INTERVIEW CARD
-        ========================== */
-
         .interview-card {
             margin-top: 30px;
-
             background: #0b1220;
-
             border: 1px solid #17243a;
-
             border-radius: 15px;
-
             padding: 30px;
-
             box-shadow:
                 0 5px 25px rgba(0, 0, 0, 0.45);
         }
 
-        /* =========================
-           PROGRESS BAR
-        ========================== */
-
         .progress-container {
             width: 100%;
             height: 9px;
-
             background: #172238;
-
             border-radius: 10px;
-
             overflow: hidden;
-
             margin-bottom: 32px;
         }
 
         .progress {
             height: 100%;
             width: 10%;
-
             background: #6366f1;
-
             border-radius: 10px;
-
             transition: width 0.3s ease;
         }
 
-        /* =========================
-           QUESTION NUMBER
-        ========================== */
-
         .question-number {
             font-size: 15px;
-
             margin-bottom: 10px;
-
             color: #8b98ad;
         }
-
-        /* =========================
-           QUESTION
-        ========================== */
 
         .question {
             font-size: 24px;
-
             margin-bottom: 12px;
-
             color: #ffffff;
-
             line-height: 1.4;
         }
-
-        /* =========================
-           INSTRUCTION
-        ========================== */
-
+      
         .instruction {
             color: #8b98ad;
-
             font-size: 15px;
-
             margin-bottom: 25px;
-
             line-height: 1.6;
         }
 
-        /* =========================
-           TEXTAREA
-        ========================== */
-
         textarea {
             width: 100%;
-
             height: 175px;
-
             background: #070d19;
-
             color: #ffffff;
-
             border: 1px solid #24324a;
-
             border-radius: 10px;
-
             padding: 18px;
-
             font-size: 15px;
-
             resize: none;
-
             outline: none;
-
             transition: 0.3s;
         }
 
@@ -184,66 +139,36 @@
 
         textarea:focus {
             border-color: #6366f1;
-
             box-shadow:
                 0 0 0 2px rgba(99, 102, 241, 0.15);
         }
-
-        /* =========================
-           BOTTOM
-        ========================== */
-
         .bottom {
             margin-top: 20px;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
         }
 
-        /* =========================
-           TIMER
-        ========================== */
-
         .timer {
             font-size: 18px;
-
             color: #cbd5e1;
         }
 
-        /* =========================
-           NEXT BUTTON
-        ========================== */
-
         .next-button {
             border: none;
-
             background: #6366f1;
-
             color: white;
-
             padding: 13px 25px;
-
             border-radius: 8px;
-
             font-size: 15px;
-
             cursor: pointer;
-
             transition: 0.3s;
         }
 
         .next-button:hover {
             background: #4f46e5;
-
             transform: translateY(-1px);
         }
-
-        /* =========================
-           MOBILE
-        ========================== */
 
         @media(max-width: 800px) {
 
@@ -265,9 +190,7 @@
 
             .bottom {
                 flex-direction: column;
-
                 gap: 18px;
-
                 align-items: stretch;
             }
 
@@ -279,10 +202,6 @@
                 width: 100%;
             }
         }
-
-        /* =========================
-           SMALL MOBILE
-        ========================== */
 
         @media(max-width: 500px) {
 
@@ -307,38 +226,30 @@
 
 </head>
 
-
 <body>
 
-
     <div class="content">
+        <div class="brand">
+            <img src="./Robot.png" alt="InterviewIQ AI Logo">
 
-
-        <!-- BACK TO DASHBOARD -->
+            <div class="brand-name">
+                Interview<span>IQ AI</span>
+            </div>
+        </div>
 
         <a href="dashboard.html" class="back">
             ← Back to Dashboard
         </a>
 
-
-        <!-- TITLE -->
-
         <h1>
             HR Interview
         </h1>
-
 
         <p class="subtitle">
             Practice real HR questions with your AI interviewer.
         </p>
 
-
-        <!-- INTERVIEW CARD -->
-
         <div class="interview-card">
-
-
-            <!-- PROGRESS -->
 
             <div class="progress-container">
 
@@ -348,9 +259,6 @@
                 </div>
 
             </div>
-
-
-            <!-- QUESTION NUMBER -->
 
             <div class="question-number">
 
@@ -362,9 +270,6 @@
 
             </div>
 
-
-            <!-- QUESTION -->
-
             <h2
                 class="question"
                 id="question">
@@ -372,9 +277,6 @@
                 Tell me about yourself.
 
             </h2>
-
-
-            <!-- INSTRUCTION -->
 
             <p
                 class="instruction"
@@ -385,19 +287,12 @@
 
             </p>
 
-
-            <!-- ANSWER -->
-
             <textarea
                 id="answer"
                 placeholder="Type your answer here... Press Enter for the next question."
             ></textarea>
 
-
-            <!-- TIMER + BUTTON -->
-
             <div class="bottom">
-
 
                 <div
                     class="timer"
@@ -407,7 +302,6 @@
 
                 </div>
 
-
                 <button
                     class="next-button"
                     onclick="nextQuestion()">
@@ -416,31 +310,17 @@
 
                 </button>
 
-
             </div>
-
 
         </div>
 
-
     </div>
 
-
-
 <script>
-
-
-/* =========================
-   BACKEND API
-========================= */
 
 const API_URL =
     "https://interview-project-uimv.onrender.com";
 
-
-/* =========================
-   QUESTIONS
-========================= */
 
 const questions = [
 
@@ -505,12 +385,6 @@ const questions = [
     }
 
 ];
-
-
-/* =========================
-   VARIABLES
-========================= */
-
 let currentQuestion = 0;
 
 let timeLeft = 180;
@@ -519,45 +393,33 @@ let timerInterval;
 
 let answers = [];
 
-
-/* =========================
-   UPDATE PAGE
-========================= */
-
 function updatePage() {
-
 
     document.getElementById(
         "questionNumber"
     ).textContent =
         currentQuestion + 1;
 
-
     document.getElementById(
         "question"
     ).textContent =
         questions[currentQuestion].question;
-
 
     document.getElementById(
         "instruction"
     ).textContent =
         questions[currentQuestion].instruction;
 
-
     document.getElementById(
         "answer"
     ).value = "";
-
 
     document.getElementById(
         "progress"
     ).style.width =
         ((currentQuestion + 1) * 10) + "%";
 
-
     timeLeft = 180;
-
 
     updateTimer();
 
@@ -565,64 +427,40 @@ function updatePage() {
 
 }
 
-
-/* =========================
-   START TIMER
-========================= */
-
 function startTimer() {
-
 
     clearInterval(timerInterval);
 
-
     timerInterval = setInterval(() => {
-
 
         timeLeft--;
 
-
         updateTimer();
-
 
         if (timeLeft <= 0) {
 
-
             clearInterval(timerInterval);
-
 
             nextQuestion();
 
         }
 
-
     }, 1000);
 
 }
-
-
-/* =========================
-   UPDATE TIMER
-========================= */
-
 function updateTimer() {
-
 
     let minutes =
         Math.floor(timeLeft / 60);
 
-
     let seconds =
         timeLeft % 60;
-
 
     minutes =
         String(minutes).padStart(2, "0");
 
-
     seconds =
         String(seconds).padStart(2, "0");
-
 
     document.getElementById(
         "timer"
@@ -630,35 +468,22 @@ function updateTimer() {
         "⏱ " + minutes + ":" + seconds;
 
 }
-
-
-/* =========================
-   NEXT QUESTION
-========================= */
-
 async function nextQuestion() {
-
 
     const answer =
         document.getElementById(
             "answer"
         ).value.trim();
 
-
     if (answer === "") {
-
 
         alert(
             "Please enter your answer before continuing."
         );
 
-
         return;
 
     }
-
-
-    /* SAVE ANSWER */
 
     answers.push({
 
@@ -670,64 +495,41 @@ async function nextQuestion() {
 
     });
 
-
     currentQuestion++;
-
-
-    /* INTERVIEW COMPLETED */
 
     if (
         currentQuestion >=
         questions.length
     ) {
 
-
         clearInterval(timerInterval);
 
-
         await saveInterview();
-
 
         alert(
             "Interview completed! 🎉"
         );
 
-
         window.location.href =
             "feedback.html";
-
 
         return;
 
     }
 
-
     updatePage();
 
 }
-
-
-/* =========================
-   EVALUATE INTERVIEW
-========================= */
-
 function evaluateInterview() {
-
 
     let totalScore = 0;
 
-
     answers.forEach(item => {
-
 
         const answer =
             item.answer.toLowerCase();
 
-
         let score = 0;
-
-
-        /* ANSWER LENGTH */
 
         if (answer.length >= 50) {
 
@@ -747,9 +549,6 @@ function evaluateInterview() {
 
         }
 
-
-        /* KEYWORDS */
-
         const keywords = [
 
             "team",
@@ -764,10 +563,7 @@ function evaluateInterview() {
             "challenge"
 
         ];
-
-
         keywords.forEach(keyword => {
-
 
             if (
                 answer.includes(keyword)
@@ -778,8 +574,6 @@ function evaluateInterview() {
             }
 
         });
-
-
         score =
             Math.min(score, 100);
 
@@ -787,9 +581,6 @@ function evaluateInterview() {
         totalScore += score;
 
     });
-
-
-    /* AVERAGE SCORE */
 
     const averageScore =
         Math.round(
@@ -831,20 +622,12 @@ function evaluateInterview() {
 
 }
 
-
-/* =========================
-   SAVE INTERVIEW
-========================= */
-
 async function saveInterview() {
-
 
     try {
 
-
         const evaluation =
             evaluateInterview();
-
 
         const response =
             await fetch(
@@ -898,17 +681,13 @@ async function saveInterview() {
 
             );
 
-
         if (!response.ok) {
-
 
             console.log(
                 "Interview data could not be saved."
             );
 
-
         } else {
-
 
             console.log(
                 "Interview saved successfully."
@@ -916,11 +695,9 @@ async function saveInterview() {
 
         }
 
-
     }
 
     catch (error) {
-
 
         console.log(
             "Backend connection error:",
@@ -931,11 +708,6 @@ async function saveInterview() {
 
 }
 
-
-/* =========================
-   ENTER KEY → NEXT QUESTION
-========================= */
-
 document.getElementById(
     "answer"
 ).addEventListener(
@@ -944,15 +716,12 @@ document.getElementById(
 
     function(event) {
 
-
         if (
             event.key === "Enter" &&
             !event.shiftKey
         ) {
 
-
             event.preventDefault();
-
 
             nextQuestion();
 
@@ -962,17 +731,9 @@ document.getElementById(
 
 );
 
-
-/* =========================
-   START INTERVIEW
-========================= */
-
 updatePage();
-
 
 </script>
 
-
 </body>
-
 </html>
