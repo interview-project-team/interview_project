@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InterviewIQ AI - Dashboard</title>
-<link rel="icon" type="image/png" href="./Robot.png?v=2">
+<link rel="icon" type="image/png" href="./Robot.png?v=3">
 <style>
 * {
     margin: 0;
@@ -40,9 +40,6 @@ body {
     overflow-x: hidden;
 }
 
-/* =========================================================
-   BLURRY CYBER-GRID BACKGROUND EFFECTS
-========================================================= */
 body::before {
     content: "";
     position: fixed;
@@ -80,9 +77,6 @@ body::before {
     pointer-events: none;
 }
 
-/* =========================================================
-   SIDEBAR (Frosted Glass)
-========================================================= */
 .sidebar {
     width: 280px;
     height: 100vh;
@@ -97,7 +91,7 @@ body::before {
     z-index: 1000;
     overflow-y: auto;
     border-right: 1px solid rgba(255, 255, 255, 0.08);
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .logo {
     display: flex;
@@ -177,15 +171,8 @@ body::before {
     background: rgba(248, 113, 113, 0.1);
     color: #ef4444;
 }
-.collapse-btn {
-    margin-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    padding-top: 16px;
-}
 
-/* =========================================================
-   MAIN & TOPBAR (Glassmorphic Topbar)
-========================================================= */
+/* MAIN & TOPBAR */
 .main {
     margin-left: 280px;
     min-height: 100vh;
@@ -211,6 +198,7 @@ body::before {
     font-size: 20px;
     cursor: pointer;
     color: white;
+    display: none;
 }
 .notification {
     position: relative;
@@ -239,9 +227,7 @@ body::before {
     border-radius: 50%;
 }
 
-/* =========================================================
-   PAGE CONTAINER
-========================================================= */
+/* PAGES */
 .page {
     display: none;
     padding: 36px 48px;
@@ -269,9 +255,7 @@ body::before {
     font-size: 14px;
 }
 
-/* =========================================================
-   CARDS & DASHBOARD (Glass Panels)
-========================================================= */
+/* CARDS & PANELS */
 .quick-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -292,8 +276,6 @@ body::before {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
-    overflow: hidden;
 }
 .quick-card:hover {
     transform: translateY(-4px);
@@ -314,7 +296,6 @@ body::before {
 }
 .icon-blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
 .icon-green { background: rgba(16, 185, 129, 0.15); color: #34d399; }
-.icon-orange { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
 
 .quick-card h3 {
     font-size: 16px;
@@ -347,9 +328,7 @@ body::before {
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
 }
 
-/* =========================================================
-   HISTORY BANNER
-========================================================= */
+/* HISTORY BANNER */
 .history-banner {
     margin-top: 20px;
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(79, 70, 229, 0.05));
@@ -400,9 +379,6 @@ body::before {
     color: #818cf8;
 }
 
-/* =========================================================
-   STATS SECTION
-========================================================= */
 .section-title {
     font-size: 18px;
     font-weight: 700;
@@ -446,9 +422,7 @@ body::before {
 .purple { color: #818cf8; }
 .green { color: #34d399; }
 
-/* =========================================================
-   LOWER DASHBOARD
-========================================================= */
+/* LOWER DASHBOARD */
 .dashboard-lower {
     display: grid;
     grid-template-columns: 1fr 1fr 1.3fr;
@@ -531,9 +505,7 @@ body::before {
     font-size: 11px;
 }
 
-/* =========================================================
-   CHART WIDGET
-========================================================= */
+/* CHART WIDGET */
 .chart-container {
     height: 220px;
     position: relative;
@@ -579,148 +551,6 @@ body::before {
     color: #a5b4fc;
 }
 
-/* =========================================================
-   GENERIC PAGES & TABLES
-========================================================= */
-.back-btn {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    margin-bottom: 20px;
-    color: #94a3b8;
-    font-weight: 600;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: 0.2s;
-}
-.back-btn:hover {
-    color: white;
-}
-.large-card {
-    background: rgba(15, 23, 42, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius);
-    padding: 28px;
-    box-shadow: var(--shadow);
-}
-.option-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-.option-card {
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius);
-    padding: 24px;
-    background: rgba(15, 23, 42, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: var(--shadow);
-    transition: 0.2s;
-}
-.option-card:hover {
-    border-color: rgba(99, 102, 241, 0.4);
-    box-shadow: var(--shadow-hover);
-}
-.option-card h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 8px;
-}
-.option-card p {
-    font-size: 13px;
-    color: #94a3b8;
-    line-height: 1.5;
-    margin-bottom: 18px;
-}
-.primary-btn {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 13px;
-    transition: 0.2s;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-}
-.primary-btn:hover {
-    background: var(--primary-hover);
-    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
-}
-.table-wrapper {
-    background: rgba(15, 23, 42, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 16px 20px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    font-size: 13px;
-}
-th {
-    background: rgba(255, 255, 255, 0.02);
-    color: #94a3b8;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 0.05em;
-}
-td {
-    color: #e2e8f0;
-}
-tr:last-child td {
-    border-bottom: none;
-}
-.form-group {
-    margin-bottom: 20px;
-}
-.form-group label {
-    display: block;
-    font-size: 13px;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: white;
-}
-.form-group input, .form-group select {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-    font-size: 13px;
-    color: white;
-    background: rgba(255, 255, 255, 0.03);
-    transition: 0.2s;
-}
-.form-group input:focus, .form-group select:focus {
-    outline: none;
-    border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-}
-.form-group select option {
-    background: #0f172a;
-    color: white;
-}
-
-/* =========================================================
-   POSTER THEME STYLES (COMING SOON OVERLAYS)
-========================================================= */
 .poster-container {
     max-width: 580px;
     margin: 40px auto;
@@ -850,10 +680,23 @@ tr:last-child td {
     text-transform: uppercase;
     margin-top: 30px;
 }
+.back-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    margin-bottom: 20px;
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+}
+.back-btn:hover {
+    color: white;
+}
 
-/* =========================================================
-   RESPONSIVE QUERIES
-========================================================= */
 @media(max-width:1100px) {
     .quick-grid { grid-template-columns: repeat(2, 1fr); }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -861,14 +704,14 @@ tr:last-child td {
     .chart-panel { grid-column: span 2; }
 }
 @media(max-width:800px) {
-    .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }
+    .sidebar { transform: translateX(-100%); }
     .sidebar.open { transform: translateX(0); }
     .main { margin-left: 0; }
     .page { padding: 28px 20px; }
     .topbar { padding: 0 20px; }
+    .menu-toggle { display: block; }
     .dashboard-lower { grid-template-columns: 1fr; }
     .chart-panel { grid-column: span 1; }
-    .option-grid { grid-template-columns: 1fr; }
 }
 @media(max-width:550px) {
     .quick-grid, .stats-grid { grid-template-columns: 1fr; }
@@ -884,12 +727,11 @@ tr:last-child td {
 <div class="ambient-glow"></div>
 <div class="ambient-glow-2"></div>
 
-<!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
     <div class="logo">
         <div class="logo-icon">🤖</div>
         <div>
-            <div class="logo-text">InterviewIQ<span>AI</span></div>
+            <div class="logo-text">Interview<span>IQ AI</span></div>
             <div class="logo-subtitle">Next-Gen Prep Platform</div>
         </div>
     </div>
@@ -904,10 +746,10 @@ tr:last-child td {
     <button class="nav-item" data-page="technical">
         <span class="nav-icon">&lt;/&gt;</span> Technical Interview
     </button>
-    <button class="nav-item" onclick="window.location.href='analytics.html'">
+    <button class="nav-item" data-page="skills">
         <span class="nav-icon">▥</span> Skill Gap Analyzer
     </button>
-    <button class="nav-item" data-page="history">
+    <button class="nav-item" onclick="window.location.href='history.html'">
         <span class="nav-icon">◷</span> Interview History
     </button>
     <button class="nav-item" onclick="window.location.href='analytics.html'">
@@ -918,29 +760,11 @@ tr:last-child td {
     <button class="nav-item" data-page="aptitude">
         <span class="nav-icon">▦</span> Aptitude Practice
     </button>
-    <button class="nav-item" data-page="feedback">
-        <span class="nav-icon">▤</span> Feedback
-    </button>
-    <button class="nav-item" data-page="company">
-        <span class="nav-icon">▥</span> Company Prep
-    </button>
 
     <div class="menu-title">Account</div>
-    <button class="nav-item" data-page="settings">
-        <span class="nav-icon">⚙</span> Settings
-    </button>
-    <button class="nav-item" data-page="support">
-        <span class="nav-icon">?</span> Help & Support
-    </button>
-    <button class="nav-item logout-btn" id="logout">
+    <button class="nav-item logout-btn" onclick="window.location.href='login.html'">
         <span class="nav-icon">↪</span> Logout
     </button>
-
-    <div class="collapse-btn">
-        <button class="nav-item" id="collapseSidebar">
-            <span class="nav-icon">‹</span> Collapse Menu
-        </button>
-    </div>
 </aside>
 
 <main class="main">
@@ -953,7 +777,6 @@ tr:last-child td {
     </div>
 </header>
 
-<!-- DASHBOARD PAGE -->
 <section class="page active-page" id="dashboard">
     <div class="page-heading">
         <h1>Welcome back! 👋</h1>
@@ -976,17 +799,17 @@ tr:last-child td {
             </div>
             <button class="start-btn" onclick="showPage('technical'); event.stopPropagation();">Explore</button>
         </div>
-        <div class="card quick-card" onclick="window.location.href='analytics.html'" style="cursor:pointer;" data-page="skills">
+        <div class="card quick-card" onclick="showPage('skills')" style="cursor:pointer;">
             <div>
                 <div class="icon-box icon-green">▥</div>
                 <h3>Skill Gap Analyzer</h3>
-                <p>Find your weak areas and improve.</p>
+                <p>Find your weak areas and improve target domains.</p>
             </div>
-            <button class="start-btn" onclick="window.location.href='analytics.html'; event.stopPropagation();">Start</button>
+            <button class="start-btn" onclick="showPage('skills'); event.stopPropagation();">Start</button>
         </div>
     </div>
 
-    <div class="history-banner" onclick="showPage('history')">
+    <div class="history-banner" onclick="window.location.href='history.html'">
         <div class="history-left">
             <div class="history-icon">◷</div>
             <div>
@@ -999,10 +822,10 @@ tr:last-child td {
 
     <h2 class="section-title">Performance Overview</h2>
     <div class="stats-grid">
-        <div class="stat"><div class="stat-label">Total Interviews</div><div class="stat-value purple" id="dashboardTotalInterviews">--</div></div>
-        <div class="stat"><div class="stat-label">Average Score</div><div class="stat-value"><span id="dashboardAverageScore">--</span><span>/100</span></div></div>
-        <div class="stat"><div class="stat-label">Best Score</div><div class="stat-value"><span id="dashboardBestScore">--</span><span>/100</span></div></div>
-        <div class="stat"><div class="stat-label">Improvement Rate</div><div class="stat-value green"><span id="dashboardImprovement">--</span></div></div>
+        <div class="stat"><div class="stat-label">Total Interviews</div><div class="stat-value purple">12</div></div>
+        <div class="stat"><div class="stat-label">Average Score</div><div class="stat-value">78<span>/100</span></div></div>
+        <div class="stat"><div class="stat-label">Best Score</div><div class="stat-value">92<span>/100</span></div></div>
+        <div class="stat"><div class="stat-label">Improvement Rate</div><div class="stat-value green">+14%</div></div>
     </div>
 
     <div class="dashboard-lower">
@@ -1050,380 +873,101 @@ tr:last-child td {
     </div>
 </section>
 
-<!-- =========================================================
-     TECHNICAL INTERVIEW (Poster Coming Soon with Email Subscription)
-========================================================= -->
 <section class="page" id="technical">
     <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
     <div class="poster-container">
         <div class="poster-badge">Coming Soon</div>
         <div class="poster-subtitle">Next-Gen Engineering Modules</div>
-        
         <div class="poster-logo-box">
             <span class="poster-logo-symbol">&lt;/&gt;</span>
         </div>
-        
         <div class="poster-headline">Live Coding & System Design Sandboxes</div>
         <div class="poster-desc">
-            We are engineering a multi-language sandbox environment with integrated code execution, live debugging, structural test cases, and real-time AI code reviews.
+            Multi-language sandbox environment with integrated code execution, structural test cases, and real-time AI code reviews.
         </div>
-        
         <form onsubmit="handleNotify(event, 'Technical Interview Sandboxes')">
             <div class="poster-input-group">
                 <input type="email" class="poster-input" placeholder="Enter your email for early access..." required>
                 <button type="submit" class="poster-btn">Notify Me</button>
             </div>
         </form>
-        
         <div class="poster-footer">InterviewIQ AI · Technical Core Engine</div>
     </div>
 </section>
 
-<!-- =========================================================
-     APTITUDE PRACTICE (Poster Coming Soon with Email Subscription)
-========================================================= -->
 <section class="page" id="aptitude">
     <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
     <div class="poster-container">
         <div class="poster-badge">Coming Soon</div>
         <div class="poster-subtitle">Quantitative & Logical Analytics</div>
-        
         <div class="poster-logo-box">
             <span class="poster-logo-symbol" style="font-size: 38px; font-weight: 700; letter-spacing: 0;">▦</span>
         </div>
-        
         <div class="poster-headline">Comprehensive Aptitude Drill Engine</div>
         <div class="poster-desc">
-            Prepare for top-tier corporate screening rounds with adaptive quantitative problem sets, logical reasoning matrix grids, detailed timed mock exams, and instant step-by-step solutions.
+            Adaptive quantitative problem sets, logical matrix grids, timed mock exams, and step-by-step solutions.
         </div>
-        
         <form onsubmit="handleNotify(event, 'Aptitude Practice Engine')">
             <div class="poster-input-group">
                 <input type="email" class="poster-input" placeholder="Enter your email for early access..." required>
                 <button type="submit" class="poster-btn">Notify Me</button>
             </div>
         </form>
-        
         <div class="poster-footer">InterviewIQ AI · Aptitude Intelligence</div>
     </div>
 </section>
 
-<!-- =========================================================
-     SKILL GAP ANALYZER PAGE (KEPT INTACT FOR NOW)
-========================================================= -->
+<!-- SKILL GAP ANALYZER PAGE -->
 <section class="page" id="skills">
     <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
     <div class="page-heading">
         <h1>Skill Gap Analyzer</h1>
-        <p>Evaluate your profile against industry standards and job descriptions</p>
+        <p>Evaluate your profile against target role requirements.</p>
     </div>
     
     <div class="stats-grid" style="margin-bottom: 24px;">
         <div class="stat"><div class="stat-label">Python</div><div class="stat-value purple">85%</div></div>
-        <div class="stat"><div class="stat-label">SQL</div><div class="stat-value">72%</div></div>
-        <div class="stat"><div class="stat-label">Machine Learning</div><div class="stat-value">65%</div></div>
-        <div class="stat"><div class="stat-label">Communication</div><div class="stat-value green">58%</div></div>
-    </div>
-
-    <div class="large-card">
-        <h3 class="panel-title" style="margin-bottom: 12px;">AI Diagnostic Insight</h3>
-        <p style="color: #94a3b8; font-size: 13px; line-height: 1.6; margin-bottom: 20px;">
-            Your Python expertise stands out strongly. Focus your immediate study routines on communication dynamics, structural database queries, and ML fundamentals.
-        </p>
-        <button class="primary-btn">Generate Dynamic Study Plan</button>
-    </div>
-</section>
-
-<!-- =========================================================
-     HISTORY PAGE
-========================================================= -->
-<section class="page" id="history">
-    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
-    <div class="page-heading">
-        <h1>Interview History</h1>
-        <p>Comprehensive logs of all simulated assessments</p>
-    </div>
-    <div class="table-wrapper">
-        <table id="historyTable">
-            <thead>
-                <tr>
-                    <th>Interview Title</th>
-                    <th>Category</th>
-                    <th>Score</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-</section>
-
-<!-- =========================================================
-     FEEDBACK PAGE
-========================================================= -->
-<section class="page" id="feedback">
-    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
-    <div class="page-heading">
-        <h1>System Feedback & Reports</h1>
-        <p>Review evaluations from past interview sessions</p>
-    </div>
-    <div class="large-card">
-        <h3 class="panel-title">Latest Evaluator Notes</h3>
-        <p style="color: #94a3b8; font-size: 13px; line-height: 1.5;">Your articulation is clear during technical explanations. Consider reducing filler phrases during behavioral responses.</p>
-    </div>
-</section>
-
-<!-- =========================================================
-     COMPANY PREP PAGE
-========================================================= -->
-<section class="page" id="company">
-    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
-    <div class="poster-container" style="margin: 0 auto;">
-        <div class="poster-badge">Coming Soon</div>
-        <div class="poster-subtitle">Enterprise Target Roadmaps</div>
-        <div class="poster-logo-box">
-            <span class="poster-logo-symbol" style="font-size: 38px; font-weight: 700; letter-spacing: 0;">🏢</span>
-        </div>
-        <div class="poster-headline">Company-Specific Playbooks</div>
-        <div class="poster-desc">Customized question banks, hiring criteria filters, and round-by-round interview strategies tailored for top tech firms and service enterprises.</div>
-        <form onsubmit="handleNotify(event, 'Company Prep Playbooks')">
-            <div class="poster-input-group">
-                <input type="email" class="poster-input" placeholder="Enter your email for early access..." required>
-                <button type="submit" class="poster-btn">Notify Me</button>
-            </div>
-        </form>
-        <div class="poster-footer">InterviewIQ AI · Enterprise Suite</div>
-    </div>
-</section>
-
-<!-- =========================================================
-     SETTINGS PAGE
-========================================================= -->
-<section class="page" id="settings">
-    <div class="page-heading">
-        <h1>Account Settings</h1>
-        <p>Manage your profile preferences and target roles</p>
-    </div>
-    <div class="large-card" style="max-width: 600px;">
-        <div class="form-group">
-            <label>Target Role</label>
-            <input type="text" id="settingTargetRole" placeholder="e.g. Senior Data Scientist">
-        </div>
-        <div class="form-group">
-            <label>Preferred Study Track</label>
-            <select id="settingPreferredSkill">
-                <option value="python">Python & Data Engineering</option>
-                <option value="fullstack">Full-Stack Development</option>
-                <option value="ml">Machine Learning & AI</option>
-                <option value="general">General Software Engineering</option>
-            </select>
-        </div>
-        <button class="primary-btn" id="saveSettingsBtn">Save Preferences</button>
-    </div>
-</section>
-
-<!-- =========================================================
-     SUPPORT PAGE
-========================================================= -->
-<section class="page" id="support">
-    <button class="back-btn" onclick="showPage('dashboard')">← Back to Dashboard</button>
-    <div class="page-heading">
-        <h1>Help & Support</h1>
-        <p>Get assistance or check documentation</p>
-    </div>
-    <div class="large-card">
-        <h3 class="panel-title">Frequently Asked Questions</h3>
-        <p style="color: #94a3b8; font-size: 13px; line-height: 1.6;">
-            Need help configuring mock interviews or connecting your API logs? Reach out to our engineering support team directly at support@interviewiq.ai.
-        </p>
+        <div class="stat"><div class="stat-label">System Design</div><div class="stat-value">62%</div></div>
+        <div class="stat"><div class="stat-label">Data Structures</div><div class="stat-value green">90%</div></div>
+        <div class="stat"><div class="stat-label">Communication</div><div class="stat-value">78%</div></div>
     </div>
 </section>
 
 </main>
 
 <script>
-const API_URL = "https://interview-project-uimv.onrender.com";
-
-const navItems = document.querySelectorAll(".nav-item[data-page]");
-const pages = document.querySelectorAll(".page");
-
-function showPage(pageId) {
-    pages.forEach(page => page.classList.remove("active-page"));
-    const selected = document.getElementById(pageId);
-    if (selected) {
-        selected.classList.add("active-page");
-        if (pageId === 'history') loadInterviewHistory();
-    }
-    navItems.forEach(item => {
-        item.classList.remove("active");
-        if (item.dataset.page === pageId) item.classList.add("active");
-    });
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    document.getElementById("sidebar").classList.remove("open");
-}
-
-navItems.forEach(item => {
-    item.addEventListener("click", function() {
-        showPage(this.dataset.page);
-    });
-});
-
-document.getElementById("mobileMenu").addEventListener("click", function() {
-    document.getElementById("sidebar").classList.toggle("open");
-});
-
-document.getElementById("collapseSidebar").addEventListener("click", function() {
-    const sidebar = document.getElementById("sidebar");
-    const main = document.querySelector(".main");
-    if (sidebar.style.width === "80px") {
-        sidebar.style.width = "280px";
-        main.style.marginLeft = "280px";
-    } else {
-        sidebar.style.width = "80px";
-        main.style.marginLeft = "80px";
-    }
-});
-
-document.getElementById("logout").addEventListener("click", function() {
-    if (confirm("Are you sure you want to log out?")) {
-        localStorage.clear();
-        sessionStorage.clear();
-        window.location.href = "login.html";
-    }
-});
-
-async function loadDashboardAnalytics() {
-    try {
-        const response = await fetch(`${API_URL}/api/analytics`);
-        if (!response.ok) throw new Error("Analytics request failed");
-        const data = await response.json();
-        document.getElementById("dashboardTotalInterviews").textContent = data.totalInterviews ?? 0;
-        document.getElementById("dashboardAverageScore").textContent = data.averageScore ?? 0;
-        document.getElementById("dashboardBestScore").textContent = data.bestScore ?? 0;
-        document.getElementById("dashboardImprovement").textContent = data.improvement !== undefined ? "+" + data.improvement + "%" : "--";
-    } catch (error) {
-        console.error("Dashboard Analytics Error:", error);
-        document.getElementById("dashboardTotalInterviews").textContent = "4";
-        document.getElementById("dashboardAverageScore").textContent = "75";
-        document.getElementById("dashboardBestScore").textContent = "82";
-        document.getElementById("dashboardImprovement").textContent = "+12%";
-    }
-}
-
-async function loadInterviewHistory() {
-    const historyTableBody = document.querySelector("#historyTable tbody");
-    if (!historyTableBody) return;
-
-    try {
-        const response = await fetch(`${API_URL}/api/interviews`);
-
-        if (!response.ok) {
-            throw new Error("Failed to load interview history");
-        }
-
-        const interviews = await response.json();
-
-        historyTableBody.innerHTML = "";
-
-        if (!interviews || interviews.length === 0) {
-            historyTableBody.innerHTML = `
-                <tr>
-                    <td colspan="5" style="text-align:center;color:#94a3b8;">
-                        No interviews completed yet.
-                    </td>
-                </tr>
-            `;
-            return;
-        }
-
-        interviews.forEach(interview => {
-            const row = document.createElement("tr");
-
-            const date = interview.createdAt
-                ? new Date(interview.createdAt).toLocaleDateString()
-                : "-";
-
-            row.innerHTML = `
-                <td><strong>${interview.type || "Interview"}</strong></td>
-                <td>${interview.type || "-"}</td>
-                <td>
-                    <span style="font-weight:600;color:#818cf8;">
-                        ${interview.score ?? 0}/100
-                    </span>
-                </td>
-                <td>${date}</td>
-                <td>
-                    <span style="color:#34d399;font-weight:600;">
-                        ● Completed
-                    </span>
-                </td>
-            `;
-
-            historyTableBody.appendChild(row);
-        });
-
-    } catch (error) {
-        console.error("Interview History Error:", error);
-
-        historyTableBody.innerHTML = `
-            <tr>
-                <td colspan="5" style="text-align:center;color:#f87171;">
-                    Unable to load interview history.
-                </td>
-            </tr>
-        `;
-    }
-}
-
-const saveSettingsBtn = document.getElementById("saveSettingsBtn");
-const settingTargetRole = document.getElementById("settingTargetRole");
-const settingPreferredSkill = document.getElementById("settingPreferredSkill");
-
-function loadSettings() {
-    const savedRole = localStorage.getItem("targetRole");
-    const savedSkill = localStorage.getItem("preferredSkill");
-    if (savedRole && settingTargetRole) settingTargetRole.value = savedRole;
-    if (savedSkill && settingPreferredSkill) settingPreferredSkill.value = savedSkill;
-}
-
-if (saveSettingsBtn) {
-    saveSettingsBtn.addEventListener("click", () => {
-        if (settingTargetRole) localStorage.setItem("targetRole", settingTargetRole.value);
-        if (settingPreferredSkill) localStorage.setItem("preferredSkill", settingPreferredSkill.value);
-        alert("Preferences saved successfully!");
-    });
-}
-
-document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") showPage("dashboard");
-});
-
-async function handleNotify(event, moduleName) {
-    event.preventDefault();
-    const emailInput = event.target.querySelector('input[type="email"]');
-    const email = emailInput.value;
-
-    try {
-        const response = await fetch(`${API_URL}/api/early-access`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, module: moduleName })
-        });
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(page => page.classList.remove('active-page'));
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) targetPage.classList.add('active-page');
         
-        if (response.ok) {
-            alert(`✉️ Early access successfully registered for ${email}!\n\nWe will notify you as soon as the ${moduleName} module drops.`);
-        } else {
-            alert(`✉️ Early access registered for: ${email}\n\nWe will notify you as soon as the ${moduleName} module drops!`);
-        }
-    } catch (err) {
-        alert(`✉️ Early access registered for: ${email}\n\nWe will notify you as soon as the ${moduleName} module drops!`);
-    }
-    emailInput.value = "";
-}
+        document.querySelectorAll('.nav-item').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-page') === pageId);
+        });
 
-loadDashboardAnalytics();
-loadSettings();
+        if (window.innerWidth <= 800) {
+            document.getElementById('sidebar')?.classList.remove('open');
+        }
+    }
+
+    document.querySelectorAll('.nav-item[data-page]').forEach(btn => {
+        btn.addEventListener('click', () => showPage(btn.getAttribute('data-page')));
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenu');
+    const sidebar = document.getElementById('sidebar');
+    if (mobileMenuBtn && sidebar) {
+        mobileMenuBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
+    }
+
+    function handleNotify(event, featureName) {
+        event.preventDefault();
+        const input = event.target.querySelector('input[type="email"]');
+        if (input && input.value) {
+            alert(`Thank you! We've registered ${input.value} for early access to ${featureName}.`);
+            input.value = '';
+        }
+    }
 </script>
 </body>
 </html>
