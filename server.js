@@ -8,11 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
-// ==========================================
-// 1. CONNECT TO MONGODB
-// ==========================================
-
 mongoose
     .connect(process.env.MONGO_URI)
     .then(() => {
@@ -22,16 +17,14 @@ mongoose
         console.log("MongoDB connection failed:", error.message);
     });
 
-
-// ==========================================
-// 2. USER MODEL - REGISTER AND LOGIN
-// ==========================================
-
 const userSchema = new mongoose.Schema({
 
     name: String,
 
-    email: String,
+    email: {
+        type: String,
+        unique: true
+    },
 
     password: String
 
@@ -39,14 +32,11 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-
-// ==========================================
-// 3. PRACTICE MODEL
-// ==========================================
-
 const practiceSchema = new mongoose.Schema({
 
     userName: String,
+
+    userEmail: String,
 
     question: String,
 
@@ -63,16 +53,16 @@ const practiceSchema = new mongoose.Schema({
 
 const Practice = mongoose.model("Practice", practiceSchema);
 
-
-// ==========================================
-// 4. INTERVIEW MODEL
-// ==========================================
-
 const interviewSchema = new mongoose.Schema({
 
     userName: {
         type: String,
         default: "Guest"
+    },
+
+    userEmail: {
+        type: String,
+        default: ""
     },
 
     type: {
@@ -129,11 +119,6 @@ const Interview = mongoose.model(
     interviewSchema
 );
 
-
-// ==========================================
-// 5. HOME PAGE TEST
-// ==========================================
-
 app.get("/", (req, res) => {
 
     res.json({
@@ -141,11 +126,6 @@ app.get("/", (req, res) => {
     });
 
 });
-
-
-// ==========================================
-// 6. REGISTER USER
-// ==========================================
 
 app.post("/api/register", async (req, res) => {
 
@@ -164,7 +144,6 @@ app.post("/api/register", async (req, res) => {
 
         }
 
-
         const user = await User.create({
 
             name,
@@ -174,7 +153,6 @@ app.post("/api/register", async (req, res) => {
             password
 
         });
-
 
         res.status(201).json({
 
@@ -207,17 +185,11 @@ app.post("/api/register", async (req, res) => {
 
 });
 
-
-// ==========================================
-// 7. LOGIN USER
-// ==========================================
-
 app.post("/api/login", async (req, res) => {
 
     try {
 
         const { email, password } = req.body;
-
 
         const user = await User.findOne({
 
@@ -226,7 +198,6 @@ app.post("/api/login", async (req, res) => {
             password: password
 
         });
-
 
         if (!user) {
 
@@ -237,7 +208,6 @@ app.post("/api/login", async (req, res) => {
             });
 
         }
-
 
         res.json({
 
@@ -270,18 +240,12 @@ app.post("/api/login", async (req, res) => {
 
 });
 
-
-// ==========================================
-// 8. SAVE PRACTICE
-// ==========================================
-
 app.post("/api/practice", async (req, res) => {
 
     try {
 
         const practice =
             await Practice.create(req.body);
-
 
         res.status(201).json({
 
@@ -308,19 +272,24 @@ app.post("/api/practice", async (req, res) => {
 
 });
 
-
-// ==========================================
-// 9. GET PRACTICE
-// ==========================================
-
 app.get("/api/practice", async (req, res) => {
 
     try {
 
-        const practices = await Practice
-            .find()
-            .sort({ createdAt: -1 });
+        const { email, userEmail } = req.query;
 
+        const filter = {};
+
+        if (userEmail || email) {
+
+            filter.userEmail =
+                userEmail || email;
+
+        }
+
+        const practices = await Practice
+            .find(filter)
+            .sort({ createdAt: -1 });
 
         res.json(practices);
 
@@ -341,11 +310,6 @@ app.get("/api/practice", async (req, res) => {
 
 });
 
-
-// ==========================================
-// 10. SAVE INTERVIEW
-// ==========================================
-
 app.post("/api/interviews", async (req, res) => {
 
     try {
@@ -353,6 +317,10 @@ app.post("/api/interviews", async (req, res) => {
         const {
 
             userName,
+
+            userEmail,
+
+            email,
 
             type,
 
@@ -372,12 +340,14 @@ app.post("/api/interviews", async (req, res) => {
 
         } = req.body;
 
-
         const interview =
             await Interview.create({
 
                 userName:
                     userName || "Guest",
+
+                userEmail:
+                    userEmail || email || "",
 
                 type:
                     type || "HR",
@@ -406,7 +376,6 @@ app.post("/api/interviews", async (req, res) => {
 
             });
 
-
         res.status(201).json({
 
             message: "Interview saved successfully",
@@ -432,19 +401,30 @@ app.post("/api/interviews", async (req, res) => {
 
 });
 
-
-// ==========================================
-// 11. GET INTERVIEWS
-// ==========================================
-
 app.get("/api/interviews", async (req, res) => {
 
     try {
 
-        const interviews = await Interview
-            .find()
-            .sort({ createdAt: -1 });
+        const { email, userEmail } = req.query;
 
+        const currentEmail =
+            userEmail || email;
+
+        if (!currentEmail) {
+
+            return res.status(400).json({
+
+                message: "User email is required"
+
+            });
+
+        }
+
+        const interviews = await Interview
+            .find({
+                userEmail: currentEmail
+            })
+            .sort({ createdAt: -1 });
 
         res.json(interviews);
 
@@ -465,18 +445,29 @@ app.get("/api/interviews", async (req, res) => {
 
 });
 
-
-// ==========================================
-// 12. ANALYTICS
-// ==========================================
-
 app.get("/api/analytics", async (req, res) => {
 
     try {
 
-        const interviews =
-            await Interview.find();
+        const { email, userEmail } = req.query;
 
+        const currentEmail =
+            userEmail || email;
+
+        if (!currentEmail) {
+
+            return res.status(400).json({
+
+                message: "User email is required"
+
+            });
+
+        }
+
+        const interviews =
+            await Interview.find({
+                userEmail: currentEmail
+            });
 
         if (interviews.length === 0) {
 
@@ -492,36 +483,27 @@ app.get("/api/analytics", async (req, res) => {
 
         }
 
-
         const totalInterviews =
             interviews.length;
-
 
         const validScores =
             interviews.map(interview =>
                 Number(interview.score) || 0
             );
 
-
         const totalScore =
             validScores.reduce(
-
                 (sum, score) => sum + score,
-
                 0
-
             );
-
 
         const averageScore =
             Math.round(
                 totalScore / totalInterviews
             );
 
-
         const bestScore =
             Math.max(...validScores);
-
 
         res.json({
 
@@ -550,14 +532,8 @@ app.get("/api/analytics", async (req, res) => {
 
 });
 
-
-// ==========================================
-// 13. START SERVER
-// ==========================================
-
 const PORT =
     process.env.PORT || 5000;
-
 
 app.listen(PORT, () => {
 
