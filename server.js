@@ -8,6 +8,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+// ==========================================
+// MONGODB CONNECTION
+// ==========================================
+
 mongoose
     .connect(process.env.MONGO_URI)
     .then(() => {
@@ -16,6 +21,11 @@ mongoose
     .catch((error) => {
         console.log("MongoDB connection failed:", error.message);
     });
+
+
+// ==========================================
+// USER SCHEMA
+// ==========================================
 
 const userSchema = new mongoose.Schema({
 
@@ -31,6 +41,11 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model("User", userSchema);
+
+
+// ==========================================
+// PRACTICE SCHEMA
+// ==========================================
 
 const practiceSchema = new mongoose.Schema({
 
@@ -52,6 +67,11 @@ const practiceSchema = new mongoose.Schema({
 });
 
 const Practice = mongoose.model("Practice", practiceSchema);
+
+
+// ==========================================
+// INTERVIEW SCHEMA
+// ==========================================
 
 const interviewSchema = new mongoose.Schema({
 
@@ -119,6 +139,11 @@ const Interview = mongoose.model(
     interviewSchema
 );
 
+
+// ==========================================
+// HOME / HEALTH CHECK
+// ==========================================
+
 app.get("/", (req, res) => {
 
     res.json({
@@ -126,6 +151,11 @@ app.get("/", (req, res) => {
     });
 
 });
+
+
+// ==========================================
+// REGISTER
+// ==========================================
 
 app.post("/api/register", async (req, res) => {
 
@@ -147,9 +177,7 @@ app.post("/api/register", async (req, res) => {
         const user = await User.create({
 
             name,
-
             email,
-
             password
 
         });
@@ -161,7 +189,6 @@ app.post("/api/register", async (req, res) => {
             user: {
 
                 name: user.name,
-
                 email: user.email
 
             }
@@ -185,6 +212,11 @@ app.post("/api/register", async (req, res) => {
 
 });
 
+
+// ==========================================
+// LOGIN
+// ==========================================
+
 app.post("/api/login", async (req, res) => {
 
     try {
@@ -194,7 +226,6 @@ app.post("/api/login", async (req, res) => {
         const user = await User.findOne({
 
             email: email,
-
             password: password
 
         });
@@ -216,7 +247,6 @@ app.post("/api/login", async (req, res) => {
             user: {
 
                 name: user.name,
-
                 email: user.email
 
             }
@@ -239,6 +269,11 @@ app.post("/api/login", async (req, res) => {
     }
 
 });
+
+
+// ==========================================
+// SAVE PRACTICE
+// ==========================================
 
 app.post("/api/practice", async (req, res) => {
 
@@ -272,6 +307,11 @@ app.post("/api/practice", async (req, res) => {
 
 });
 
+
+// ==========================================
+// GET PRACTICE
+// ==========================================
+
 app.get("/api/practice", async (req, res) => {
 
     try {
@@ -287,9 +327,10 @@ app.get("/api/practice", async (req, res) => {
 
         }
 
-        const practices = await Practice
-            .find(filter)
-            .sort({ createdAt: -1 });
+        const practices =
+            await Practice
+                .find(filter)
+                .sort({ createdAt: -1 });
 
         res.json(practices);
 
@@ -310,6 +351,11 @@ app.get("/api/practice", async (req, res) => {
 
 });
 
+
+// ==========================================
+// SAVE INTERVIEW
+// ==========================================
+
 app.post("/api/interviews", async (req, res) => {
 
     try {
@@ -317,25 +363,15 @@ app.post("/api/interviews", async (req, res) => {
         const {
 
             userName,
-
             userEmail,
-
             email,
-
             type,
-
             score,
-
             communication,
-
             technical,
-
             problemSolving,
-
             confidence,
-
             feedback,
-
             answers
 
         } = req.body;
@@ -401,6 +437,11 @@ app.post("/api/interviews", async (req, res) => {
 
 });
 
+
+// ==========================================
+// GET INTERVIEWS
+// ==========================================
+
 app.get("/api/interviews", async (req, res) => {
 
     try {
@@ -420,11 +461,12 @@ app.get("/api/interviews", async (req, res) => {
 
         }
 
-        const interviews = await Interview
-            .find({
-                userEmail: currentEmail
-            })
-            .sort({ createdAt: -1 });
+        const interviews =
+            await Interview
+                .find({
+                    userEmail: currentEmail
+                })
+                .sort({ createdAt: -1 });
 
         res.json(interviews);
 
@@ -444,6 +486,11 @@ app.get("/api/interviews", async (req, res) => {
     }
 
 });
+
+
+// ==========================================
+// ANALYTICS
+// ==========================================
 
 app.get("/api/analytics", async (req, res) => {
 
@@ -474,9 +521,7 @@ app.get("/api/analytics", async (req, res) => {
             return res.json({
 
                 totalInterviews: 0,
-
                 averageScore: 0,
-
                 bestScore: 0
 
             });
@@ -487,19 +532,22 @@ app.get("/api/analytics", async (req, res) => {
             interviews.length;
 
         const validScores =
-            interviews.map(interview =>
-                Number(interview.score) || 0
+            interviews.map(
+                interview =>
+                    Number(interview.score) || 0
             );
 
         const totalScore =
             validScores.reduce(
-                (sum, score) => sum + score,
+                (sum, score) =>
+                    sum + score,
                 0
             );
 
         const averageScore =
             Math.round(
-                totalScore / totalInterviews
+                totalScore /
+                totalInterviews
             );
 
         const bestScore =
@@ -508,9 +556,7 @@ app.get("/api/analytics", async (req, res) => {
         res.json({
 
             totalInterviews,
-
             averageScore,
-
             bestScore
 
         });
@@ -532,6 +578,11 @@ app.get("/api/analytics", async (req, res) => {
 
 });
 
+
+// ==========================================
+// START SERVER
+// ==========================================
+
 const PORT =
     process.env.PORT || 5000;
 
@@ -542,3 +593,4 @@ app.listen(PORT, () => {
     );
 
 });
+
